@@ -16,6 +16,8 @@ The current working hypothesis is that the answer may depend strongly on dataset
 
 ## Project Map
 
+The clean maintained project map is `docs/project_map.md`. A shortened map is included here for quick orientation.
+
 ```text
 Hinglish Research/
 ├── combined_hate_speech_dataset.csv      # Existing combined dataset file
@@ -39,6 +41,8 @@ Hinglish Research/
 │   ├── model_reload_check_2026-06-29.md  # Saved-checkpoint reload and test-script verification
 │   ├── legacy_original_aim.md            # Original mBERT-vs-MuRIL aim preserved as context
 │   ├── github_release_notes.md           # GitHub publishing scope and repository direction
+│   ├── project_map.md                    # Clean maintained project map and commit policy
+│   ├── research_rigor_roadmap.md         # What must be added before final paper strength
 │   ├── result_analysis_report.md         # Primary result interpretation and model comparisons
 │   ├── transformer_cross_dataset_eval_report.md # Research-style report for transformer cross-dataset evaluation
 │   ├── research_journal.md               # Running research notes
@@ -65,7 +69,14 @@ Hinglish Research/
 ├── results/                              # CSV/Markdown result summaries
 ├── Models/                               # Local checkpoints; large weights ignored by Git
 ├── paper/
-│   └── paper_draft.md                    # Main working paper draft
+│   ├── build_paper_pdf.py                # Reproducible local PDF paper builder
+│   ├── paper_draft.md                    # Main working paper draft
+│   ├── main.tex                          # LaTeX draft source
+│   ├── references.bib                    # BibTeX references
+│   └── overleaf_self_contained.tex       # Copy-paste Overleaf fallback
+├── output/
+│   └── pdf/
+│       └── hinglish_mbert_muril_research_paper_draft.pdf
 └── paper_outline.md                      # Paper skeleton
 ```
 
@@ -201,3 +212,7 @@ Important current interpretation:
 ## GitHub Notes
 
 Large model weights and local datasets are ignored by `.gitignore`. The repository should publish code, documentation, conversion scripts, result summaries, and lightweight metadata. If trained weights are shared later, use Git LFS or a model host such as Hugging Face.
+
+From 2026-07-01 onward, significant project updates should be committed and pushed in order. The detailed commit policy is in `docs/project_map.md`.
+
+Current research rigor roadmap: `docs/research_rigor_roadmap.md`.

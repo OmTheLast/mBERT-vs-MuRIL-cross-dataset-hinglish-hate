@@ -564,3 +564,95 @@ Decision:
 - Do not add Indo-HateSpeech to the main experiment set before mixed training.
 - Treat it as an accessible but noisy candidate for later secondary robustness work.
 - Proceed with mixed training using the three already-audited primary datasets: `kaggle_hinglish_hate`, `cm_splits_codemixed`, and `thar_religion`.
+
+## LaTeX Paper Draft Started On 2026-07-01
+
+Created the first LaTeX version of the paper under `paper/`.
+
+Files:
+
+- `paper/main.tex`
+- `paper/references.bib`
+
+Draft framing:
+
+- The paper is now framed around cross-dataset robustness rather than a single universal mBERT-vs-MuRIL winner.
+- The central working claim is conditional: mBERT is stronger on matched Latin-script Hinglish/code-mixed offensive settings, while MuRIL is stronger on THAR targeted religious hate and some THAR-related transfer settings.
+- The draft includes the primary matched results, selected cross-dataset transfer results, TF-IDF baseline comparison, false-negative analysis, limitations, and future mixed-training plan.
+- The 79-row benchmark is explicitly excluded from primary conclusions because its provenance is uncertain.
+
+Verification note:
+
+- A PDF could not be compiled locally because no TeX compiler was available on PATH (`latexmk`, `pdflatex`, `tectonic`, `xelatex`, `lualatex`, and `bibtex` were not installed).
+- The source is ready to compile in Overleaf or on a machine with a TeX distribution.
+
+## Overleaf Self-Contained Draft Added On 2026-07-01
+
+Created `paper/overleaf_self_contained.tex` after the first LaTeX draft did not work when pasted directly into Overleaf.
+
+Reason:
+
+- `paper/main.tex` depends on repository-local images and a separate `paper/references.bib` file.
+- Directly pasting only `main.tex` into Overleaf can fail because Overleaf does not have those external files.
+
+Fix:
+
+- `paper/overleaf_self_contained.tex` embeds the bibliography using `filecontents`.
+- It removes external image dependencies.
+- It is intended as the easiest copy-paste version for Overleaf.
+
+## Local PDF Paper Draft Generated On 2026-07-01
+
+Created a local PDF paper draft after deciding not to rely on Overleaf.
+
+Files:
+
+- Source generator: `paper/build_paper_pdf.py`
+- Output PDF: `output/pdf/hinglish_mbert_muril_research_paper_draft.pdf`
+
+Content included:
+
+- Research motivation and conditional claim.
+- Dataset situation section covering Kaggle Hinglish, CM code-mixed offensive data, and THAR religion hate.
+- Dataset graphs for size/label balance, script composition, and text length.
+- Model and experimental setup for mBERT, MuRIL, and TF-IDF baselines.
+- Matched transformer results.
+- Cross-dataset transfer results.
+- Transformer-vs-baseline analysis.
+- False-negative and model-disagreement error analysis.
+- Manual error coding summary.
+- Main inferences, limitations, next experimental step, and references.
+
+Verification:
+
+- Generated successfully with ReportLab using the bundled runtime.
+- Rendered with Poppler to inspect page images.
+- Final PDF has 10 pages.
+- Text extraction check confirmed the major sections are present.
+
+## Research Rigor Feedback Incorporated On 2026-07-01
+
+Added a formal roadmap after external feedback pointed out that the current draft is promising but still needs stronger research rigor.
+
+Files added/updated:
+
+- `docs/research_rigor_roadmap.md`
+- `docs/project_map.md`
+- `docs/project_defense_notes.md`
+- `docs/github_release_notes.md`
+- `README.md`
+- `paper/build_paper_pdf.py`
+
+Changes:
+
+- Added a clear list of weaknesses before final paper claims:
+  - one seed only;
+  - no mean/std table yet;
+  - no confidence intervals yet;
+  - citation/license verification still pending for CM and THAR;
+  - manual error examples need to be expanded;
+  - mixed-dataset training still pending.
+- Added a commit-and-push policy for future significant updates.
+- Added a student-facing defense section explaining what should be understood and defended.
+- Updated the PDF paper title line from "Research draft generated locally" to "Working Draft v0.1 - July 1, 2026".
+- Added related work, a reproducibility box, and an AI-use statement to the PDF builder.

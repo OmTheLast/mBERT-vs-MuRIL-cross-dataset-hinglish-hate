@@ -23,6 +23,7 @@ Push:
 - code in `scripts/`, `experiments/`, and `Training/`;
 - documentation in `docs/`;
 - paper draft files under `paper/`;
+- the current lightweight PDF draft under `output/pdf/` when intentionally refreshed;
 - lightweight result summaries and generated figures under `results/`;
 - `README.md`, `requirements.txt`, `.gitignore`.
 
@@ -34,7 +35,7 @@ Do not push:
 - virtual environments;
 - training run folders;
 - large prediction dumps;
-- local PDFs or downloaded source files.
+- downloaded source PDFs or local dataset PDFs.
 
 These are ignored in `.gitignore`.
 
@@ -61,3 +62,16 @@ Cross-dataset evaluation of mBERT and MuRIL for Hinglish/Hindi-English code-mixe
 Initial cross-dataset mBERT vs MuRIL research scaffold
 ```
 
+## Ongoing Commit Policy
+
+From 2026-07-01 onward, significant research updates should be committed and pushed in sequence.
+
+Commit after:
+
+- a new experiment family;
+- a new dataset conversion or dataset decision;
+- a new paper draft version;
+- a new result analysis or graph set;
+- a meaningful reproducibility or defense-documentation update.
+
+Commit messages should describe the research step, not only the file edit.

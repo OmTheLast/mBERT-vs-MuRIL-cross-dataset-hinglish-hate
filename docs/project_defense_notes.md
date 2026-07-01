@@ -184,3 +184,48 @@ A defensible paper claim is:
 
 > In Hinglish and Hindi-English code-mixed harmful speech detection, model ranking is conditional on dataset situation. mBERT performs better on matched Latin-script Hinglish/offensive datasets, while MuRIL performs better on targeted religious hate and some related transfer settings. Cross-dataset evaluation reveals that dataset label policy and domain are as important as model choice.
 
+## What You Should Be Able To Defend Yourself
+
+If someone asks about this project, the goal is not to memorize every number. The goal is to understand the logic of the research.
+
+### 1. Why The Project Matters
+
+You should be able to say:
+
+> Hinglish hate speech detection is hard because the text mixes Hindi, English, transliteration, slang, and platform-specific context. A model that works on one dataset may fail on another because the positive label may mean hate, offense, or targeted religious hate.
+
+### 2. Why mBERT Versus MuRIL Is Interesting
+
+You should be able to say:
+
+> mBERT is a general multilingual model. MuRIL is focused on Indian languages. Since Hinglish sits between English, Hindi, Romanized Hindi, and Indian social media, the comparison tests whether Indian-language-specific pretraining actually helps.
+
+### 3. Why The Answer Is Conditional
+
+You should be able to say:
+
+> The answer changes by dataset. mBERT currently wins on matched Kaggle Hinglish and CM code-mixed offensive data. MuRIL wins on THAR targeted religious hate and some THAR-related transfer. So the research finding is not "mBERT wins" or "MuRIL wins"; it is that dataset situation changes the winner.
+
+### 4. Why Cross-Dataset Testing Is The Core
+
+You should be able to say:
+
+> In-domain testing only tells us whether a model learned one dataset. Cross-dataset testing tells us whether it generalizes. Since performance drops a lot across datasets, this project shows that label policy and domain are major parts of hate-speech evaluation.
+
+### 5. Why The Project Is Not Final Yet
+
+You should be able to say:
+
+> The main limitation is rigor. Current transformer runs use one seed and one main hyperparameter setting. Before making final claims, we need multi-seed results, mean and standard deviation, confidence intervals or bootstrap intervals, stronger citation/license verification, and mixed-dataset training.
+
+### 6. How AI Was Used
+
+You should be honest and calm:
+
+> AI tools helped with coding, debugging, documentation, and report organization. The research direction, dataset choices, interpretation, and final claims were reviewed and directed by me.
+
+### 7. The Cleanest One-Minute Explanation
+
+Use this when someone asks, "What is your project?"
+
+> My project compares mBERT and MuRIL for Hinglish and Hindi-English code-mixed harmful speech detection. At first, the question was whether MuRIL is better because it is Indian-language-focused. After testing multiple datasets, the better finding is that the winner changes by dataset situation. mBERT does better on matched Latin-script Hinglish and offensive data, while MuRIL does better on targeted religious hate and some THAR-related transfer. The project shows that dataset label definition, platform, and script mix matter as much as model choice.
