@@ -1,0 +1,10 @@
+manual_reason,rows,share
+cross_dataset_label_mismatch,191,0.6701754385964912
+generic_profanity_or_abuse,78,0.2736842105263158
+target_group_or_religion_cue,64,0.22456140350877193
+political_context_or_slogan,47,0.1649122807017544
+implicit_context_or_unclear_signal,37,0.12982456140350876
+non_hateful_lexical_trigger,27,0.09473684210526316
+short_or_contextless_text,26,0.0912280701754386
+mixed_script_complexity,9,0.031578947368421054
+script_mismatch_devanagari,8,0.028070175438596492

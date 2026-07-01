@@ -1,0 +1,7 @@
+dataset_a,dataset_b,overlap_normalized_texts,dataset_a_unique_texts,dataset_b_unique_texts,overlap_rate_min_side
+kaggle_hinglish_hate,thar_religion,0,4772,11546,0.0
+cm_splits_codemixed,kaggle_hinglish_hate,0,3764,4772,0.0
+cm_splits_codemixed,thar_religion,0,3764,11546,0.0
+cm_splits_codemixed,existing_79_row_benchmark,0,3764,75,0.0
+existing_79_row_benchmark,kaggle_hinglish_hate,0,75,4772,0.0
+existing_79_row_benchmark,thar_religion,0,75,11546,0.0

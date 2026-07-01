@@ -1,0 +1,3 @@
+evaluation,dataset,condition,model,checkpoint_path,avg_latency_ms,accuracy,precision_hate,recall_hate,f1_hate,precision_macro,recall_macro,f1_macro,tn,fp,fn,tp
+reload_check_initial_saved_79_probe,existing_79_row_benchmark,initial_saved_project_checkpoints,mbert,/Users/ompatnaik/Documents/Code/Hinglish Research/Models/mbert_model,2.3952157215130163,0.5189873417721519,1.0,0.02564102564102564,0.05,0.7564102564102564,0.5128205128205128,0.36398305084745763,40,0,38,1
+reload_check_initial_saved_79_probe,existing_79_row_benchmark,initial_saved_project_checkpoints,muril,/Users/ompatnaik/Documents/Code/Hinglish Research/Models/muril_model,2.136387658227457,0.5063291139240507,0.0,0.0,0.0,0.25316455696202533,0.5,0.33613445378151263,40,0,39,0

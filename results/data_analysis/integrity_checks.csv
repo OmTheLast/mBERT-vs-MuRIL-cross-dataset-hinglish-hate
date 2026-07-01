@@ -1,0 +1,4 @@
+dataset_id,check,status,expected_rows,processed_rows,missing_from_processed,extra_in_processed
+kaggle_hinglish_hate,processed equals deduplicated raw rows where language == hinglish,pass,4780,4780,0,0
+cm_splits_codemixed,"processed equals raw train/val/test rows where codemixed == 1, label mapped from offense",pass,3900,3900,0,0
+thar_religion,processed equals THAR raw comments with SubTask1 binary label mapping,pass,11549,11549,0,0

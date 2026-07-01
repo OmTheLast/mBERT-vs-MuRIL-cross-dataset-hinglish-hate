@@ -1,0 +1,11 @@
+dataset_id,script_bucket,rows,rate
+kaggle_hinglish_hate,latin_only,4780,1.0
+cm_splits_codemixed,latin_only,3458,0.8866666666666667
+cm_splits_codemixed,mixed_latin_devanagari,428,0.10974358974358975
+cm_splits_codemixed,devanagari_only,13,0.0033333333333333335
+cm_splits_codemixed,other_or_symbolic,1,0.0002564102564102564
+thar_religion,latin_only,8877,0.7686379773140531
+thar_religion,devanagari_only,2187,0.1893670447657806
+thar_religion,mixed_latin_devanagari,482,0.0417352151701446
+thar_religion,other_or_symbolic,3,0.0002597627500216469
+existing_79_row_benchmark,latin_only,79,1.0

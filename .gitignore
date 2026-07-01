@@ -1,0 +1,37 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+
+.venv/
+runs/
+.cache/
+wandb/
+
+# Local model artifacts. Keep docs and scripts in Git, not checkpoints.
+Models/*
+!Models/.gitkeep
+
+# Raw/local datasets are not committed. Processed datasets may contain third-party text,
+# so keep them local unless a dataset license/release policy is explicitly reviewed.
+data/raw/
+data/processed/
+
+# Root-level local source/probe files.
+combined_hate_speech_dataset.csv
+benchmark_test.csv
+benchmark_results_detailed.csv
+THAR-*.pdf
+THAR-*.pdf.txt
+
+# Heavy/generated prediction dumps. Keep paper-facing summaries and reports.
+results/*predictions*.csv
+results/*detailed*.csv
+results/harness_smoke_predictions.csv
+results/data_analysis/duplicate_examples.csv
+results/error_analysis/error_samples.csv
+results/error_analysis/hard_false_negative_samples.csv
+results/error_analysis/paired_transformer_predictions_primary.csv
+results/error_analysis/manual_error_annotation_template.csv
+results/error_analysis/manual_error_annotation_first_pass.csv
+
+# Hugging Face/cache noise.
