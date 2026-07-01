@@ -43,6 +43,7 @@ Hinglish Research/
 │   ├── github_release_notes.md           # GitHub publishing scope and repository direction
 │   ├── project_map.md                    # Clean maintained project map and commit policy
 │   ├── research_rigor_roadmap.md         # What must be added before final paper strength
+│   ├── mixed_dataset_experiment_plan.md  # Mixed training plan and leakage policy
 │   ├── result_analysis_report.md         # Primary result interpretation and model comparisons
 │   ├── transformer_cross_dataset_eval_report.md # Research-style report for transformer cross-dataset evaluation
 │   ├── research_journal.md               # Running research notes
@@ -64,6 +65,7 @@ Hinglish Research/
 │   ├── convert_thar.py                   # Convert THAR religious hate dataset
 │   ├── analyze_datasets.py               # Source integrity checks and descriptive analysis
 │   ├── analyze_errors.py                 # Transformer error and disagreement analysis
+│   ├── build_mixed_training_sets.py      # Build leakage-safe mixed training CSVs
 │   ├── analyze_results.py                # Primary result analysis and diagnostic probe separation
 │   └── make_results_summary.py           # Terminal and Markdown result summary
 ├── results/                              # CSV/Markdown result summaries
@@ -170,6 +172,12 @@ Analyze transformer errors:
 ```bash
 .venv/bin/python scripts/analyze_errors.py
 .venv/bin/python scripts/first_pass_manual_error_coding.py
+```
+
+Build mixed training sets:
+
+```bash
+.venv/bin/python scripts/build_mixed_training_sets.py
 ```
 
 Train on Apple Silicon/MPS:

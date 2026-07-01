@@ -656,3 +656,24 @@ Changes:
 - Added a student-facing defense section explaining what should be understood and defended.
 - Updated the PDF paper title line from "Research draft generated locally" to "Working Draft v0.1 - July 1, 2026".
 - Added related work, a reproducibility box, and an AI-use statement to the PDF builder.
+
+## Mixed-Dataset Experiment Plan Added On 2026-07-01
+
+Decided that mixed-dataset training should come before broad hyperparameter sweeps.
+
+Reason:
+
+- Mixed training directly tests the central robustness question.
+- Hyperparameter sweeps would multiply the grid before the next research direction is clear.
+- Multi-seed and confidence intervals remain required later, but mixed training gives the next major result family.
+
+Added:
+
+- `scripts/build_mixed_training_sets.py`
+- `docs/mixed_dataset_experiment_plan.md`
+
+Important design decision:
+
+- Mixed training sets must avoid train/test leakage.
+- Kaggle and THAR use only their stratified training portions under seed 42.
+- CM uses source `train` + `val`, leaving source `test` for evaluation.

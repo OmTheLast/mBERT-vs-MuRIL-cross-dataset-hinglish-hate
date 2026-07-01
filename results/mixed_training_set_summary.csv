@@ -1,0 +1,5 @@
+mix_id,rows,label_0,label_1,positive_rate,source_breakdown
+kaggle_plus_cm,7300,4512,2788,0.3819178082191781,"cm_splits_codemixed:0=2181,1=1295; kaggle_hinglish_hate:0=2331,1=1493"
+kaggle_plus_thar,13063,7207,5856,0.4482890607058103,"kaggle_hinglish_hate:0=2331,1=1493; thar_religion:0=4876,1=4363"
+cm_plus_thar,12715,7057,5658,0.4449862367282737,"cm_splits_codemixed:0=2181,1=1295; thar_religion:0=4876,1=4363"
+all_three,16539,9388,7151,0.43237196928472094,"cm_splits_codemixed:0=2181,1=1295; kaggle_hinglish_hate:0=2331,1=1493; thar_religion:0=4876,1=4363"
