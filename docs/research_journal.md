@@ -677,3 +677,32 @@ Important design decision:
 - Mixed training sets must avoid train/test leakage.
 - Kaggle and THAR use only their stratified training portions under seed 42.
 - CM uses source `train` + `val`, leaving source `test` for evaluation.
+
+## Local Training Artifact Cleanup On 2026-07-01
+
+Paused mixed training after checking local disk usage.
+
+Finding:
+
+- Project folder before cleanup: about 38 GB.
+- `runs/`: about 30 GB.
+- `Models/`: about 6.9 GB.
+- The large files in `runs/` were Hugging Face Trainer checkpoint artifacts, especially `optimizer.pt`.
+
+Action:
+
+- Deleted local `runs/`.
+- Project folder after cleanup: about 8.4 GB.
+- Free disk increased from about 120 GiB to about 153 GiB.
+
+Trainer change:
+
+- Updated `experiments/train_transformer.py` to use:
+  - `save_total_limit=1`;
+  - `save_only_model=True`;
+  - `save_safetensors=True`.
+
+Reason:
+
+- Future training should keep only the minimum checkpoint needed during training and avoid saving huge optimizer states.
+- Final usable checkpoints are still saved under `Models/`.
