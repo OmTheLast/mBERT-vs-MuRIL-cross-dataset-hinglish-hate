@@ -99,6 +99,36 @@ The 79-row file is excluded from primary conclusions because it may be manually 
 
 Interpretation: results on this probe should not be used to claim model superiority. Its main value is methodological: it exposed how unstable conclusions become when evaluation provenance is unclear.
 
+## First Mixed-Dataset Result: Kaggle + CM
+
+Date: 2026-07-01
+
+The first mixed training condition combines `kaggle_hinglish_hate` and `cm_splits_codemixed`. The exact training condition is labeled `mixed_kaggle_plus_cm` in the result files.
+
+Primary source:
+
+- `results/mixed_kaggle_plus_cm_transformer_summary.csv`
+
+| model | train_dataset | test_dataset | accuracy | recall_positive | f1_positive | f1_macro | tn | fp | fn | tp |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| mBERT | `mixed_kaggle_plus_cm` | `kaggle_hinglish_hate` | 72.9% | 45.3% | 56.6% | 68.5% | 528 | 55 | 204 | 169 |
+| mBERT | `mixed_kaggle_plus_cm` | `cm_splits_codemixed` | 74.5% | 59.9% | 62.4% | 71.5% | 221 | 47 | 59 | 88 |
+| mBERT | `mixed_kaggle_plus_cm` | `thar_religion` | 54.9% | 22.9% | 32.4% | 49.3% | 1018 | 201 | 841 | 250 |
+| MuRIL | `mixed_kaggle_plus_cm` | `kaggle_hinglish_hate` | 61.0% | 0.0% | 0.0% | 37.9% | 583 | 0 | 373 | 0 |
+| MuRIL | `mixed_kaggle_plus_cm` | `cm_splits_codemixed` | 64.6% | 0.0% | 0.0% | 39.2% | 268 | 0 | 147 | 0 |
+| MuRIL | `mixed_kaggle_plus_cm` | `thar_religion` | 52.8% | 0.0% | 0.0% | 34.5% | 1219 | 0 | 1091 | 0 |
+
+Interpretation:
+
+- mBERT gained on Kaggle compared with Kaggle-only training, suggesting that additional similar code-mixed/offensive data can help recall more Kaggle positives.
+- mBERT lost on CM compared with CM-only training, suggesting that mixing label definitions can dilute dataset-specific performance.
+- mBERT remained weak on THAR, so Kaggle+CM mixing does not solve targeted religious-hate transfer.
+- MuRIL collapsed to all-negative predictions under this exact condition. This is a major warning result and should be followed up with additional seeds, threshold/logit inspection, or class weighting before making strong claims.
+
+Paper implication:
+
+- Mixed training is not automatically robust training. Dataset compatibility matters, and the base model can respond differently to the same mixed data.
+
 ## Figures
 
 - `results/result_analysis/transformer_primary_macro_f1_matrix.png`
@@ -116,3 +146,4 @@ Interpretation: results on this probe should not be used to claim model superior
 - In-domain training is consistently stronger than cross-dataset transfer, showing that dataset definitions are not interchangeable.
 - TF-IDF baselines remain important because lexical cues are strong; any transformer claim should be compared against them.
 - The 79-row diagnostic probe should be excluded from primary tables and figures in the final paper.
+- The first Kaggle+CM mixed run shows that mixing related datasets can improve one target condition while hurting another, and can even trigger model collapse for one base model.

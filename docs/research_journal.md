@@ -706,3 +706,33 @@ Reason:
 
 - Future training should keep only the minimum checkpoint needed during training and avoid saving huge optimizer states.
 - Final usable checkpoints are still saved under `Models/`.
+
+## First Mixed-Dataset Training Result On 2026-07-01
+
+Completed the first mixed-dataset transformer condition: `mixed_kaggle_plus_cm`.
+
+Files:
+
+- Training set summary: `results/mixed_training_set_summary.csv`
+- Result summary: `results/mixed_kaggle_plus_cm_transformer_summary.csv`
+- Detailed local predictions: `results/mixed_kaggle_plus_cm_transformer_predictions.csv`
+- Report: `docs/mixed_kaggle_cm_training_report.md`
+
+Checkpoints trained:
+
+- `Models/mbert__train-mixed_kaggle_plus_cm__seed42__e2`
+- `Models/muril__train-mixed_kaggle_plus_cm__seed42__e2`
+
+Key findings:
+
+- mBERT trained on Kaggle+CM improved on Kaggle compared with Kaggle-only mBERT: Macro F1 rose from 65.6% to 68.5%, positive F1 rose from 51.3% to 56.6%, and positive recall rose from 38.6% to 45.3%.
+- mBERT trained on Kaggle+CM was weaker on CM than CM-only mBERT: Macro F1 dropped from 78.3% to 71.5%.
+- mBERT trained on Kaggle+CM still transferred poorly to THAR: Macro F1 49.3%, positive recall 22.9%.
+- MuRIL trained on Kaggle+CM collapsed to all-negative predictions on Kaggle, CM, and THAR: zero true positives and zero false positives in all three primary evaluations.
+
+Interpretation:
+
+- Mixed data did not automatically create cross-dataset robustness.
+- Kaggle+CM helped mBERT identify more Kaggle positives, but diluted CM-specific performance.
+- The MuRIL collapse is a condition-specific failure under this seed/epoch/training mix, not a general statement that MuRIL is bad.
+- THAR remains meaningfully different because its positive label is targeted religious hate rather than general hate/offense.

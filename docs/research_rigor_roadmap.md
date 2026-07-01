@@ -106,11 +106,10 @@ Target categories:
 
 ### 6. Mixed-Dataset Training
 
-Run mixed-dataset experiments because the current paper already identifies this as the next step.
+Run mixed-dataset experiments because the current paper already identifies this as the next step. The first condition, Kaggle + CM, was completed on 2026-07-01 and is documented in `docs/mixed_kaggle_cm_training_report.md`.
 
-Minimum combinations:
+Remaining minimum combinations:
 
-- Kaggle + CM;
 - Kaggle + THAR;
 - CM + THAR;
 - Kaggle + CM + THAR.
@@ -121,7 +120,7 @@ Evaluate every mixed checkpoint separately on:
 - CM;
 - THAR.
 
-This will test whether broader training improves robustness or simply mixes incompatible labels.
+Together with the completed Kaggle + CM run, these will test whether broader training improves robustness or simply mixes incompatible labels.
 
 ## Paper Improvements Needed
 

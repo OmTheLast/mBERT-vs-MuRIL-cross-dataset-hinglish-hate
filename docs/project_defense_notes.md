@@ -216,7 +216,7 @@ You should be able to say:
 
 You should be able to say:
 
-> The main limitation is rigor. Current transformer runs use one seed and one main hyperparameter setting. Before making final claims, we need multi-seed results, mean and standard deviation, confidence intervals or bootstrap intervals, stronger citation/license verification, and mixed-dataset training.
+> The main limitation is rigor. Current transformer runs use one seed and one main hyperparameter setting. We have started mixed-dataset training with Kaggle + CM, but before making final claims we still need multi-seed results, mean and standard deviation, confidence intervals or bootstrap intervals, stronger citation/license verification, and the remaining mixed-dataset conditions.
 
 ### 6. How AI Was Used
 

@@ -1,6 +1,6 @@
 # Model Registry
 
-Last updated: 2026-06-25
+Last updated: 2026-07-01
 
 This file explains the local checkpoint folders under `Models/`. It is meant to prevent ambiguous names once the project starts training on multiple datasets.
 
@@ -17,6 +17,8 @@ This file explains the local checkpoint folders under `Models/`. It is meant to 
 | `Models/muril__train-cm_splits_codemixed__seed42__e2` | `google/muril-base-cased` | `data/processed/cm_splits_codemixed.csv` using train+val for training and source test for evaluation | Controlled MuRIL run on Indian politics code-mixed offensive/hate-adjacent data | Usable as a session result. Remember that the positive label means offensive, not strict hate. |
 | `Models/mbert__train-thar_religion__seed42__e2` | `bert-base-multilingual-cased` | `data/processed/thar_religion.csv` | Controlled mBERT run on targeted religious hate data | Usable as a session result. Remember that the positive label is AntiReligion, not general hate. |
 | `Models/muril__train-thar_religion__seed42__e2` | `google/muril-base-cased` | `data/processed/thar_religion.csv` | Controlled MuRIL run on targeted religious hate data | Usable as a session result. Remember that the positive label is AntiReligion, not general hate. |
+| `Models/mbert__train-mixed_kaggle_plus_cm__seed42__e2` | `bert-base-multilingual-cased` | `data/processed/mixed_train_kaggle_plus_cm__seed42.csv` | Controlled mBERT run on Kaggle+CM mixed training data | Usable as the first mixed-dataset result. It improves Kaggle recall but does not solve THAR transfer. |
+| `Models/muril__train-mixed_kaggle_plus_cm__seed42__e2` | `google/muril-base-cased` | `data/processed/mixed_train_kaggle_plus_cm__seed42.csv` | Controlled MuRIL run on Kaggle+CM mixed training data | Warning result: under this condition it predicts all examples as non-hate/offensive in primary evaluations. Needs seed/threshold follow-up. |
 
 ## Naming Rule For Future Checkpoints
 
@@ -37,13 +39,13 @@ Models/mbert__train-cm_splits_codemixed__seed42__e2
 If a checkpoint is trained on multiple datasets, use:
 
 ```text
-Models/{model}__train-mixed-{short_dataset_ids}__seed{seed}__e{epochs}
+Models/{model}__train-mixed_{mix_id}__seed{seed}__e{epochs}
 ```
 
 Example:
 
 ```text
-Models/muril__train-mixed-kaggle-thar-cm__seed42__e2
+Models/muril__train-mixed_all_three__seed42__e2
 ```
 
 ## Required Metadata For Every New Checkpoint
