@@ -1,6 +1,6 @@
 # Model Registry
 
-Last updated: 2026-07-01
+Last updated: 2026-07-02
 
 This file explains the local checkpoint folders under `Models/`. It is meant to prevent ambiguous names once the project starts training on multiple datasets.
 
@@ -19,6 +19,8 @@ This file explains the local checkpoint folders under `Models/`. It is meant to 
 | `Models/muril__train-thar_religion__seed42__e2` | `google/muril-base-cased` | `data/processed/thar_religion.csv` | Controlled MuRIL run on targeted religious hate data | Usable as a session result. Remember that the positive label is AntiReligion, not general hate. |
 | `Models/mbert__train-mixed_kaggle_plus_cm__seed42__e2` | `bert-base-multilingual-cased` | `data/processed/mixed_train_kaggle_plus_cm__seed42.csv` | Controlled mBERT run on Kaggle+CM mixed training data | Usable as the first mixed-dataset result. It improves Kaggle recall but does not solve THAR transfer. |
 | `Models/muril__train-mixed_kaggle_plus_cm__seed42__e2` | `google/muril-base-cased` | `data/processed/mixed_train_kaggle_plus_cm__seed42.csv` | Controlled MuRIL run on Kaggle+CM mixed training data | Warning result: under this condition it predicts all examples as non-hate/offensive in primary evaluations. Needs seed/threshold follow-up. |
+| `Models/mbert__train-mixed_cm_plus_thar__seed42__e2` | `bert-base-multilingual-cased` | `data/processed/mixed_train_cm_plus_thar__seed42.csv` | Controlled mBERT run on CM+THAR mixed training data | Usable as the second mixed-dataset result. Strong on CM and THAR, weak on Kaggle. |
+| `Models/muril__train-mixed_cm_plus_thar__seed42__e2` | `google/muril-base-cased` | `data/processed/mixed_train_cm_plus_thar__seed42.csv` | Controlled MuRIL run on CM+THAR mixed training data | Warning result: near-constant positive probabilities around 0.4456 and all-negative predictions. This is stronger collapse than the Kaggle+CM MuRIL threshold case. |
 
 ## Naming Rule For Future Checkpoints
 

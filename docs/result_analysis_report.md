@@ -129,6 +129,36 @@ Paper implication:
 
 - Mixed training is not automatically robust training. Dataset compatibility matters, and the base model can respond differently to the same mixed data.
 
+## Second Mixed-Dataset Result: CM + THAR
+
+Date: 2026-07-02
+
+The second mixed training condition combines `cm_splits_codemixed` and `thar_religion`. The exact training condition is labeled `mixed_cm_plus_thar` in the result files.
+
+Primary source:
+
+- `results/mixed_cm_plus_thar_transformer_summary.csv`
+
+| model | train_dataset | test_dataset | accuracy | recall_positive | f1_positive | f1_macro | tn | fp | fn | tp |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| mBERT | `mixed_cm_plus_thar` | `kaggle_hinglish_hate` | 52.7% | 26.5% | 30.5% | 47.3% | 405 | 178 | 274 | 99 |
+| mBERT | `mixed_cm_plus_thar` | `cm_splits_codemixed` | 77.8% | 67.3% | 68.3% | 75.6% | 224 | 44 | 48 | 99 |
+| mBERT | `mixed_cm_plus_thar` | `thar_religion` | 75.6% | 76.9% | 74.9% | 75.6% | 908 | 311 | 252 | 839 |
+| MuRIL | `mixed_cm_plus_thar` | `kaggle_hinglish_hate` | 61.0% | 0.0% | 0.0% | 37.9% | 583 | 0 | 373 | 0 |
+| MuRIL | `mixed_cm_plus_thar` | `cm_splits_codemixed` | 64.6% | 0.0% | 0.0% | 39.2% | 268 | 0 | 147 | 0 |
+| MuRIL | `mixed_cm_plus_thar` | `thar_religion` | 52.8% | 0.0% | 0.0% | 34.5% | 1219 | 0 | 1091 | 0 |
+
+Interpretation:
+
+- mBERT learned the CM+THAR mixed condition and remained strong on CM and THAR.
+- mBERT was weak on Kaggle, which supports the point that CM/THAR label situations do not cleanly transfer to Kaggle-style general Hinglish hate.
+- MuRIL collapsed more severely than in the Kaggle+CM mixed condition. Its positive probabilities were nearly constant around 0.4456 across datasets, so validation-threshold tuning did not recover positives.
+
+Paper implication:
+
+- MuRIL's matched THAR advantage does not automatically mean MuRIL is better for mixed Indian-context hate/offensive detection.
+- The evidence is now more nuanced: mBERT appears more stable under the tested mixed conditions, while MuRIL can be strong in matched targeted-hate settings but unstable under mixed-label training.
+
 ## Figures
 
 - `results/result_analysis/transformer_primary_macro_f1_matrix.png`

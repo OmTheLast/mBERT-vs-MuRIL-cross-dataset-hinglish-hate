@@ -44,6 +44,16 @@ CONDITIONS = [
         model="muril",
         prefix="calibration_mixed_kaggle_cm_muril",
     ),
+    ThresholdCondition(
+        training_condition="mixed_cm_plus_thar",
+        model="mbert",
+        prefix="calibration_mixed_cm_thar_mbert",
+    ),
+    ThresholdCondition(
+        training_condition="mixed_cm_plus_thar",
+        model="muril",
+        prefix="calibration_mixed_cm_thar_muril",
+    ),
 ]
 
 

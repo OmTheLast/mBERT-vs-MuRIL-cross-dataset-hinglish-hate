@@ -835,3 +835,44 @@ Interpretation:
 - The threshold-transfer result supports the calibration explanation: some models had useful positive-class signal that was hidden by the default `0.50` threshold.
 - Calibration is not a universal fix. It can improve recall while damaging Macro F1 when the validation distribution does not match the target dataset.
 - The final paper should treat threshold tuning as an analysis of model conservativeness, not as a replacement for default-threshold model comparison.
+
+## Mixed CM+THAR Training On 2026-07-02
+
+Ran the second mixed-dataset transformer condition: `mixed_cm_plus_thar`.
+
+Files:
+
+- Training file: `data/processed/mixed_train_cm_plus_thar__seed42.csv`
+- Summary result: `results/mixed_cm_plus_thar_transformer_summary.csv`
+- Detailed local predictions: `results/mixed_cm_plus_thar_transformer_predictions.csv`
+- Report: `docs/mixed_cm_thar_training_report.md`
+- Calibration reports:
+  - `docs/calibration_mixed_cm_thar_mbert_report.md`
+  - `docs/calibration_mixed_cm_thar_muril_report.md`
+
+Checkpoints trained:
+
+- `Models/mbert__train-mixed_cm_plus_thar__seed42__e2`
+- `Models/muril__train-mixed_cm_plus_thar__seed42__e2`
+
+Key results:
+
+- mBERT trained on CM+THAR performed strongly on CM and THAR:
+  - CM Macro F1 75.6%, positive recall 67.3%.
+  - THAR Macro F1 75.6%, positive recall 76.9%.
+- mBERT trained on CM+THAR was weak on Kaggle:
+  - Kaggle Macro F1 47.3%, positive recall 26.5%.
+- MuRIL trained on CM+THAR collapsed to all-negative predictions on Kaggle, CM, and THAR:
+  - zero predicted positives and zero true positives in all three primary evaluations.
+
+Calibration finding:
+
+- mBERT showed real probability separation between true positives and true negatives.
+- MuRIL assigned almost every example a positive probability near 0.4456, regardless of label.
+- This differs from the earlier Kaggle+CM MuRIL case, where lowering the threshold recovered useful positive recall. Here, validation-selected threshold transfer did not help.
+
+Interpretation:
+
+- CM+THAR supports the dataset-situation argument: mixing Indian-context offensive data and targeted religious hate helps mBERT on CM/THAR but does not generalize to Kaggle-style general Hinglish hate.
+- MuRIL's earlier matched THAR advantage does not automatically survive mixed-label training.
+- This condition strengthens the need for multi-seed checks before making final claims about model stability.
