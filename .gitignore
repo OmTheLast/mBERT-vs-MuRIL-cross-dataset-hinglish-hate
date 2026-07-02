@@ -35,5 +35,7 @@ results/error_analysis/manual_error_annotation_template.csv
 results/error_analysis/manual_error_annotation_first_pass.csv
 results/collapse_diagnostics/*probabilities.csv
 results/collapse_diagnostics/*examples.csv
+results/collapse_diagnostics/calibration_*__summary.csv
+results/collapse_diagnostics/calibration_*__metadata.json
 
 # Hugging Face/cache noise.

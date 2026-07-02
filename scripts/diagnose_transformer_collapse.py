@@ -106,10 +106,10 @@ def internal_eval_set(train_csv: Path, seed: int, test_size: float) -> EvalSet:
         stratify=frame["label"],
     )
     return EvalSet(
-        "internal_mixed_validation",
+        "internal_validation",
         eval_frame.reset_index(drop=True),
         f"stratified_{int((1 - test_size) * 100)}_{int(test_size * 100)}_split_seed{seed}",
-        "Validation split produced by the mixed training CSV",
+        "Validation split reconstructed from the training CSV",
     )
 
 
@@ -218,18 +218,19 @@ def summarize_probabilities(predictions: pd.DataFrame, threshold_step: float) ->
 
 def write_markdown_report(
     path: Path,
+    title: str,
     checkpoint: Path,
-    train_csv: Path,
+    train_csv: Path | None,
     summary: pd.DataFrame,
     examples_path: Path,
 ) -> None:
     lines = [
-        "# MuRIL Collapse Diagnostic Report",
+        f"# {title}",
         "",
         "Date: 2026-07-02",
         "",
         f"Checkpoint: `{checkpoint}`",
-        f"Training CSV for internal validation reconstruction: `{train_csv}`",
+        f"Training CSV for internal validation reconstruction: `{train_csv}`" if train_csv else "Internal validation reconstruction: skipped",
         "",
         "## What This Checks",
         "",
@@ -257,8 +258,11 @@ def write_markdown_report(
 def main() -> None:
     parser = argparse.ArgumentParser(description="Diagnose transformer collapse with probability distributions.")
     parser.add_argument("--checkpoint", type=Path, required=True)
-    parser.add_argument("--train-csv", type=Path, default=ROOT / "data" / "processed" / "mixed_train_kaggle_plus_cm__seed42.csv")
+    parser.add_argument("--train-csv", type=Path, default=None)
     parser.add_argument("--output-dir", type=Path, default=ROOT / "results" / "collapse_diagnostics")
+    parser.add_argument("--report-path", type=Path, default=None)
+    parser.add_argument("--report-title", default="Transformer Collapse Diagnostic Report")
+    parser.add_argument("--skip-internal", action="store_true")
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--max-length", type=int, default=128)
     parser.add_argument("--seed", type=int, default=42)
@@ -271,7 +275,9 @@ def main() -> None:
     device = run_device()
     print(f"Using device: {device}")
 
-    eval_sets = [internal_eval_set(args.train_csv, args.seed, args.test_size), *external_eval_sets(args.seed, args.test_size)]
+    eval_sets = external_eval_sets(args.seed, args.test_size)
+    if args.train_csv and not args.skip_internal:
+        eval_sets = [internal_eval_set(args.train_csv, args.seed, args.test_size), *eval_sets]
     summaries = []
     examples = []
     for eval_set in eval_sets:
@@ -344,8 +350,8 @@ def main() -> None:
         index=False,
     )
 
-    report_path = ROOT / "docs" / "muril_collapse_diagnostic_report.md"
-    write_markdown_report(report_path, args.checkpoint, args.train_csv, summary, examples_path)
+    report_path = args.report_path or (ROOT / "docs" / f"{args.prefix}__collapse_diagnostic_report.md")
+    write_markdown_report(report_path, args.report_title, args.checkpoint, args.train_csv, summary, examples_path)
 
     metadata_path = args.output_dir / f"{args.prefix}__metadata.json"
     metadata_path.write_text(

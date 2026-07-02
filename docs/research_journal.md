@@ -765,3 +765,33 @@ Interpretation:
 - This looks more like calibration/decision-boundary collapse than complete feature-learning failure.
 - The next controlled check is to tune the threshold on validation data only, then apply that fixed threshold to held-out datasets.
 - The final paper should not call this simply "MuRIL failed"; it should say that under the Kaggle+CM mixed condition, MuRIL learned a weak positive-class signal that remained below the standard classification threshold.
+
+## Calibration Panel Across Checkpoints On 2026-07-02
+
+Ran the probability-threshold diagnostic across six checkpoints:
+
+- initial saved mBERT;
+- initial saved MuRIL;
+- Kaggle-only mBERT;
+- Kaggle-only MuRIL;
+- mixed Kaggle+CM mBERT;
+- mixed Kaggle+CM MuRIL.
+
+Files:
+
+- Script: `scripts/diagnose_transformer_collapse.py`
+- Combined result: `results/collapse_diagnostics/calibration_panel_summary.csv`
+- Report: `docs/calibration_threshold_panel_report.md`
+
+Finding:
+
+- The earlier user memory was correct: several checkpoints are hesitant to call examples hate/offensive at the default `0.50` threshold.
+- Initial saved mBERT and MuRIL both improve under lower diagnostic thresholds on Kaggle/THAR.
+- Kaggle-only mBERT and MuRIL also show better positive recall when thresholds are lowered.
+- Mixed Kaggle+CM MuRIL is the strongest collapse case because it predicts zero positives at `0.50`, but lower diagnostic thresholds recover substantial Macro F1 and positive recall.
+
+Important caveat:
+
+- These are diagnostic thresholds selected on the evaluation sets themselves.
+- They are not paper-safe final results yet.
+- The next fair experiment is threshold transfer: choose thresholds on validation data only, then apply those fixed thresholds to held-out test datasets.
