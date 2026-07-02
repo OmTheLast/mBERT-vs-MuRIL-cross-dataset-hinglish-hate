@@ -795,3 +795,43 @@ Important caveat:
 - These are diagnostic thresholds selected on the evaluation sets themselves.
 - They are not paper-safe final results yet.
 - The next fair experiment is threshold transfer: choose thresholds on validation data only, then apply those fixed thresholds to held-out test datasets.
+
+## Validation-Selected Threshold Transfer On 2026-07-02
+
+Ran the first fairer threshold experiment using validation-selected thresholds.
+
+Files:
+
+- Script: `scripts/run_threshold_transfer.py`
+- Result: `results/collapse_diagnostics/threshold_transfer_summary.csv`
+- Report: `docs/threshold_transfer_report.md`
+
+Method:
+
+- For each controlled checkpoint with an internal validation probability file, choose the threshold that maximizes validation Macro F1.
+- Apply that fixed threshold to Kaggle, CM, and THAR evaluation probability files.
+- Compare default threshold `0.50` against the validation-selected threshold.
+
+Important caveat:
+
+- For Kaggle-only checkpoints, the reconstructed internal validation split is the same split used as the Kaggle held-out evaluation in earlier experiments, so the matched Kaggle threshold rows are diagnostic rather than paper-safe.
+- The CM and THAR transfer rows for Kaggle-only checkpoints remain independent.
+- The mixed Kaggle+CM rows are cleaner because the internal mixed validation split is separate from the held-out Kaggle, CM, and THAR source evaluations.
+
+Key results:
+
+- Mixed Kaggle+CM mBERT selected threshold `0.41` and improved Macro F1 on all three held-out datasets:
+  - Kaggle: 68.5% to 70.5%;
+  - CM: 71.5% to 74.4%;
+  - THAR: 49.3% to 53.8%.
+- Mixed Kaggle+CM MuRIL selected threshold `0.42` and recovered from all-negative predictions:
+  - Kaggle Macro F1: 37.9% to 60.9%, positive recall 0.0% to 52.3%;
+  - CM Macro F1: 39.2% to 58.4%, positive recall 0.0% to 47.6%;
+  - THAR Macro F1: 34.5% to 52.0%, positive recall 0.0% to 29.4%.
+- Kaggle-only MuRIL showed a warning case: threshold transfer improved THAR but hurt CM Macro F1, because the validation-selected threshold over-predicted positives on CM.
+
+Interpretation:
+
+- The threshold-transfer result supports the calibration explanation: some models had useful positive-class signal that was hidden by the default `0.50` threshold.
+- Calibration is not a universal fix. It can improve recall while damaging Macro F1 when the validation distribution does not match the target dataset.
+- The final paper should treat threshold tuning as an analysis of model conservativeness, not as a replacement for default-threshold model comparison.
