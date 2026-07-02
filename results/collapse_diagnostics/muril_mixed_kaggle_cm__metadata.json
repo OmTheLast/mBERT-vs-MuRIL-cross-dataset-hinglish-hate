@@ -1,0 +1,11 @@
+{
+  "checkpoint": "Models/muril__train-mixed_kaggle_plus_cm__seed42__e2",
+  "device": "mps",
+  "examples": "/Users/ompatnaik/Documents/Code/Hinglish Research/results/collapse_diagnostics/muril_mixed_kaggle_cm__examples.csv",
+  "report": "/Users/ompatnaik/Documents/Code/Hinglish Research/docs/muril_collapse_diagnostic_report.md",
+  "seed": 42,
+  "summary": "/Users/ompatnaik/Documents/Code/Hinglish Research/results/collapse_diagnostics/muril_mixed_kaggle_cm__summary.csv",
+  "test_size": 0.2,
+  "threshold_step": 0.01,
+  "train_csv": "data/processed/mixed_train_kaggle_plus_cm__seed42.csv"
+}

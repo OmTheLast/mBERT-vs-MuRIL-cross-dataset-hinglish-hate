@@ -736,3 +736,32 @@ Interpretation:
 - Kaggle+CM helped mBERT identify more Kaggle positives, but diluted CM-specific performance.
 - The MuRIL collapse is a condition-specific failure under this seed/epoch/training mix, not a general statement that MuRIL is bad.
 - THAR remains meaningfully different because its positive label is targeted religious hate rather than general hate/offense.
+
+## MuRIL Collapse Diagnostic On 2026-07-02
+
+Investigated why `Models/muril__train-mixed_kaggle_plus_cm__seed42__e2` predicted every primary evaluation row as negative.
+
+Added:
+
+- `scripts/diagnose_transformer_collapse.py`
+- `docs/muril_collapse_diagnostic_report.md`
+- `results/collapse_diagnostics/muril_mixed_kaggle_cm__summary.csv`
+
+Local-only diagnostic files:
+
+- full per-row probability CSVs;
+- highest-probability and false-negative example CSVs.
+
+Key finding:
+
+- The model is not assigning positive probabilities near zero.
+- Instead, positive probabilities are compressed into a narrow range below 0.50.
+- Across evaluation sets, the maximum positive probability is about 0.466, so the default 0.50 threshold produces all-negative predictions.
+- True positives have slightly higher average positive probability than true negatives, meaning the model has some weak signal.
+- Lowering the threshold raises Macro F1 substantially, for example Kaggle improves from 37.9% at the default threshold to 61.2% at threshold 0.40.
+
+Interpretation:
+
+- This looks more like calibration/decision-boundary collapse than complete feature-learning failure.
+- The next controlled check is to tune the threshold on validation data only, then apply that fixed threshold to held-out datasets.
+- The final paper should not call this simply "MuRIL failed"; it should say that under the Kaggle+CM mixed condition, MuRIL learned a weak positive-class signal that remained below the standard classification threshold.
