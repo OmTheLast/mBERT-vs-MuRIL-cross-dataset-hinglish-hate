@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 
 import pandas as pd
@@ -53,6 +54,16 @@ CONDITIONS = [
         training_condition="mixed_cm_plus_thar",
         model="muril",
         prefix="calibration_mixed_cm_thar_muril",
+    ),
+    ThresholdCondition(
+        training_condition="mixed_kaggle_plus_thar",
+        model="mbert",
+        prefix="calibration_mixed_kaggle_thar_mbert",
+    ),
+    ThresholdCondition(
+        training_condition="mixed_kaggle_plus_thar",
+        model="muril",
+        prefix="calibration_mixed_kaggle_thar_muril",
     ),
 ]
 
@@ -149,7 +160,7 @@ def report_markdown(summary: pd.DataFrame, path: Path, threshold_step: float) ->
     lines = [
         "# Validation-Selected Threshold Transfer",
         "",
-        "Date: 2026-07-02",
+        f"Date: {date.today().isoformat()}",
         "",
         "This report applies thresholds selected on validation probability files to held-out evaluation sets.",
         "",

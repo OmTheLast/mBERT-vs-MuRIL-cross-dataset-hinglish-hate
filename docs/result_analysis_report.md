@@ -159,6 +159,39 @@ Paper implication:
 - MuRIL's matched THAR advantage does not automatically mean MuRIL is better for mixed Indian-context hate/offensive detection.
 - The evidence is now more nuanced: mBERT appears more stable under the tested mixed conditions, while MuRIL can be strong in matched targeted-hate settings but unstable under mixed-label training.
 
+## Third Mixed-Dataset Result: Kaggle + THAR
+
+Date: 2026-07-04
+
+The third mixed training condition combines `kaggle_hinglish_hate` and `thar_religion`. The exact training condition is labeled `mixed_kaggle_plus_thar` in the result files.
+
+Primary source:
+
+- `results/mixed_kaggle_plus_thar_transformer_summary.csv`
+- `docs/mixed_kaggle_thar_training_report.md`
+
+| model | train_dataset | test_dataset | accuracy | recall_positive | f1_positive | f1_macro | tn | fp | fn | tp |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| mBERT | `mixed_kaggle_plus_thar` | `kaggle_hinglish_hate` | 71.7% | 49.9% | 57.9% | 68.2% | 499 | 84 | 187 | 186 |
+| mBERT | `mixed_kaggle_plus_thar` | `cm_splits_codemixed` | 60.0% | 34.0% | 37.6% | 54.1% | 199 | 69 | 97 | 50 |
+| mBERT | `mixed_kaggle_plus_thar` | `thar_religion` | 74.9% | 78.5% | 74.7% | 74.9% | 875 | 344 | 235 | 856 |
+| MuRIL | `mixed_kaggle_plus_thar` | `kaggle_hinglish_hate` | 70.1% | 48.5% | 55.9% | 66.6% | 489 | 94 | 192 | 181 |
+| MuRIL | `mixed_kaggle_plus_thar` | `cm_splits_codemixed` | 65.5% | 37.4% | 43.5% | 59.3% | 217 | 51 | 92 | 55 |
+| MuRIL | `mixed_kaggle_plus_thar` | `thar_religion` | 76.5% | 78.3% | 75.9% | 76.5% | 913 | 306 | 237 | 854 |
+
+Interpretation:
+
+- Both models learned the Kaggle+THAR mixed condition; MuRIL did not collapse.
+- mBERT slightly wins on Kaggle, which fits its earlier strength on Kaggle-style general Hinglish hate.
+- MuRIL slightly wins on THAR and CM, which suggests the presence of THAR in training restores a useful MuRIL decision boundary and may help with Indian-context transfer.
+- The mix is THAR-heavy, so this should not be interpreted as a perfectly balanced Kaggle+THAR comparison.
+
+Paper implication:
+
+- The MuRIL collapse is condition-dependent, not universal.
+- Mixed training can help or hurt depending on label compatibility and source balance.
+- The most defensible claim remains conditional: model advantage changes by dataset situation, and cross-dataset robustness is still weak compared with matched or partly matched conditions.
+
 ## Figures
 
 - `results/result_analysis/transformer_primary_macro_f1_matrix.png`
@@ -177,3 +210,4 @@ Paper implication:
 - TF-IDF baselines remain important because lexical cues are strong; any transformer claim should be compared against them.
 - The 79-row diagnostic probe should be excluded from primary tables and figures in the final paper.
 - The first Kaggle+CM mixed run shows that mixing related datasets can improve one target condition while hurting another, and can even trigger model collapse for one base model.
+- The Kaggle+THAR mixed run shows that MuRIL can recover under a THAR-containing mixture and slightly outperform mBERT on THAR/CM, while mBERT remains slightly stronger on Kaggle.

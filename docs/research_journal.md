@@ -876,3 +876,45 @@ Interpretation:
 - CM+THAR supports the dataset-situation argument: mixing Indian-context offensive data and targeted religious hate helps mBERT on CM/THAR but does not generalize to Kaggle-style general Hinglish hate.
 - MuRIL's earlier matched THAR advantage does not automatically survive mixed-label training.
 - This condition strengthens the need for multi-seed checks before making final claims about model stability.
+
+## Mixed Kaggle+THAR Training On 2026-07-04
+
+Ran the third two-source mixed-dataset transformer condition: `mixed_kaggle_plus_thar`.
+
+Files:
+
+- Training file: `data/processed/mixed_train_kaggle_plus_thar__seed42.csv`
+- Summary result: `results/mixed_kaggle_plus_thar_transformer_summary.csv`
+- Detailed local predictions: `results/mixed_kaggle_plus_thar_transformer_predictions.csv`
+- Report: `docs/mixed_kaggle_thar_training_report.md`
+- Calibration reports:
+  - `docs/calibration_mixed_kaggle_thar_mbert_report.md`
+  - `docs/calibration_mixed_kaggle_thar_muril_report.md`
+
+Checkpoints trained:
+
+- `Models/mbert__train-mixed_kaggle_plus_thar__seed42__e2`
+- `Models/muril__train-mixed_kaggle_plus_thar__seed42__e2`
+
+Internal mixed-validation results:
+
+- mBERT: Macro F1 72.1%, positive F1 69.2%.
+- MuRIL: Macro F1 73.4%, positive F1 70.4%.
+
+Cross-dataset default-threshold results:
+
+- mBERT: Kaggle Macro F1 68.2%, CM 54.1%, THAR 74.9%.
+- MuRIL: Kaggle Macro F1 66.6%, CM 59.3%, THAR 76.5%.
+
+Calibration finding:
+
+- Neither model collapsed.
+- mBERT and MuRIL both showed meaningful separation between true positives and true negatives.
+- Validation-selected threshold transfer did not create a universal improvement, so the behavior is not mainly a default-threshold artifact.
+
+Interpretation:
+
+- Kaggle+THAR is the first mixed condition where MuRIL recovers from earlier mixed-training instability.
+- mBERT remains slightly stronger on Kaggle-style general Hinglish hate.
+- MuRIL is stronger on THAR and CM in this condition, possibly because THAR dominates the mixed training file and because MuRIL's Indic pretraining may help with Indian-context religious/cultural cues.
+- The result strengthens the central research argument: mBERT versus MuRIL cannot be answered as a single universal winner; the answer changes with dataset mixture, label definition, and evaluation situation.
