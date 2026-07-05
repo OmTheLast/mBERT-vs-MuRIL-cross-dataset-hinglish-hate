@@ -1,6 +1,6 @@
 # Validation-Selected Threshold Transfer
 
-Date: 2026-07-04
+Date: 2026-07-06
 
 This report applies thresholds selected on validation probability files to held-out evaluation sets.
 
@@ -11,6 +11,8 @@ Threshold search step: `0.01`
 For the Kaggle-only checkpoints, the reconstructed internal validation split is the same split used as the Kaggle held-out evaluation in the earlier experiments. Therefore, the Kaggle matched rows for those two checkpoints are diagnostic rather than paper-safe. Their CM and THAR transfer rows remain independent of that Kaggle validation split.
 
 For the mixed Kaggle+CM checkpoints, the internal validation split comes from the mixed training CSV, while Kaggle, CM, and THAR evaluations are held-out source test sets. Those rows are the cleanest threshold-transfer evidence in this first pass.
+
+The threshold-transfer validation files are produced by the calibration diagnostic script, which reconstructs validation splits from cleaned, deduplicated CSV rows. Therefore, diagnostic internal-validation metrics may differ from the Trainer's saved `eval_metrics.json`; use them for calibration and threshold behavior, not as replacements for official training validation metrics.
 
 ## Summary
 
@@ -40,6 +42,12 @@ For the mixed Kaggle+CM checkpoints, the internal validation split comes from th
 | mixed_kaggle_plus_thar | muril   | kaggle_hinglish_hate |                 0.67 |              0.666 |                0.68  |            0.014 |                     0.485 |                       0.464 |                  -0.021 |                 0.559 |                   0.565 | False            |
 | mixed_kaggle_plus_thar | muril   | cm_splits_codemixed  |                 0.67 |              0.593 |                0.572 |           -0.021 |                     0.374 |                       0.286 |                  -0.088 |                 0.435 |                   0.375 | False            |
 | mixed_kaggle_plus_thar | muril   | thar_religion        |                 0.67 |              0.765 |                0.77  |            0.005 |                     0.783 |                       0.75  |                  -0.033 |                 0.759 |                   0.756 | False            |
+| mixed_all_three        | mbert   | kaggle_hinglish_hate |                 0.47 |              0.689 |                0.696 |            0.007 |                     0.477 |                       0.496 |                   0.019 |                 0.578 |                   0.591 | False            |
+| mixed_all_three        | mbert   | cm_splits_codemixed  |                 0.47 |              0.745 |                0.739 |           -0.006 |                     0.619 |                       0.626 |                   0.007 |                 0.659 |                   0.655 | False            |
+| mixed_all_three        | mbert   | thar_religion        |                 0.47 |              0.74  |                0.74  |           -0     |                     0.744 |                       0.759 |                   0.015 |                 0.731 |                   0.734 | False            |
+| mixed_all_three        | muril   | kaggle_hinglish_hate |                 0.42 |              0.672 |                0.687 |            0.015 |                     0.45  |                       0.496 |                   0.046 |                 0.553 |                   0.582 | False            |
+| mixed_all_three        | muril   | cm_splits_codemixed  |                 0.42 |              0.742 |                0.742 |           -0.001 |                     0.585 |                       0.612 |                   0.027 |                 0.649 |                   0.655 | False            |
+| mixed_all_three        | muril   | thar_religion        |                 0.42 |              0.762 |                0.761 |           -0.001 |                     0.77  |                       0.784 |                   0.014 |                 0.754 |                   0.756 | False            |
 
 ## Interpretation
 

@@ -192,6 +192,46 @@ Paper implication:
 - Mixed training can help or hurt depending on label compatibility and source balance.
 - The most defensible claim remains conditional: model advantage changes by dataset situation, and cross-dataset robustness is still weak compared with matched or partly matched conditions.
 
+## Fourth Mixed-Dataset Result: Kaggle + CM + THAR
+
+Date: 2026-07-05
+
+The all-source mixed training condition combines `kaggle_hinglish_hate`, `cm_splits_codemixed`, and `thar_religion`. The exact training condition is labeled `mixed_all_three` in the result files.
+
+Primary sources:
+
+- `results/mixed_all_three_transformer_summary.csv`
+- `docs/mixed_all_three_training_report.md`
+
+Training composition:
+
+- 16,539 rows.
+- 9,388 negative and 7,151 positive.
+- Source counts: THAR 9,239; Kaggle 3,824; CM 3,476.
+- Caveat: this mix is THAR-heavy, so it is not a perfectly balanced all-source comparison.
+
+| model | train_dataset | test_dataset | accuracy | recall_positive | f1_positive | f1_macro | tn | fp | fn | tp |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| mBERT | `mixed_all_three` | `kaggle_hinglish_hate` | 72.8% | 47.7% | 57.8% | 68.9% | 518 | 65 | 195 | 178 |
+| mBERT | `mixed_all_three` | `cm_splits_codemixed` | 77.3% | 61.9% | 65.9% | 74.5% | 230 | 38 | 56 | 91 |
+| mBERT | `mixed_all_three` | `thar_religion` | 74.1% | 74.4% | 73.1% | 74.0% | 899 | 320 | 279 | 812 |
+| MuRIL | `mixed_all_three` | `kaggle_hinglish_hate` | 71.5% | 45.0% | 55.3% | 67.2% | 516 | 67 | 205 | 168 |
+| MuRIL | `mixed_all_three` | `cm_splits_codemixed` | 77.6% | 58.5% | 64.9% | 74.2% | 236 | 32 | 61 | 86 |
+| MuRIL | `mixed_all_three` | `thar_religion` | 76.3% | 77.0% | 75.4% | 76.2% | 922 | 297 | 251 | 840 |
+
+Interpretation:
+
+- Both models learned the all-source mixed condition and neither collapsed.
+- mBERT slightly outperformed MuRIL on Kaggle and CM Macro F1.
+- MuRIL outperformed mBERT on THAR Macro F1 and positive recall.
+- The all-three condition improved balance compared with the worst pairwise cases, especially the MuRIL collapse cases, but it did not make Kaggle hate recall strong.
+- This supports a source/label-situation explanation rather than a simple model-ranking explanation.
+
+Paper implication:
+
+- The all-three result should be presented as evidence that mixed training helps but does not solve cross-dataset robustness.
+- The main claim should remain conditional: mBERT is more stable on general Hinglish/code-mixed hate or offensive settings, while MuRIL can be stronger in THAR-style targeted religious-hate settings.
+
 ## Figures
 
 - `results/result_analysis/transformer_primary_macro_f1_matrix.png`
@@ -200,6 +240,10 @@ Paper implication:
 - `results/result_analysis/transformer_generalization_gaps.svg`
 - `results/result_analysis/transformer_vs_tfidf_delta.png`
 - `results/result_analysis/transformer_vs_tfidf_delta.svg`
+- `results/result_analysis/mixed_training_macro_f1.png`
+- `results/result_analysis/mixed_training_macro_f1.svg`
+- `results/result_analysis/mixed_training_muril_minus_mbert.png`
+- `results/result_analysis/mixed_training_muril_minus_mbert.svg`
 
 ## Paper-Level Takeaways
 
@@ -211,3 +255,4 @@ Paper implication:
 - The 79-row diagnostic probe should be excluded from primary tables and figures in the final paper.
 - The first Kaggle+CM mixed run shows that mixing related datasets can improve one target condition while hurting another, and can even trigger model collapse for one base model.
 - The Kaggle+THAR mixed run shows that MuRIL can recover under a THAR-containing mixture and slightly outperform mBERT on THAR/CM, while mBERT remains slightly stronger on Kaggle.
+- The all-three mixed run shows that both models can learn a broader combined condition, but mBERT still leads Kaggle/CM and MuRIL still leads THAR.

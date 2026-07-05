@@ -65,6 +65,16 @@ CONDITIONS = [
         model="muril",
         prefix="calibration_mixed_kaggle_thar_muril",
     ),
+    ThresholdCondition(
+        training_condition="mixed_all_three",
+        model="mbert",
+        prefix="calibration_mixed_all_three_mbert",
+    ),
+    ThresholdCondition(
+        training_condition="mixed_all_three",
+        model="muril",
+        prefix="calibration_mixed_all_three_muril",
+    ),
 ]
 
 
@@ -171,6 +181,8 @@ def report_markdown(summary: pd.DataFrame, path: Path, threshold_step: float) ->
         "For the Kaggle-only checkpoints, the reconstructed internal validation split is the same split used as the Kaggle held-out evaluation in the earlier experiments. Therefore, the Kaggle matched rows for those two checkpoints are diagnostic rather than paper-safe. Their CM and THAR transfer rows remain independent of that Kaggle validation split.",
         "",
         "For the mixed Kaggle+CM checkpoints, the internal validation split comes from the mixed training CSV, while Kaggle, CM, and THAR evaluations are held-out source test sets. Those rows are the cleanest threshold-transfer evidence in this first pass.",
+        "",
+        "The threshold-transfer validation files are produced by the calibration diagnostic script, which reconstructs validation splits from cleaned, deduplicated CSV rows. Therefore, diagnostic internal-validation metrics may differ from the Trainer's saved `eval_metrics.json`; use them for calibration and threshold behavior, not as replacements for official training validation metrics.",
         "",
         "## Summary",
         "",

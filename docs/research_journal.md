@@ -918,3 +918,58 @@ Interpretation:
 - mBERT remains slightly stronger on Kaggle-style general Hinglish hate.
 - MuRIL is stronger on THAR and CM in this condition, possibly because THAR dominates the mixed training file and because MuRIL's Indic pretraining may help with Indian-context religious/cultural cues.
 - The result strengthens the central research argument: mBERT versus MuRIL cannot be answered as a single universal winner; the answer changes with dataset mixture, label definition, and evaluation situation.
+
+## Mixed All-Three Training On 2026-07-05
+
+Ran the all-source mixed-dataset transformer condition: `mixed_all_three`.
+
+Files:
+
+- Training file: `data/processed/mixed_train_all_three__seed42.csv`
+- Summary result: `results/mixed_all_three_transformer_summary.csv`
+- Detailed local predictions: `results/mixed_all_three_transformer_predictions.csv`
+- Report: `docs/mixed_all_three_training_report.md`
+- Calibration reports:
+  - `docs/calibration_mixed_all_three_mbert_report.md`
+  - `docs/calibration_mixed_all_three_muril_report.md`
+- Updated threshold report: `docs/threshold_transfer_report.md`
+- Updated mixed-training figures:
+  - `results/result_analysis/mixed_training_macro_f1.png`
+  - `results/result_analysis/mixed_training_muril_minus_mbert.png`
+
+Checkpoints trained:
+
+- `Models/mbert__train-mixed_all_three__seed42__e2`
+- `Models/muril__train-mixed_all_three__seed42__e2`
+
+Training data composition:
+
+- 16,539 rows total.
+- 9,388 negative and 7,151 positive rows.
+- Sources: THAR 9,239 rows, Kaggle 3,824 rows, CM 3,476 rows.
+- Important caveat: the all-three mix is THAR-heavy, so all-three performance may lean toward THAR-style targeted religious-hate behavior.
+
+Internal mixed-validation results:
+
+- mBERT: Macro F1 72.4%, positive F1 67.9%, positive recall 65.5%.
+- MuRIL: Macro F1 73.7%, positive F1 69.6%, positive recall 67.9%.
+
+Cross-dataset default-threshold results:
+
+- mBERT: Kaggle Macro F1 68.9%, CM 74.5%, THAR 74.0%.
+- MuRIL: Kaggle Macro F1 67.2%, CM 74.2%, THAR 76.2%.
+
+Calibration finding:
+
+- Neither checkpoint collapsed.
+- mBERT had a wider positive-probability range; MuRIL had a compressed range.
+- Validation-selected thresholds were close to default: mBERT 0.47 and MuRIL 0.42.
+- Threshold transfer only slightly changed all-three Macro F1, so the observed dataset differences are not mainly threshold artifacts.
+
+Interpretation:
+
+- All-three training gives the most balanced mixed result so far.
+- mBERT remains slightly stronger on Kaggle and CM.
+- MuRIL remains stronger on THAR.
+- Cross-dataset robustness is improved compared with some pairwise failures, but Kaggle positive recall remains weak for both models.
+- The result supports the conditional paper claim: model superiority depends on dataset situation, label definition, and source balance.

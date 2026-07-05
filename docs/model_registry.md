@@ -1,6 +1,6 @@
 # Model Registry
 
-Last updated: 2026-07-04
+Last updated: 2026-07-05
 
 This file explains the local checkpoint folders under `Models/`. It is meant to prevent ambiguous names once the project starts training on multiple datasets.
 
@@ -23,6 +23,8 @@ This file explains the local checkpoint folders under `Models/`. It is meant to 
 | `Models/muril__train-mixed_cm_plus_thar__seed42__e2` | `google/muril-base-cased` | `data/processed/mixed_train_cm_plus_thar__seed42.csv` | Controlled MuRIL run on CM+THAR mixed training data | Warning result: near-constant positive probabilities around 0.4456 and all-negative predictions. This is stronger collapse than the Kaggle+CM MuRIL threshold case. |
 | `Models/mbert__train-mixed_kaggle_plus_thar__seed42__e2` | `bert-base-multilingual-cased` | `data/processed/mixed_train_kaggle_plus_thar__seed42.csv` | Controlled mBERT run on Kaggle+THAR mixed training data | Usable as the third mixed-dataset result. Strong on Kaggle and THAR, weaker on CM. |
 | `Models/muril__train-mixed_kaggle_plus_thar__seed42__e2` | `google/muril-base-cased` | `data/processed/mixed_train_kaggle_plus_thar__seed42.csv` | Controlled MuRIL run on Kaggle+THAR mixed training data | Usable as the third mixed-dataset result. No collapse; slightly stronger than mBERT on THAR and CM under this condition. |
+| `Models/mbert__train-mixed_all_three__seed42__e2` | `bert-base-multilingual-cased` | `data/processed/mixed_train_all_three__seed42.csv` | Controlled mBERT run on Kaggle+CM+THAR mixed training data | Usable as the all-source mixed result. Slightly stronger than MuRIL on Kaggle and CM; weaker on THAR. |
+| `Models/muril__train-mixed_all_three__seed42__e2` | `google/muril-base-cased` | `data/processed/mixed_train_all_three__seed42.csv` | Controlled MuRIL run on Kaggle+CM+THAR mixed training data | Usable as the all-source mixed result. No collapse; strongest all-three result on THAR, with compressed probability range. |
 
 ## Naming Rule For Future Checkpoints
 
