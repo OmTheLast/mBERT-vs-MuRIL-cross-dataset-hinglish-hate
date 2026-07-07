@@ -224,3 +224,5 @@ Large model weights and local datasets are ignored by `.gitignore`. The reposito
 From 2026-07-01 onward, significant project updates should be committed and pushed in order. The detailed commit policy is in `docs/project_map.md`.
 
 Current research rigor roadmap: `docs/research_rigor_roadmap.md`.
+
+The paper itself is licensed under CC BY 4.0
