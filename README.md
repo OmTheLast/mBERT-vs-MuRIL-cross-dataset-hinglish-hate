@@ -225,4 +225,6 @@ From 2026-07-01 onward, significant project updates should be committed and push
 
 Current research rigor roadmap: `docs/research_rigor_roadmap.md`.
 
-The paper itself is licensed under CC BY 4.0
+## Licensing
+* **Source Code & Scripts**: This project's code is licensed under the [MIT License](LICENSE).
+* **Research Paper & Text Documentation**: The textual content of the research paper and documentation in this repository is licensed under the [Creative Commons Attribution 4.0 International License (CC-BY-4.0)](https://creativecommons.org).
