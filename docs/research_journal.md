@@ -973,3 +973,46 @@ Interpretation:
 - MuRIL remains stronger on THAR.
 - Cross-dataset robustness is improved compared with some pairwise failures, but Kaggle positive recall remains weak for both models.
 - The result supports the conditional paper claim: model superiority depends on dataset situation, label definition, and source balance.
+
+## Matched Multi-Seed Training Started On 2026-08-15
+
+Purpose:
+
+- Address the research-rigor weakness that earlier controlled transformer results mostly used one random seed.
+- Begin with matched conditions, as recommended by the advisor feedback: same dataset used for training and evaluation, repeated across seeds.
+- Start small rather than launching every dataset blindly, because local transformer checkpoints consume disk space and training time.
+
+Implementation:
+
+- Added `scripts/aggregate_matched_multiseed.py`.
+- The script reads each checkpoint's `eval_metrics.json`, saves per-seed CSV output, computes mean and standard deviation, writes a report, and generates a Macro F1 error-bar figure.
+- Seeds selected for the first complete block: `42`, `7`, and `13`.
+- Seed `42` checkpoints already existed; seeds `7` and `13` were newly trained for the Kaggle matched condition.
+
+Kaggle matched multi-seed results:
+
+| Dataset | Model | Seeds | Accuracy mean | Accuracy std | Positive recall mean | Positive recall std | Positive F1 mean | Positive F1 std | Macro F1 mean | Macro F1 std |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `kaggle_hinglish_hate` | mBERT | 42, 7, 13 | 71.6% | 2.4% | 46.9% | 8.5% | 56.1% | 4.1% | 67.5% | 2.1% |
+| `kaggle_hinglish_hate` | MuRIL | 42, 7, 13 | 68.1% | 3.1% | 25.1% | 8.5% | 37.6% | 9.9% | 58.1% | 5.7% |
+
+Saved outputs:
+
+- `results/multiseed/matched_multiseed_per_seed.csv`
+- `results/multiseed/matched_multiseed_summary.csv`
+- `docs/matched_multiseed_results.md`
+- `results/result_analysis/matched_multiseed_macro_f1.png`
+- `results/result_analysis/matched_multiseed_macro_f1.svg`
+
+Interpretation:
+
+- On the matched Kaggle Hinglish hate condition, mBERT's advantage over MuRIL persists across three seeds.
+- mBERT has higher mean Macro F1 and much higher mean positive-class recall.
+- MuRIL is more seed-sensitive here: its Macro F1 standard deviation is larger, and its positive F1 varies substantially.
+- This strengthens the earlier single-seed claim that mBERT is the better model for this Kaggle Hinglish hate situation.
+- The claim is still dataset-specific. It should not be generalized to THAR or mixed-source settings without completing the same multi-seed check there.
+
+Run-control note:
+
+- A broader automatic loop was stopped intentionally after the Kaggle seed-7 pair because the user said the multi-seed work did not need to happen all at once.
+- The interrupted CM seed-7 run did not produce a completed checkpoint and should not be treated as a result.
