@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from datetime import date
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -80,6 +81,13 @@ def make_summary(per_seed: pd.DataFrame) -> pd.DataFrame:
 
 
 def write_report(per_seed: pd.DataFrame, summary: pd.DataFrame, output: Path) -> None:
+    included_datasets = ", ".join(
+        f"`{dataset}`" for dataset in sorted(per_seed["train_dataset"].unique())
+    )
+    included_seeds = ", ".join(
+        f"`{int(seed)}`" for seed in sorted(per_seed["seed"].unique())
+    )
+
     visible = summary.copy()
     for metric in [
         "accuracy_mean",
@@ -102,13 +110,13 @@ def write_report(per_seed: pd.DataFrame, summary: pd.DataFrame, output: Path) ->
     sections = [
         "# Matched Multi-Seed Transformer Results",
         "",
-        "Date: 2026-08-15",
+        f"Date: {date.today().isoformat()}",
         "",
         "Purpose: test whether the main matched-dataset mBERT vs MuRIL findings are stable when only the random seed changes.",
         "",
-        "Scope: matched conditions only: Kaggle, CM, and THAR trained/evaluated under their controlled matched split policies.",
+        f"Scope: matched conditions included in this aggregation: {included_datasets}. Each condition is trained/evaluated under its controlled matched split policy.",
         "",
-        "Seeds: `42`, `7`, and `13` when all runs are present.",
+        f"Seeds included: {included_seeds}.",
         "",
         "Primary metric: Macro F1. Positive-class recall and positive-class F1 are kept because false negatives matter in hate/offensive speech detection.",
         "",
@@ -147,7 +155,8 @@ def write_report(per_seed: pd.DataFrame, summary: pd.DataFrame, output: Path) ->
 
 
 def make_macro_f1_figure(summary: pd.DataFrame, output: Path) -> None:
-    datasets = list(DATASET_LABELS)
+    present_datasets = set(summary["train_dataset"])
+    datasets = [dataset for dataset in DATASET_LABELS if dataset in present_datasets]
     x_positions = range(len(datasets))
     width = 0.34
     colors = {"mbert": "#2f6f9f", "muril": "#b04d4d"}

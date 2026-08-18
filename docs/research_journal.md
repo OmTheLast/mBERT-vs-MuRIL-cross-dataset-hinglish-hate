@@ -1016,3 +1016,54 @@ Run-control note:
 
 - A broader automatic loop was stopped intentionally after the Kaggle seed-7 pair because the user said the multi-seed work did not need to happen all at once.
 - The interrupted CM seed-7 run did not produce a completed checkpoint and should not be treated as a result.
+
+## CM Matched Multi-Seed Completed On 2026-08-18
+
+Purpose:
+
+- Continue the advisor-recommended multi-seed stability check after completing the Kaggle matched block.
+- Test the matched CM code-mixed/offensive condition under the same three seeds: `42`, `7`, and `13`.
+- Keep this condition separate from Kaggle in interpretation because CM's positive label is offensive/hate-adjacent rather than identical to strict hate speech.
+
+Checkpoints used:
+
+- `Models/mbert__train-cm_splits_codemixed__seed42__e2`
+- `Models/mbert__train-cm_splits_codemixed__seed7__e2`
+- `Models/mbert__train-cm_splits_codemixed__seed13__e2`
+- `Models/muril__train-cm_splits_codemixed__seed42__e2`
+- `Models/muril__train-cm_splits_codemixed__seed7__e2`
+- `Models/muril__train-cm_splits_codemixed__seed13__e2`
+
+CM matched multi-seed results:
+
+| Dataset | Model | Seeds | Accuracy mean | Accuracy std | Positive recall mean | Positive recall std | Positive F1 mean | Positive F1 std | Macro F1 mean | Macro F1 std |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `cm_splits_codemixed` | mBERT | 42, 7, 13 | 79.6% | 2.0% | 70.7% | 1.3% | 71.1% | 2.0% | 77.7% | 1.9% |
+| `cm_splits_codemixed` | MuRIL | 42, 7, 13 | 78.8% | 1.9% | 64.4% | 8.3% | 68.1% | 3.8% | 76.1% | 2.3% |
+
+Per-seed notes:
+
+- mBERT seed `7`: Macro F1 75.5%, positive recall 70.7%.
+- mBERT seed `13`: Macro F1 78.8%, positive recall 72.0%.
+- mBERT seed `42`: Macro F1 78.7%, positive recall 69.3%.
+- MuRIL seed `7`: Macro F1 78.6%, positive recall 72.7%.
+- MuRIL seed `13`: Macro F1 74.2%, positive recall 64.7%.
+- MuRIL seed `42`: Macro F1 75.4%, positive recall 56.0%.
+
+Updated saved outputs:
+
+- `results/multiseed/matched_multiseed_per_seed.csv`
+- `results/multiseed/matched_multiseed_summary.csv`
+- `docs/matched_multiseed_results.md`
+- `results/result_analysis/matched_multiseed_macro_f1.png`
+- `results/result_analysis/matched_multiseed_macro_f1.svg`
+
+Interpretation:
+
+- CM does not show the same severe MuRIL weakness seen on the Kaggle matched condition.
+- mBERT still has the higher mean Macro F1, but the gap is small: 77.7% for mBERT versus 76.1% for MuRIL.
+- The safer claim is that mBERT has a narrow matched-CM advantage, while both transformers are competitive on this dataset.
+- MuRIL's positive recall is less stable across seeds. Its positive recall ranges from 56.0% to 72.7%, while mBERT stays tightly grouped around 69.3% to 72.0%.
+- This matters for hate/offensive detection because lower positive recall means more positive examples are missed.
+- Compared with Kaggle, both models perform much better on CM. This likely reflects a combination of dataset label definition, split structure, and the fact that CM's positive class may include broader offensive language rather than only stricter hate speech.
+- The paper should present Kaggle and CM as separate dataset situations, not as interchangeable tests of the same exact phenomenon.
