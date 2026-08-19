@@ -76,19 +76,20 @@ The `existing_79_row_benchmark` file is not used for primary conclusions. It is 
 
 ## Main Results So Far
 
-Matched dataset results:
+Matched multi-seed dataset results:
 
-| Test dataset | Best transformer | Training dataset | Macro F1 | Positive F1 | Positive recall |
-|---|---|---|---:|---:|---:|
-| `kaggle_hinglish_hate` | mBERT | `kaggle_hinglish_hate` | 65.6% | 51.3% | 38.6% |
-| `cm_splits_codemixed` | mBERT | `cm_splits_codemixed` | 78.3% | 71.4% | 68.7% |
-| `thar_religion` | MuRIL | `thar_religion` | 77.9% | 77.4% | 80.3% |
+| Test dataset | Better transformer | Seeds | mBERT Macro F1 | MuRIL Macro F1 | Main meaning |
+|---|---|---|---:|---:|---|
+| `kaggle_hinglish_hate` | mBERT | 7, 13, 42 | 67.5% +/- 2.1% | 58.1% +/- 5.7% | mBERT has a clear matched advantage. |
+| `cm_splits_codemixed` | mBERT, narrowly | 7, 13, 42 | 77.7% +/- 1.9% | 76.1% +/- 2.3% | Both models are competitive; mBERT is slightly stronger. |
+| `thar_religion` | MuRIL | 7, 13, 42 | 74.7% +/- 0.1% | 76.5% +/- 1.3% | MuRIL wins the targeted religious-hate setting. |
 
 Interpretation:
 
 - mBERT currently wins on matched Latin-script-heavy Hinglish/offensive settings.
-- MuRIL currently wins on matched targeted religious hate.
+- MuRIL currently wins on matched targeted religious hate across all three THAR seeds.
 - Every dataset is best served by a model trained on that same dataset, which means cross-dataset transfer is weak.
+- THAR seed 42 made MuRIL look especially strong, but the three-seed mean shows a smaller and more defensible advantage.
 
 ## Why Baselines Matter
 
@@ -168,7 +169,7 @@ Not universally. Current evidence supports a narrower claim: MuRIL is stronger o
 
 **What is the biggest limitation right now?**
 
-Label comparability. The positive class does not mean exactly the same thing across datasets. The paper must be honest about this and treat cross-dataset results as robustness evidence, not a single clean universal task.
+Label comparability. The positive class does not mean exactly the same thing across datasets. The paper must be honest about this and treat cross-dataset results as robustness evidence, not a single clean universal task. Multi-seed matched results now improve rigor for the three main matched conditions, but mixed-training and some cross-dataset transformer results still need the same level of repeated-seed validation before final claims.
 
 ## Next Experiments To Understand The Models Better
 
@@ -216,7 +217,7 @@ You should be able to say:
 
 You should be able to say:
 
-> The main limitation is rigor. Current transformer runs use one seed and one main hyperparameter setting. We have started mixed-dataset training with Kaggle + CM, but before making final claims we still need multi-seed results, mean and standard deviation, confidence intervals or bootstrap intervals, stronger citation/license verification, and the remaining mixed-dataset conditions.
+> The main limitation is label comparability and remaining rigor. We now have three-seed matched results for Kaggle, CM, and THAR, which is much stronger than one-seed evidence. But mixed-training and some cross-dataset claims still need repeated-seed validation, confidence intervals or bootstrap intervals, stronger citation/license verification, and more manual error examples.
 
 ### 6. How AI Was Used
 

@@ -1,6 +1,6 @@
 # Project Map
 
-Date: 2026-07-01
+Date: 2026-08-19
 
 This file is the clean project map for GitHub and future paper work. It separates code, data, results, paper files, and research notes.
 
@@ -42,6 +42,7 @@ Hinglish Research/
 │   └── make_results_summary.py
 ├── docs/
 │   ├── project_map.md
+│   ├── project_reference_summary.md
 │   ├── research_journal.md
 │   ├── research_rigor_roadmap.md
 │   ├── mixed_dataset_experiment_plan.md
@@ -83,9 +84,11 @@ Hinglish Research/
 Use these files first when writing or defending the paper:
 
 - `docs/dataset_registry.md`: dataset identity, label mapping, citation status, caveats.
+- `docs/project_reference_summary.md`: start-here reference page for current findings, key files, and defense framing.
 - `docs/dataset_taxonomy.md`: how datasets differ by label, platform, script, and target.
 - `docs/data_analysis_report.md`: dataset integrity and descriptive statistics.
 - `docs/result_analysis_report.md`: primary model results and interpretation.
+- `docs/matched_multiseed_results.md`: three-seed matched mBERT/MuRIL results for Kaggle, CM, and THAR.
 - `docs/error_analysis_report.md`: quantitative error analysis.
 - `docs/manual_error_analysis_report.md`: first-pass qualitative error categories.
 - `docs/project_defense_notes.md`: plain-language explanation for viva/project defense.

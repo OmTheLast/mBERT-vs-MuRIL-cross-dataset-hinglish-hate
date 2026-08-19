@@ -1,10 +1,10 @@
 # Matched Multi-Seed Transformer Results
 
-Date: 2026-08-18
+Date: 2026-08-19
 
 Purpose: test whether the main matched-dataset mBERT vs MuRIL findings are stable when only the random seed changes.
 
-Scope: matched conditions included in this aggregation: `cm_splits_codemixed`, `kaggle_hinglish_hate`. Each condition is trained/evaluated under its controlled matched split policy.
+Scope: matched conditions included in this aggregation: `cm_splits_codemixed`, `kaggle_hinglish_hate`, `thar_religion`. Each condition is trained/evaluated under its controlled matched split policy.
 
 Seeds included: `7`, `13`, `42`.
 
@@ -18,6 +18,8 @@ Primary metric: Macro F1. Positive-class recall and positive-class F1 are kept b
 | cm_splits_codemixed  | muril   | 7,13,42 |         3 | 78.8%           | 1.9%           | 64.4%              | 8.3%              | 68.1%          | 3.8%          | 76.1%           | 2.3%           |
 | kaggle_hinglish_hate | mbert   | 7,13,42 |         3 | 71.6%           | 2.4%           | 46.9%              | 8.5%              | 56.1%          | 4.1%          | 67.5%           | 2.1%           |
 | kaggle_hinglish_hate | muril   | 7,13,42 |         3 | 68.1%           | 3.1%           | 25.1%              | 8.5%              | 37.6%          | 9.9%          | 58.1%           | 5.7%           |
+| thar_religion        | mbert   | 7,13,42 |         3 | 74.7%           | 0.1%           | 79.3%              | 2.0%              | 74.7%          | 0.4%          | 74.7%           | 0.1%           |
+| thar_religion        | muril   | 7,13,42 |         3 | 76.5%           | 1.3%           | 79.7%              | 0.6%              | 76.2%          | 1.1%          | 76.5%           | 1.3%           |
 
 ## Per-Seed Results
 
@@ -35,6 +37,12 @@ Primary metric: Macro F1. Positive-class recall and positive-class F1 are kept b
 | kaggle_hinglish_hate | muril   |      7 | 71.7%      | 34.9%         | 49.0%     | 64.7%      | stratified_80_20_seed7          |
 | kaggle_hinglish_hate | muril   |     13 | 66.2%      | 19.3%         | 30.8%     | 54.2%      | stratified_80_20_seed13         |
 | kaggle_hinglish_hate | muril   |     42 | 66.5%      | 21.2%         | 33.1%     | 55.4%      |                                 |
+| thar_religion        | mbert   |      7 | 74.6%      | 78.6%         | 74.5%     | 74.6%      | stratified_80_20_seed7          |
+| thar_religion        | mbert   |     13 | 74.6%      | 81.5%         | 75.2%     | 74.6%      | stratified_80_20_seed13         |
+| thar_religion        | mbert   |     42 | 74.8%      | 77.7%         | 74.5%     | 74.8%      | stratified_80_20_seed42         |
+| thar_religion        | muril   |      7 | 76.3%      | 79.7%         | 76.0%     | 76.3%      | stratified_80_20_seed7          |
+| thar_religion        | muril   |     13 | 75.3%      | 79.2%         | 75.2%     | 75.3%      | stratified_80_20_seed13         |
+| thar_religion        | muril   |     42 | 77.9%      | 80.3%         | 77.4%     | 77.9%      | stratified_80_20_seed42         |
 
 ## Interpretation Notes
 

@@ -1067,3 +1067,56 @@ Interpretation:
 - This matters for hate/offensive detection because lower positive recall means more positive examples are missed.
 - Compared with Kaggle, both models perform much better on CM. This likely reflects a combination of dataset label definition, split structure, and the fact that CM's positive class may include broader offensive language rather than only stricter hate speech.
 - The paper should present Kaggle and CM as separate dataset situations, not as interchangeable tests of the same exact phenomenon.
+
+## THAR Matched Multi-Seed Completed On 2026-08-19
+
+Purpose:
+
+- Complete the advisor-recommended matched multi-seed block for the third main dataset.
+- Test whether the earlier THAR result, where MuRIL beat mBERT, survives seeds `7`, `13`, and `42`.
+- Keep THAR separate from Kaggle and CM because its positive label is targeted AntiReligion hate, not a general Hinglish hate/offensive label.
+
+Dataset and split note:
+
+- File: `data/processed/thar_religion.csv`.
+- Rows: 11,549.
+- Label distribution: 6,095 non-hate and 5,454 targeted religious-hate positives.
+- The processed THAR file does not contain a fixed split column, so each seed used a stratified 80/20 split: `stratified_80_20_seed7`, `stratified_80_20_seed13`, and `stratified_80_20_seed42`.
+
+THAR matched multi-seed results:
+
+| Dataset | Model | Seeds | Accuracy mean | Accuracy std | Positive recall mean | Positive recall std | Positive F1 mean | Positive F1 std | Macro F1 mean | Macro F1 std |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `thar_religion` | mBERT | 42, 7, 13 | 74.7% | 0.1% | 79.3% | 2.0% | 74.7% | 0.4% | 74.7% | 0.1% |
+| `thar_religion` | MuRIL | 42, 7, 13 | 76.5% | 1.3% | 79.7% | 0.6% | 76.2% | 1.1% | 76.5% | 1.3% |
+
+Per-seed notes:
+
+- mBERT seed `7`: Macro F1 74.6%, positive recall 78.6%.
+- mBERT seed `13`: Macro F1 74.6%, positive recall 81.5%.
+- mBERT seed `42`: Macro F1 74.8%, positive recall 77.7%.
+- MuRIL seed `7`: Macro F1 76.3%, positive recall 79.7%.
+- MuRIL seed `13`: Macro F1 75.3%, positive recall 79.2%.
+- MuRIL seed `42`: Macro F1 77.9%, positive recall 80.3%.
+
+Updated saved outputs:
+
+- `results/multiseed/matched_multiseed_per_seed.csv`
+- `results/multiseed/matched_multiseed_summary.csv`
+- `docs/matched_multiseed_results.md`
+- `results/result_analysis/matched_multiseed_macro_f1.png`
+- `results/result_analysis/matched_multiseed_macro_f1.svg`
+
+Interpretation:
+
+- MuRIL wins THAR across all three seeds, so the earlier THAR advantage was not only a seed-42 accident.
+- The advantage is smaller after averaging: MuRIL Macro F1 76.5% versus mBERT 74.7%.
+- mBERT is extremely stable on THAR, with only 0.1 percentage-point Macro F1 standard deviation.
+- MuRIL has slightly higher mean positive recall and positive F1, but more Macro F1 variation.
+- This is the strongest current evidence that MuRIL can be better when the dataset situation is targeted religious hate.
+- It should not be written as "MuRIL is generally better for Indian hate speech." The correct paper phrasing is that MuRIL performs better on the THAR targeted religious-hate condition, while mBERT remains stronger on Kaggle and narrowly stronger on CM.
+
+Documentation update:
+
+- Added `docs/project_reference_summary.md` as a single start-here reference page for project defense and paper writing.
+- Updated `docs/project_defense_notes.md` so the main matched results now use three-seed mean and standard deviation instead of older one-seed numbers.
