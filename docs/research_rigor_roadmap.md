@@ -1,6 +1,6 @@
 # Research Rigor Roadmap
 
-Date: 2026-07-01
+Date: 2026-08-25
 
 This file tracks what is strong in the project right now, what is still weak, and what must be added before the work is treated as a final research paper.
 
@@ -15,45 +15,54 @@ This file tracks what is strong in the project right now, what is still weak, an
 - The 79-row diagnostic probe has been excluded from primary claims because its provenance is uncertain.
 - TF-IDF baselines are included, which prevents overclaiming transformer superiority.
 - Dataset analysis, result analysis, and error analysis are separately documented.
+- Matched multi-seed transformer results are completed for the three primary matched settings using seeds `7`, `13`, and `42`.
+- Mixed-dataset training is completed for Kaggle+CM, Kaggle+THAR, CM+THAR, and all three datasets, with each mixed checkpoint evaluated separately on Kaggle, CM, and THAR.
 
 ## Main Weakness Right Now
 
-The main weakness is not page count. It is research rigor.
+The main weakness is not page count. It is remaining research rigor.
 
-Current transformer results use:
+Matched single-dataset results now have three-seed coverage. Mixed-dataset and cross-dataset conclusions still rely mostly on one seed per condition.
 
-- one random seed: `42`;
+Current transformer controls still use:
+
 - one epoch setting: `2` epochs;
 - one maximum sequence length: `128`;
 - one learning rate: `2e-5`;
-- one main checkpoint per model/dataset condition.
+- limited hyperparameter search;
+- single-seed mixed-training and transfer results.
 
-This is acceptable for a working draft, but not enough for a strong final research conclusion.
+This is acceptable for an application research draft, but not enough for a final strong paper conclusion.
 
 ## Required Before Final Paper
 
 ### 1. Multi-Seed Runs
 
-Run at least three random seeds for the main matched settings:
+Status: completed for the main matched settings.
 
-- seed 42;
-- seed 43;
-- seed 44.
+Completed seeds:
 
-Minimum conditions:
+- seed `7`;
+- seed `13`;
+- seed `42`.
+
+Completed conditions:
 
 - mBERT and MuRIL on `kaggle_hinglish_hate`;
 - mBERT and MuRIL on `cm_splits_codemixed`;
 - mBERT and MuRIL on `thar_religion`.
 
-Report:
+Reported in `docs/matched_multiseed_results.md`:
 
 - mean Macro F1;
 - standard deviation Macro F1;
 - mean positive F1;
 - standard deviation positive F1.
 
-If time allows, also run multi-seed cross-dataset transfer for the most important transfer pairs.
+Remaining seed work:
+
+- run multi-seed evaluation for the most important mixed-training condition if disk space and time allow;
+- optionally run multi-seed cross-dataset transfer for the most important transfer pairs.
 
 ### 2. Confidence Intervals Or Bootstrap Intervals
 
@@ -106,21 +115,22 @@ Target categories:
 
 ### 6. Mixed-Dataset Training
 
-Run mixed-dataset experiments because the current paper already identifies this as the next step. The first condition, Kaggle + CM, was completed on 2026-07-01 and is documented in `docs/mixed_kaggle_cm_training_report.md`.
+Status: completed where applicable for the current experimental matrix, but not yet repeated across multiple seeds.
 
-Remaining minimum combinations:
+Completed combinations:
 
-- Kaggle + THAR;
-- CM + THAR;
-- Kaggle + CM + THAR.
+- Kaggle + CM, documented in `docs/mixed_kaggle_cm_training_report.md`;
+- Kaggle + THAR, documented in `docs/mixed_kaggle_thar_training_report.md`;
+- CM + THAR, documented in `docs/mixed_cm_thar_training_report.md`;
+- Kaggle + CM + THAR, documented in `docs/mixed_all_three_training_report.md`.
 
-Evaluate every mixed checkpoint separately on:
+Each mixed checkpoint was evaluated separately on:
 
 - Kaggle;
 - CM;
 - THAR.
 
-Together with the completed Kaggle + CM run, these will test whether broader training improves robustness or simply mixes incompatible labels.
+These experiments test whether broader training improves robustness or simply mixes incompatible labels. Remaining gap: the mixed-training conclusions should be treated as single-seed evidence until repeated under multiple seeds.
 
 ## Paper Improvements Needed
 
@@ -132,7 +142,8 @@ The next paper versions should add:
 - a manual error example table;
 - an AI-use statement;
 - a clearer limitation section about label comparability;
-- a final claim that remains conditional rather than universal.
+- a final claim that remains conditional rather than universal;
+- a one-page application research summary PDF for review and feedback.
 
 ## Current Defensible Claim
 

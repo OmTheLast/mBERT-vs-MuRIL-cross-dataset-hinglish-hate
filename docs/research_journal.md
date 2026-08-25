@@ -1120,3 +1120,35 @@ Documentation update:
 
 - Added `docs/project_reference_summary.md` as a single start-here reference page for project defense and paper writing.
 - Updated `docs/project_defense_notes.md` so the main matched results now use three-seed mean and standard deviation instead of older one-seed numbers.
+
+## Advisor-Facing Documentation Update On 2026-08-25
+
+Purpose:
+
+- Apply advisor feedback after the matched multi-seed experiments.
+- Make the project easier to defend quickly without overstating publication status.
+- Keep GitHub documentation aligned before scaling further experiments.
+
+Changes made:
+
+- Added a `Project In 60 Seconds` section to `README.md` with the current research question, datasets, main matched multi-seed results, and core interpretation.
+- Updated `docs/research_rigor_roadmap.md` to mark matched multi-seed evaluation as completed for Kaggle, CM, and THAR using seeds `7`, `13`, and `42`.
+- Updated `docs/research_rigor_roadmap.md` to mark mixed-dataset training as completed where applicable for the current single-seed mixed matrix, while keeping the remaining multi-seed gap explicit.
+- Updated the paper draft wording from a generic/final-sounding draft label to `Working Paper Draft v0.2 - August 25, 2026`.
+- Created a one-page review PDF at `output/pdf/one_page_research_summary.pdf`.
+- Added `reportlab` to `requirements.txt` because both paper-generation scripts now depend on it.
+
+One-page summary contents:
+
+- Research question.
+- Dataset situations for Kaggle Hinglish Hate, CM Code-mixed, and THAR Religion.
+- Method summary for matched, cross-dataset, and mixed-training evaluation.
+- Main matched multi-seed result table.
+- Current interpretation.
+- Limitations.
+- Specific feedback requested from an advisor or reviewer.
+
+Verification:
+
+- Confirmed `output/pdf/one_page_research_summary.pdf` has exactly one page.
+- Rendered the PDF to PNG and visually checked that the page is readable, unclipped, and not mislabeled as a published paper.

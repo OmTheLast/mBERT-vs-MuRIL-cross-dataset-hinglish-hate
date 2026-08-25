@@ -1,6 +1,8 @@
 # Cross-Dataset Evaluation of mBERT and MuRIL for Hate Speech Detection in Hinglish Code-Mixed Text
 
-Working draft started: 2026-06-25
+Working paper draft v0.2: 2026-08-25
+
+This is an application research draft, not a published paper.
 
 ## Abstract
 

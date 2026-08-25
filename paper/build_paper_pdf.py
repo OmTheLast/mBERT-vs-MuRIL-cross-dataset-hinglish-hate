@@ -313,7 +313,7 @@ def manual_reason_rows():
 def build_story():
     story = []
     story.append(P("Cross-Dataset Evaluation of mBERT and MuRIL for Hinglish Hate and Offensive Speech Detection", "TitleCenter"))
-    story.append(P("Om Patnaik | Working Draft v0.1 - July 1, 2026", "AuthorCenter"))
+    story.append(P("Om Patnaik | Working Paper Draft v0.2 - August 25, 2026", "AuthorCenter"))
 
     story.append(P("Abstract", "Section"))
     story.append(

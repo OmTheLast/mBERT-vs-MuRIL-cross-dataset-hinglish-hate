@@ -4,6 +4,20 @@ This project studies how mBERT and MuRIL behave on Hinglish and Hindi-English co
 
 The original single-dataset aim is preserved as legacy context in `docs/legacy_original_aim.md`.
 
+## Project In 60 Seconds
+
+This project compares mBERT, a general multilingual BERT model, and MuRIL, an Indian-language-focused model, for Hinglish and Hindi-English code-mixed harmful speech detection. The current result is not that one model is universally better. Across three matched multi-seed settings, mBERT clearly wins on the Kaggle Hinglish hate subset, mBERT narrowly wins on the CM code-mixed/offensive dataset, and MuRIL wins on THAR targeted religious hate. This means the key research finding is conditional: model ranking changes with dataset situation, especially label meaning, platform, script mix, and target domain.
+
+Matched multi-seed summary:
+
+| Dataset | Positive label meaning | Better model | mBERT Macro F1 | MuRIL Macro F1 |
+|---|---|---|---:|---:|
+| `kaggle_hinglish_hate` | hate | mBERT | 67.5% +/- 2.1% | 58.1% +/- 5.7% |
+| `cm_splits_codemixed` | offensive / hate-adjacent | mBERT, narrowly | 77.7% +/- 1.9% | 76.1% +/- 2.3% |
+| `thar_religion` | targeted AntiReligion hate | MuRIL | 74.7% +/- 0.1% | 76.5% +/- 1.3% |
+
+The strongest current conclusion is that cross-dataset robustness is weak and label definitions are not interchangeable. A model trained for one dataset situation often fails to transfer cleanly to another.
+
 ## Research Question
 
 Does Indian-language-specific pretraining in MuRIL improve hate/offensive speech detection for Hinglish and Hindi-English code-mixed text compared with general multilingual pretraining in mBERT?
@@ -29,6 +43,7 @@ Hinglish Research/
 ├── docs/
 │   ├── dataset_registry.md               # Dataset identity, labels, caveats, citation status
 │   ├── dataset_acquisition_log.md         # What was downloaded, blocked, or context-only
+│   ├── project_reference_summary.md       # Start-here summary for defense and paper writing
 │   ├── model_registry.md                 # Local checkpoint meanings and naming rules
 │   ├── result_reporting_protocol.md      # Required labels for every result
 │   ├── baseline_experiment_report.md     # Research-style report for TF-IDF baselines
@@ -72,13 +87,15 @@ Hinglish Research/
 ├── Models/                               # Local checkpoints; large weights ignored by Git
 ├── paper/
 │   ├── build_paper_pdf.py                # Reproducible local PDF paper builder
+│   ├── build_one_page_summary_pdf.py     # One-page advisor/review summary PDF builder
 │   ├── paper_draft.md                    # Main working paper draft
 │   ├── main.tex                          # LaTeX draft source
 │   ├── references.bib                    # BibTeX references
 │   └── overleaf_self_contained.tex       # Copy-paste Overleaf fallback
 ├── output/
 │   └── pdf/
-│       └── hinglish_mbert_muril_research_paper_draft.pdf
+│       ├── hinglish_mbert_muril_research_paper_draft.pdf
+│       └── one_page_research_summary.pdf
 └── paper_outline.md                      # Paper skeleton
 ```
 
@@ -209,12 +226,13 @@ The current paper-facing analysis is `docs/result_analysis_report.md`. `results/
 
 Important current interpretation:
 
+- Matched multi-seed results are now available for Kaggle, CM, and THAR in `docs/matched_multiseed_results.md`.
 - The initial saved project checkpoints were strongly biased toward predicting non-hate on the 79-row diagnostic probe.
 - Retraining on `kaggle_hinglish_hate` improved hate detection.
-- mBERT performed better than MuRIL on the held-out split from `kaggle_hinglish_hate`.
+- mBERT performs better than MuRIL on the matched multi-seed `kaggle_hinglish_hate` condition.
 - The 79-row diagnostic probe is excluded from primary conclusions because its provenance is uncertain.
-- mBERT performed better on the matched `cm_splits_codemixed` condition, while MuRIL transferred better from CM to `thar_religion`.
-- MuRIL performed better on the matched `thar_religion` condition and on THAR-to-CM transfer.
+- mBERT performs narrowly better on the matched multi-seed `cm_splits_codemixed` condition, while MuRIL transferred better from CM to `thar_religion` in earlier single-seed cross-dataset tests.
+- MuRIL performs better on the matched multi-seed `thar_religion` condition and on THAR-to-CM transfer.
 - These contradictions are not noise to ignore; they are evidence that dataset definition, label policy, and evaluation domain are central to the research question.
 
 ## GitHub Notes
