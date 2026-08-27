@@ -44,6 +44,7 @@ Hinglish Research/
 │   ├── dataset_registry.md               # Dataset identity, labels, caveats, citation status
 │   ├── dataset_acquisition_log.md         # What was downloaded, blocked, or context-only
 │   ├── project_reference_summary.md       # Start-here summary for defense and paper writing
+│   ├── ai_assistance_and_student_responsibility.md # Authorship and AI-use framing
 │   ├── model_registry.md                 # Local checkpoint meanings and naming rules
 │   ├── result_reporting_protocol.md      # Required labels for every result
 │   ├── baseline_experiment_report.md     # Research-style report for TF-IDF baselines
@@ -88,6 +89,8 @@ Hinglish Research/
 ├── paper/
 │   ├── build_paper_pdf.py                # Reproducible local PDF paper builder
 │   ├── build_one_page_summary_pdf.py     # One-page advisor/review summary PDF builder
+│   ├── application_research_draft.md      # Polished application research draft
+│   ├── one_page_research_summary.md       # One-page Markdown research summary
 │   ├── paper_draft.md                    # Main working paper draft
 │   ├── main.tex                          # LaTeX draft source
 │   ├── references.bib                    # BibTeX references

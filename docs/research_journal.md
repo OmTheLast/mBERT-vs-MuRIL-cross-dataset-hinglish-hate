@@ -1152,3 +1152,29 @@ Verification:
 
 - Confirmed `output/pdf/one_page_research_summary.pdf` has exactly one page.
 - Rendered the PDF to PNG and visually checked that the page is readable, unclipped, and not mislabeled as a published paper.
+
+## Application Research Draft Authorship Update On 2026-08-27
+
+Purpose:
+
+- Create a polished application research paper draft without overstating authorship, rigor, or publication status.
+- Make the AI-assisted nature of the project explicit while keeping Om responsible for review, interpretation, and defense.
+- Preserve `paper/paper_draft.md` as earlier draft history instead of overwriting it.
+
+Files added:
+
+- `paper/application_research_draft.md`
+- `paper/one_page_research_summary.md`
+- `docs/ai_assistance_and_student_responsibility.md`
+
+Draft framing:
+
+- The central claim is conditional: mBERT performs better on matched Kaggle Hinglish hate and CM code-mixed/offensive settings, while MuRIL performs better on THAR targeted religious hate.
+- Matched multi-seed results are treated as the strongest evidence.
+- Cross-dataset and mixed-training results are labeled as mostly single-seed exploratory evidence.
+- The 79-row diagnostic probe is excluded from primary conclusions because its provenance is uncertain.
+- TF-IDF baselines are included as an important guard against overclaiming transformer superiority.
+
+Review markers:
+
+- Added `[OM VERIFY]` markers for places where Om should personally verify wording, citation/license details, cross-dataset result status, and final manual error examples before sharing the draft externally.

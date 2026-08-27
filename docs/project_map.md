@@ -42,6 +42,7 @@ Hinglish Research/
 │   └── make_results_summary.py
 ├── docs/
 │   ├── project_map.md
+│   ├── ai_assistance_and_student_responsibility.md
 │   ├── project_reference_summary.md
 │   ├── research_journal.md
 │   ├── research_rigor_roadmap.md
@@ -67,6 +68,8 @@ Hinglish Research/
 ├── paper/
 │   ├── build_paper_pdf.py
 │   ├── build_one_page_summary_pdf.py
+│   ├── application_research_draft.md
+│   ├── one_page_research_summary.md
 │   ├── main.tex
 │   ├── overleaf_self_contained.tex
 │   ├── references.bib
@@ -87,6 +90,7 @@ Use these files first when writing or defending the paper:
 
 - `docs/dataset_registry.md`: dataset identity, label mapping, citation status, caveats.
 - `docs/project_reference_summary.md`: start-here reference page for current findings, key files, and defense framing.
+- `docs/ai_assistance_and_student_responsibility.md`: authorship, AI-assistance, and student responsibility framing.
 - `docs/dataset_taxonomy.md`: how datasets differ by label, platform, script, and target.
 - `docs/data_analysis_report.md`: dataset integrity and descriptive statistics.
 - `docs/result_analysis_report.md`: primary model results and interpretation.
@@ -133,6 +137,12 @@ The current local PDF draft is:
 
 ```text
 output/pdf/hinglish_mbert_muril_research_paper_draft.pdf
+```
+
+The current Markdown application research draft is:
+
+```text
+paper/application_research_draft.md
 ```
 
 The current one-page review summary is:
