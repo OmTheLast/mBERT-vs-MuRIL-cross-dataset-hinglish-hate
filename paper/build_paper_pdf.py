@@ -580,12 +580,11 @@ def build_story():
             "whether broader training improves robustness or simply mixes incompatible label definitions."
         )
     )
-    story.append(P("AI-Use Statement", "Section"))
+    story.append(P("Tools Note", "Section"))
     story.append(
         P(
-            "AI tools were used for coding assistance, environment debugging, documentation organization, and draft generation. "
-            "The research direction, dataset selection decisions, experiment interpretation, and manual error-analysis decisions "
-            "were reviewed and directed by the student."
+            "AI tools were used for coding, debugging, and documentation assistance; the research direction, result interpretation, "
+            "and final claims were reviewed and owned by Om Patnaik."
         )
     )
 

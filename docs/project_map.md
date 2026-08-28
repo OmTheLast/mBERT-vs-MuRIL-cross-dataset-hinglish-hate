@@ -90,7 +90,7 @@ Use these files first when writing or defending the paper:
 
 - `docs/dataset_registry.md`: dataset identity, label mapping, citation status, caveats.
 - `docs/project_reference_summary.md`: start-here reference page for current findings, key files, and defense framing.
-- `docs/ai_assistance_and_student_responsibility.md`: authorship, AI-assistance, and student responsibility framing.
+- `docs/ai_assistance_and_student_responsibility.md`: concise tools note and oral-defense responsibility.
 - `docs/dataset_taxonomy.md`: how datasets differ by label, platform, script, and target.
 - `docs/data_analysis_report.md`: dataset integrity and descriptive statistics.
 - `docs/result_analysis_report.md`: primary model results and interpretation.

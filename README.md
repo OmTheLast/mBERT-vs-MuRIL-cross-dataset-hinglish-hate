@@ -44,7 +44,7 @@ Hinglish Research/
 │   ├── dataset_registry.md               # Dataset identity, labels, caveats, citation status
 │   ├── dataset_acquisition_log.md         # What was downloaded, blocked, or context-only
 │   ├── project_reference_summary.md       # Start-here summary for defense and paper writing
-│   ├── ai_assistance_and_student_responsibility.md # Authorship and AI-use framing
+│   ├── ai_assistance_and_student_responsibility.md # Tools note and oral-defense responsibility
 │   ├── model_registry.md                 # Local checkpoint meanings and naming rules
 │   ├── result_reporting_protocol.md      # Required labels for every result
 │   ├── baseline_experiment_report.md     # Research-style report for TF-IDF baselines

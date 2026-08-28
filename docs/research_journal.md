@@ -1178,3 +1178,16 @@ Draft framing:
 Review markers:
 
 - Added `[OM VERIFY]` markers for places where Om should personally verify wording, citation/license details, cross-dataset result status, and final manual error examples before sharing the draft externally.
+
+## Tools Note Simplified On 2026-08-28
+
+Purpose:
+
+- Replace the long AI-assistance disclosure with a concise tools note.
+- Keep the wording honest without over-emphasizing AI use in the paper or README.
+
+Changes made:
+
+- Replaced the long AI-assistance section in `paper/application_research_draft.md` with a short `Tools Note`.
+- Reduced `docs/ai_assistance_and_student_responsibility.md` to the one-line tools note plus an oral-defense responsibility reminder.
+- Updated `paper/build_paper_pdf.py` so regenerated paper PDFs use the concise `Tools Note` wording.

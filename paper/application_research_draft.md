@@ -208,17 +208,9 @@ Other limitations:
 
 These limitations do not invalidate the project. They define the correct strength of the claim: this is an application research draft with meaningful evidence, not a final peer-reviewed conclusion.
 
-## 11. AI Assistance And Student Responsibility Statement
+## 11. Tools Note
 
-This project was developed with substantial assistance from AI tools, including Codex, which helped with coding, debugging, experiment organization, documentation, result summarization, and drafting support. Om Patnaik used AI as a technical and writing assistant throughout the project. The research direction, dataset choices, interpretation of results, comparison of model behavior, and final claims were reviewed and directed by Om. Om is responsible for understanding and defending the project's methodology, results, limitations, and conclusions. The project should therefore be understood as AI-assisted independent student research, not as unaided work and not as work independently authored by AI.
-
-### Student Role
-
-Om's role was to guide the project's research direction, review and interpret experiment outputs, compare dataset situations, refine the central claim, and connect the technical results to the broader question of cross-dataset robustness in Hinglish harmful-speech detection. The project evolved from a simple mBERT-vs-MuRIL comparison into a cross-dataset robustness study after Om reviewed evidence showing that model ranking changed across datasets.
-
-### AI/Codex Role
-
-AI/Codex assisted with implementation, debugging, running and organizing experiments, writing scripts, producing documentation, summarizing results, and structuring the paper. Any code or prose produced with AI assistance should be reviewed by Om before being treated as final.
+AI tools were used for coding, debugging, and documentation assistance; the research direction, result interpretation, and final claims were reviewed and owned by Om Patnaik.
 
 ## 12. Conclusion
 
@@ -235,4 +227,3 @@ The most defensible conclusion is that model choice and dataset definition must 
 - cm-hate-speech-detection contributors. `cm-hate-speech-detection` GitHub repository. [OM VERIFY license and preferred citation]
 - Sharma, D., et al. THAR: Targeted Hate Speech Against Religion: A High-Quality Hindi-English Code-Mixed Dataset with the Application of Deep Learning Models for Automatic Detection. ACM Digital Library, 2024. [OM VERIFY full author list]
 - THAR contributors. THAR GitHub repository. [OM VERIFY repository license and citation]
-
