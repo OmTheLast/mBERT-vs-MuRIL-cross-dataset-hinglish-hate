@@ -1,0 +1,1185 @@
+{
+  "checkpoints": [
+    {
+      "archive_commit": "19fb00fa1d9e0e30a66cfe1f06182070c95a1229",
+      "dataset": "cm_splits_codemixed",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "5fbdc533a35b2ec86041c89725b26bd8fa5dec1951e5046bf5d4bebc465e2572",
+        "config.json": "49dd9c1b7ad40f46de9c5e3093a0733efd5f9b7d7304fa40bcc3e3b577a487e4",
+        "eval_metrics.json": "14eb365ae80577b5ef79f0da8f771c926599176a5d7b5bc7ce0feb01c433078a",
+        "evaluation_summary.json": "b8a0f3cb378dc920b580f2a02f9bd8dd62d6ea810b40401c50601ef9383d002a",
+        "model.safetensors": "4c70bfb854e66f0bb15fca86748e55c26d2f125ece4790c63aece08eee0ed6b6",
+        "release_metadata.json": "7d3347b3c0f4ed02dc8c5ecaecb74255380dea00ed541be98e44589ee74b4efc",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "465453d52f722467b6bc9c0229b5a15b3424c5f45272dde544ad35f53f7cdeb6",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.8740818500518799,
+            0.1259181797504425
+          ],
+          [
+            0.806312620639801,
+            0.19368737936019897
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "38d164147794b824a399f02cc8191654b242d201",
+      "public_metadata_commit": "805bd92f926928367ec39c544214df4eca141dce",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-cm",
+      "seed": 13,
+      "source": "Models/mbert__train-cm_splits_codemixed__seed13__e2",
+      "stage": ".cache/hf-release/mbert__train-cm_splits_codemixed__seed13__e2",
+      "uploaded_commit": "38d164147794b824a399f02cc8191654b242d201",
+      "uploaded_revision": "seed-13",
+      "weights_bytes": 711443456,
+      "weights_sha256": "4c70bfb854e66f0bb15fca86748e55c26d2f125ece4790c63aece08eee0ed6b6"
+    },
+    {
+      "archive_commit": "d0bf0193e724a8a39cf8d5af702c035567d1a627",
+      "dataset": "cm_splits_codemixed",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "4f702e24888024377563a63128314eac30525c9c0f3296a2671ed812b539e610",
+        "config.json": "49dd9c1b7ad40f46de9c5e3093a0733efd5f9b7d7304fa40bcc3e3b577a487e4",
+        "eval_metrics.json": "674a67126810b99a83eb63d6367d899d896fb949a2e32dc952d35c34c2856258",
+        "evaluation_summary.json": "b8a0f3cb378dc920b580f2a02f9bd8dd62d6ea810b40401c50601ef9383d002a",
+        "model.safetensors": "a8fbdeeda13251ee5fbb09a3ea36fcf7e5cc667855778e9d6e384f4b7612c07c",
+        "release_metadata.json": "9fbca5fd22715b2ac873d36b4b6606b4623484a45ca952e0ba5a887acf699835",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "5cd0031aa656daef02b7410da11b3937a28ff4318ca385aac2941dfc5c2b5ed2",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.9019818305969238,
+            0.0980181097984314
+          ],
+          [
+            0.3656909167766571,
+            0.6343090534210205
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "d37b6473ab5c26b489c5a4095e0de759cc73d3e7",
+      "public_metadata_commit": "12babdd742f526eab06083cabbca835d46021790",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-cm",
+      "seed": 42,
+      "source": "Models/mbert__train-cm_splits_codemixed__seed42__e2",
+      "stage": ".cache/hf-release/mbert__train-cm_splits_codemixed__seed42__e2",
+      "uploaded_commit": "d37b6473ab5c26b489c5a4095e0de759cc73d3e7",
+      "uploaded_revision": "main",
+      "weights_bytes": 711443456,
+      "weights_sha256": "a8fbdeeda13251ee5fbb09a3ea36fcf7e5cc667855778e9d6e384f4b7612c07c"
+    },
+    {
+      "archive_commit": "dd187d24984644d2a5680c3755e333a6e1b4415c",
+      "dataset": "cm_splits_codemixed",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "d16529e117c64658a48a2ae2e83dae2864c11c5b644a8d0ba5d098e5c54b7278",
+        "config.json": "49dd9c1b7ad40f46de9c5e3093a0733efd5f9b7d7304fa40bcc3e3b577a487e4",
+        "eval_metrics.json": "9fca6b2c69aa1838a5d1c64ecc89dee98589b8c6b26756763f0eae75b41e585e",
+        "evaluation_summary.json": "b8a0f3cb378dc920b580f2a02f9bd8dd62d6ea810b40401c50601ef9383d002a",
+        "model.safetensors": "9804c5068e885a10132f3ebbb7344d00b89a409854f3058c622141bacfb8f89b",
+        "release_metadata.json": "025a749424040482ffa70536ac2dcd62e78cc6f4027d66b095d9604e2df2bd96",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "c7c305b911202fa2532a5a003b671d43c7cc3f141a67c78c4937e3fa4a7b4c95",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.7859840393066406,
+            0.21401600539684296
+          ],
+          [
+            0.8446614146232605,
+            0.15533852577209473
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "12d18e0e652ff52d29ed76598c25b8b23d1c4953",
+      "public_metadata_commit": "50015c7645e7bdc66bd41dfeddab1574c509d5bf",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-cm",
+      "seed": 7,
+      "source": "Models/mbert__train-cm_splits_codemixed__seed7__e2",
+      "stage": ".cache/hf-release/mbert__train-cm_splits_codemixed__seed7__e2",
+      "uploaded_commit": "12d18e0e652ff52d29ed76598c25b8b23d1c4953",
+      "uploaded_revision": "seed-7",
+      "weights_bytes": 711443456,
+      "weights_sha256": "9804c5068e885a10132f3ebbb7344d00b89a409854f3058c622141bacfb8f89b"
+    },
+    {
+      "archive_commit": "10e228935eec63f0ac145acbff432101b758f2c2",
+      "dataset": "kaggle_hinglish_hate",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "2bf78ada72325711e7d5589436e602d1b16603f3d00c23e1c7351afb2785945b",
+        "config.json": "ec25eec204d3b95a46142cc3221b2f52fd3ee0045b1b1beae24673aa0b8831d1",
+        "eval_metrics.json": "5ec5e24d0127e47d8ce8b86facce1df8c3a991a8459082e2e2f89a74389a3053",
+        "evaluation_summary.json": "a855ac2e8ed92678e41aa6a11e023a42cf2366c2dfc3cd8c85691e02e12cf235",
+        "model.safetensors": "4a1ab502a9f878b3b607021aa388ea3c2d42baa7ec163343bc644f1fdf00b4b5",
+        "release_metadata.json": "6bea1fcfee0151a37a0c2fb6899a141434c9527f55a585e69f11cfca17b0bef1",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "c2f0c68c7a3f54269e2b111d226069b17e82056918647141d60cbcc6cd07c274",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.9219194650650024,
+            0.07808053493499756
+          ],
+          [
+            0.9315440058708191,
+            0.06845591962337494
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "f266837f5fa794a8dbc674a4524be9f349ad6cee",
+      "public_metadata_commit": "da8ecfb004a4760f5b7463ce7f456836e1a06a31",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-kaggle",
+      "seed": 13,
+      "source": "Models/mbert__train-kaggle_hinglish_hate__seed13__e2",
+      "stage": ".cache/hf-release/mbert__train-kaggle_hinglish_hate__seed13__e2",
+      "uploaded_commit": "f266837f5fa794a8dbc674a4524be9f349ad6cee",
+      "uploaded_revision": "seed-13",
+      "weights_bytes": 711443456,
+      "weights_sha256": "4a1ab502a9f878b3b607021aa388ea3c2d42baa7ec163343bc644f1fdf00b4b5"
+    },
+    {
+      "archive_commit": "35cabb80e703437a518788a709929746b7bb92a8",
+      "dataset": "kaggle_hinglish_hate",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "0812afc28b8c802bf8bba8660eedbb4c5759de6f028eb21690af83786429b442",
+        "config.json": "ec25eec204d3b95a46142cc3221b2f52fd3ee0045b1b1beae24673aa0b8831d1",
+        "eval_metrics.json": "34fe4854158ba2c1962936cf1b76084be4e62e2caf3abfdfcd2ee0b245f46aaa",
+        "evaluation_summary.json": "a855ac2e8ed92678e41aa6a11e023a42cf2366c2dfc3cd8c85691e02e12cf235",
+        "model.safetensors": "953221fc677262dbb21e3b5b7f79507ec88ad0089dcae846316561a7e68bc10d",
+        "release_metadata.json": "64fbbe0b878e4a7d1e2c7f92322d518acdbda6c170fbadcf049714706d6a11cb",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "bba01a1e7d6d284e89a1e85deef35424d862b561149c9b2aea7c075e169fcfcd",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.8311895728111267,
+            0.1688103824853897
+          ],
+          [
+            0.8277977705001831,
+            0.1722021996974945
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "9acb9b29f3e583be2112ace1c10da4214188cd9e",
+      "public_metadata_commit": "8d3a0a573423c3d7a19cababb937bc5f31b965ac",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-kaggle",
+      "seed": 42,
+      "source": "Models/mbert__train-kaggle_hinglish_hate__seed42__e2",
+      "stage": ".cache/hf-release/mbert__train-kaggle_hinglish_hate__seed42__e2",
+      "uploaded_commit": "9acb9b29f3e583be2112ace1c10da4214188cd9e",
+      "uploaded_revision": "main",
+      "weights_bytes": 711443456,
+      "weights_sha256": "953221fc677262dbb21e3b5b7f79507ec88ad0089dcae846316561a7e68bc10d"
+    },
+    {
+      "archive_commit": "af883a0e84749da7b23e2617e8ee816dcf327757",
+      "dataset": "kaggle_hinglish_hate",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "ad6a3795d30939e824ddbaae3887e0a36c3c4386bba70a285b8236c15214f544",
+        "config.json": "ec25eec204d3b95a46142cc3221b2f52fd3ee0045b1b1beae24673aa0b8831d1",
+        "eval_metrics.json": "3f230997794637b2956056abac8be0994bdbcb610c5c56cfb309804f4bcfac5f",
+        "evaluation_summary.json": "a855ac2e8ed92678e41aa6a11e023a42cf2366c2dfc3cd8c85691e02e12cf235",
+        "model.safetensors": "baeddd160426f7bc2bdfe5b64904fb9bed4d0c7a80ce4ed7045e2d0cda31dd86",
+        "release_metadata.json": "a8a4064874149fb481313f1896fe7408842de67a60a8264ea21a2b8cc7fd85fe",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "f86dc43e1a3f2b62b8f7b567f305766add37178096245403c4c35c1ed8c66606",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.8947765231132507,
+            0.10522346943616867
+          ],
+          [
+            0.9192999005317688,
+            0.0807000920176506
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "1c792fa581ca8c611558aa6e3bc07e814d5daeca",
+      "public_metadata_commit": "5a6c9a5d0de170f21b45d99846a55ce78a632e0b",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-kaggle",
+      "seed": 7,
+      "source": "Models/mbert__train-kaggle_hinglish_hate__seed7__e2",
+      "stage": ".cache/hf-release/mbert__train-kaggle_hinglish_hate__seed7__e2",
+      "uploaded_commit": "1c792fa581ca8c611558aa6e3bc07e814d5daeca",
+      "uploaded_revision": "seed-7",
+      "weights_bytes": 711443456,
+      "weights_sha256": "baeddd160426f7bc2bdfe5b64904fb9bed4d0c7a80ce4ed7045e2d0cda31dd86"
+    },
+    {
+      "archive_commit": "fe924c0c75554fada8027957f93854715ed18c00",
+      "dataset": "mixed_all_three",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "ee4020a73012e085f4ee8262e6d8d3bf5c4198174ee5f1f2a643f865b520052b",
+        "config.json": "0cab77b72ee178df7b5158fe9921b6bc68c53e85c9c5899e6256fd44a93ca91e",
+        "eval_metrics.json": "af4ef65c82b730f0f625bf20d7d78a3f7b925df8ccc2f35900010a1953023bef",
+        "evaluation_summary.json": "4f19926dad0978e83ff48c2c2d27bc33094a76d6db19d8a0a2752a7f8e2dfc74",
+        "model.safetensors": "23c268aa9c834d943805016951cf5fb2470b45914148b8649e40eea5466f7038",
+        "release_metadata.json": "0cc05ec666fbe8e892b48e47279a1e4563c8d22121319a0ebd0ebf80a3739271",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "0c683c23abb7d994ed571df008f5d81c24a3b947ae7cb1c052e3c841846ceefc",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.962493896484375,
+            0.03750606253743172
+          ],
+          [
+            0.9501965641975403,
+            0.049803417176008224
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "f417e49abc955b310fb57ce618f9675826a30e5e",
+      "public_metadata_commit": "a1371dc73e5111df8f9cc69d50f0cbf985600872",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-mixed-all-three",
+      "seed": 42,
+      "source": "Models/mbert__train-mixed_all_three__seed42__e2",
+      "stage": ".cache/hf-release/mbert__train-mixed_all_three__seed42__e2",
+      "uploaded_commit": "f417e49abc955b310fb57ce618f9675826a30e5e",
+      "uploaded_revision": "main",
+      "weights_bytes": 711443456,
+      "weights_sha256": "23c268aa9c834d943805016951cf5fb2470b45914148b8649e40eea5466f7038"
+    },
+    {
+      "archive_commit": "3a36d78a20536dc6bd7a0013f672b53a118dad49",
+      "dataset": "mixed_cm_plus_thar",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "4e194f2dc7a190b05b5d48c2a4336a3fb1ca774146f62496c9cb8d26243de197",
+        "config.json": "0cab77b72ee178df7b5158fe9921b6bc68c53e85c9c5899e6256fd44a93ca91e",
+        "eval_metrics.json": "5a0415a87570c0cb680036e4dca3e697ca20f9b7bd81d4e0d6374343e1f28ff4",
+        "evaluation_summary.json": "df401fd26b450856ea13851902643a7e7d293c3c9a499733935501109e9c9019",
+        "model.safetensors": "7b0814d4edaccf9db1cee153b088538d73c59f10c936659baeeaceac29aa338f",
+        "release_metadata.json": "6efa19cdfe4ce904754ac241893dbbc7c810a1dd39106c076cb37e3e66141973",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "6f205b443130cf98b03cec3b5fa7aadfe3f2f8521179c2bf93d5678a4cd6dda7",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.9734805226325989,
+            0.026519518345594406
+          ],
+          [
+            0.9536007046699524,
+            0.0463993214070797
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "570b0f728a24cfe670f043f40fbd4caa2d8868db",
+      "public_metadata_commit": "4996e750d7587ed21bea7ee634191898a7280b92",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-mixed-cm-thar",
+      "seed": 42,
+      "source": "Models/mbert__train-mixed_cm_plus_thar__seed42__e2",
+      "stage": ".cache/hf-release/mbert__train-mixed_cm_plus_thar__seed42__e2",
+      "uploaded_commit": "570b0f728a24cfe670f043f40fbd4caa2d8868db",
+      "uploaded_revision": "main",
+      "weights_bytes": 711443456,
+      "weights_sha256": "7b0814d4edaccf9db1cee153b088538d73c59f10c936659baeeaceac29aa338f"
+    },
+    {
+      "archive_commit": "0187aaa768302a940151edf90fb37a18389204fd",
+      "dataset": "mixed_kaggle_plus_cm",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "53383616a766fff38d18f57d4745711856da88874794b5b62fe4ca14679a3a5f",
+        "config.json": "0cab77b72ee178df7b5158fe9921b6bc68c53e85c9c5899e6256fd44a93ca91e",
+        "eval_metrics.json": "dba17472ca0f4cd4547980aeb2456f9edccfc7cf284ecef844d866d45786b9f7",
+        "evaluation_summary.json": "22af92cffcfd9d7e9343d8499e92915079b2ec4db23699f414f674b37c4cbe4b",
+        "model.safetensors": "e3b858ec20124b31e7ed1b07d83d3ccc90c7ae8cd3ca873dca6b3b5267b022ad",
+        "release_metadata.json": "ed908ae15f4a9f5b9b091955e33a303e2c8ab240881705e45502c16fb479cb31",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "3e0b862eabf16b677574f4b27674f4372e0b08da9fa4adcdccd1b2919e564231",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.8800788521766663,
+            0.11992116272449493
+          ],
+          [
+            0.8667142987251282,
+            0.13328567147254944
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "39aa3a8b0fd6b7317b8a3a57e2426d6b98e81d2f",
+      "public_metadata_commit": "23e1c0c48a93590e3c8238eac81f11e61cab179e",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-mixed-kaggle-cm",
+      "seed": 42,
+      "source": "Models/mbert__train-mixed_kaggle_plus_cm__seed42__e2",
+      "stage": ".cache/hf-release/mbert__train-mixed_kaggle_plus_cm__seed42__e2",
+      "uploaded_commit": "39aa3a8b0fd6b7317b8a3a57e2426d6b98e81d2f",
+      "uploaded_revision": "main",
+      "weights_bytes": 711443456,
+      "weights_sha256": "e3b858ec20124b31e7ed1b07d83d3ccc90c7ae8cd3ca873dca6b3b5267b022ad"
+    },
+    {
+      "archive_commit": "1483e59b75cbcfda056d9e0dde5f27ea43e75762",
+      "dataset": "mixed_kaggle_plus_thar",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "274d7ddb2c6e9e5bb78a65270c884d7b78fac4608e62a5feb506f1b1b486921b",
+        "config.json": "0cab77b72ee178df7b5158fe9921b6bc68c53e85c9c5899e6256fd44a93ca91e",
+        "eval_metrics.json": "3a8184d8f31692cf9c263c01d12e2b29fa75eecbe3d92904ed0fbdbacbc8e946",
+        "evaluation_summary.json": "415d75e6f7baa6f1df1ea200b00f99e2372c70a06887fba3b6a5b563bc33cbc9",
+        "model.safetensors": "8a2cd1f5daf2f6fdd5b76fcb2b22aea9d1509b0fe51a4fc9370431913019d3be",
+        "release_metadata.json": "616f149e78929efdc63e344b519a8830d9fa82b9b1ee4f6e90fed9dcaa77a657",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "09d1880abab6108afb62e8fbfa3bb6d7e3fa8627a92116e66561b85cce1bf5b4",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.9352432489395142,
+            0.06475672870874405
+          ],
+          [
+            0.913329005241394,
+            0.08667101711034775
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "6fc349f62be476b96ab8a6a07baa7752ba3c56d8",
+      "public_metadata_commit": "3c75a1a960c7b70d16b88fc0770da953675ede46",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-mixed-kaggle-thar",
+      "seed": 42,
+      "source": "Models/mbert__train-mixed_kaggle_plus_thar__seed42__e2",
+      "stage": ".cache/hf-release/mbert__train-mixed_kaggle_plus_thar__seed42__e2",
+      "uploaded_commit": "6fc349f62be476b96ab8a6a07baa7752ba3c56d8",
+      "uploaded_revision": "main",
+      "weights_bytes": 711443456,
+      "weights_sha256": "8a2cd1f5daf2f6fdd5b76fcb2b22aea9d1509b0fe51a4fc9370431913019d3be"
+    },
+    {
+      "archive_commit": "3341eee1f0f02f1f14af9ba194bb445991b5cf97",
+      "dataset": "thar_religion",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "71dfaaee540074dd875d25df71c6a49171c7ab25af75d893bfe50d4dcf4e30c8",
+        "config.json": "1040da5cc1fd8d3c6d856e439e3d19a75a8d5d47fca2b4d3898972b2c429aacb",
+        "eval_metrics.json": "3458a3d43aaccc6f4244126e169e542b1c68698bb0345a6ee69e7848e015458e",
+        "evaluation_summary.json": "83ff9c17e6df1586a730f1645d5ec9cf91a585c9048ed2b3bb1fe3e3f1acbf76",
+        "model.safetensors": "7e893fde3ee3f893902b14d48411d59f0a2848b28bdd4e8fcc67bd010e1a16ab",
+        "release_metadata.json": "f415277cd6e327e17ba74d45b8199394fe57efb3dda7c7a6687831e7887321f2",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "4ca2fba90bf222ea7c6e970be7e9a671e330c3ca2780cef9abc1d0512bdb10ae",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.9635252356529236,
+            0.03647470474243164
+          ],
+          [
+            0.8890005350112915,
+            0.11099950224161148
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "6a6c1492b3d02213f117be6cde9a20b9d21f99fa",
+      "public_metadata_commit": "20fe95554743fc5551e56262771c1efea2446bf3",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-thar",
+      "seed": 13,
+      "source": "Models/mbert__train-thar_religion__seed13__e2",
+      "stage": ".cache/hf-release/mbert__train-thar_religion__seed13__e2",
+      "uploaded_commit": "6a6c1492b3d02213f117be6cde9a20b9d21f99fa",
+      "uploaded_revision": "seed-13",
+      "weights_bytes": 711443456,
+      "weights_sha256": "7e893fde3ee3f893902b14d48411d59f0a2848b28bdd4e8fcc67bd010e1a16ab"
+    },
+    {
+      "archive_commit": "6b25487fdf0fbe7568cffb857e5cb8356fd3b250",
+      "dataset": "thar_religion",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "e2da02ccc2d5b2400138fc7561a6769cdc0ec67d4069926b78ff92d03b1c1054",
+        "config.json": "1040da5cc1fd8d3c6d856e439e3d19a75a8d5d47fca2b4d3898972b2c429aacb",
+        "eval_metrics.json": "3e47032877152102a4e293f087aae81f36f51e525bbadbf642d1114e0b2cd092",
+        "evaluation_summary.json": "83ff9c17e6df1586a730f1645d5ec9cf91a585c9048ed2b3bb1fe3e3f1acbf76",
+        "model.safetensors": "faececcae7a787a6e3cb3c10f04c7484884c4662cc364f7dc47d669dbb8c4e30",
+        "release_metadata.json": "dfe76b41ad17675e9e578b3c52e466cd1f62134e8a39dc2fcf83486af6357c99",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "4a2913ed02501a98a87623291b36a45be39c5d53f221692324f26ce193e25e69",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.9275305867195129,
+            0.07246937602758408
+          ],
+          [
+            0.8797190189361572,
+            0.12028100341558456
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "62f834ffdddcbbe702ca5c3f3f92116063b29cc8",
+      "public_metadata_commit": "e9e3b1ec84db58924a41526b6fc1dcb79ce32363",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-thar",
+      "seed": 42,
+      "source": "Models/mbert__train-thar_religion__seed42__e2",
+      "stage": ".cache/hf-release/mbert__train-thar_religion__seed42__e2",
+      "uploaded_commit": "62f834ffdddcbbe702ca5c3f3f92116063b29cc8",
+      "uploaded_revision": "main",
+      "weights_bytes": 711443456,
+      "weights_sha256": "faececcae7a787a6e3cb3c10f04c7484884c4662cc364f7dc47d669dbb8c4e30"
+    },
+    {
+      "archive_commit": "4d9f1585a4c9f631c23a8e922012bf0d21358377",
+      "dataset": "thar_religion",
+      "family": "mbert",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "27a1cc6aeff86b4182165df3c6455e73b957cabf2c1424d34597c73f0541002d",
+        "README.md": "cf2ce05c586bcdc48c66559e31e0f78bcf8f73c66dc9bb3d8025c31a10067af4",
+        "config.json": "1040da5cc1fd8d3c6d856e439e3d19a75a8d5d47fca2b4d3898972b2c429aacb",
+        "eval_metrics.json": "f04de14a39f9acd7aff30a8768f4dea9965138aa95431b16c506bf2becdb29ce",
+        "evaluation_summary.json": "83ff9c17e6df1586a730f1645d5ec9cf91a585c9048ed2b3bb1fe3e3f1acbf76",
+        "model.safetensors": "ee2c0e7e486252efef30bb7e985f6aea1718ed520e2b666d987435a9d619e7bf",
+        "release_metadata.json": "2f95847ed5c173d6457dfd84fe75f24938c5347d9817a3d936cdb152999ec808",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "672146ee6867dc02a01c474090e237789f8a066ee7247bb2cb6c8688a27536a8",
+        "tokenizer_config.json": "1c441dfe412d9d7e47c960029a48a0159c23a38a9ab41b465d90fb1f520d4ced",
+        "training_metadata.json": "04c041ee43a5ab8bc533edd93f1ad9246376f14343eac184a62f31c9a73014cf",
+        "vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.9190883040428162,
+            0.08091171085834503
+          ],
+          [
+            0.8600709438323975,
+            0.13992908596992493
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "1bb499ddc838d990510437d1973c0428ff5a379c",
+      "public_metadata_commit": "129f2e2fd60dbf04fc4ca1a1775c9daad3b60342",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/mbert-hinglish-thar",
+      "seed": 7,
+      "source": "Models/mbert__train-thar_religion__seed7__e2",
+      "stage": ".cache/hf-release/mbert__train-thar_religion__seed7__e2",
+      "uploaded_commit": "1bb499ddc838d990510437d1973c0428ff5a379c",
+      "uploaded_revision": "seed-7",
+      "weights_bytes": 711443456,
+      "weights_sha256": "ee2c0e7e486252efef30bb7e985f6aea1718ed520e2b666d987435a9d619e7bf"
+    },
+    {
+      "archive_commit": "96d794eda5067f3a0a0d1ff7cb95b7553995003a",
+      "dataset": "cm_splits_codemixed",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "afe6d585355eb4594eefcb4c197e69c35891196f1409561bd167367db21d4eb8",
+        "config.json": "e6615c36316bf472c532a88caddc94fd3cc5329270f6ba51ce88c2a55fb3d414",
+        "eval_metrics.json": "af0e523de60b3a7ba7ba290a23ef3b98fbddfe2af7515b4c1029a7e1dc1358be",
+        "evaluation_summary.json": "69bca992ff86b1d8985ae10ed34a8d089b7bce212ee3017d4999af1cb31f791e",
+        "model.safetensors": "c19c044e71247ed2a97800f12aeeca9769194251a805dbca4f3d36a4f0cea2f2",
+        "release_metadata.json": "8813ed682ab459d463a6475e7330fc52591f5f7eb0ebba589f7d02b997963d8d",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "2d35b6c9855ada2244287937d0c9102bcb348ea959aafe6800b4b0d9e996429c",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.7972807884216309,
+            0.20271925628185272
+          ],
+          [
+            0.8022024035453796,
+            0.19779761135578156
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "2e6be8de0c5ccc5cc780675f1696f9aa47e010ea",
+      "public_metadata_commit": "7e3d606e31d5c7fd2ee9741e5ec4f7d8f3203308",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-cm",
+      "seed": 13,
+      "source": "Models/muril__train-cm_splits_codemixed__seed13__e2",
+      "stage": ".cache/hf-release/muril__train-cm_splits_codemixed__seed13__e2",
+      "uploaded_commit": "2e6be8de0c5ccc5cc780675f1696f9aa47e010ea",
+      "uploaded_revision": "seed-13",
+      "weights_bytes": 950254592,
+      "weights_sha256": "c19c044e71247ed2a97800f12aeeca9769194251a805dbca4f3d36a4f0cea2f2"
+    },
+    {
+      "archive_commit": "9c4ca9ca81f36f335ff066a44f76f5d2194125e1",
+      "dataset": "cm_splits_codemixed",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "ba5729633810f5ed073a8ed839d07e7e543e6a0cb206cadb0c892256be5842cf",
+        "config.json": "e6615c36316bf472c532a88caddc94fd3cc5329270f6ba51ce88c2a55fb3d414",
+        "eval_metrics.json": "bdf1b6ba3ef56fb01d3e1399d335def356f904c3d2fbb767e68c12b2c97ddd1c",
+        "evaluation_summary.json": "69bca992ff86b1d8985ae10ed34a8d089b7bce212ee3017d4999af1cb31f791e",
+        "model.safetensors": "9213e4010394e104dacf8fe5ba9a5ef533f89b430f38816793eabb1f7c24f414",
+        "release_metadata.json": "29cbab96dfb77c5a4d8697af54c2c3c925e8c294a8d29efaaa665fe059de789a",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "963dfffa8b7a0df06d0e9f1828183937946846826ff189f753bbc2ff103904b1",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.7607315182685852,
+            0.239268496632576
+          ],
+          [
+            0.7611936330795288,
+            0.23880642652511597
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "74f9de491cec80423129e7059e679915d753f3db",
+      "public_metadata_commit": "2b85b35de60086e6821012f9391d99244285134c",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-cm",
+      "seed": 42,
+      "source": "Models/muril__train-cm_splits_codemixed__seed42__e2",
+      "stage": ".cache/hf-release/muril__train-cm_splits_codemixed__seed42__e2",
+      "uploaded_commit": "74f9de491cec80423129e7059e679915d753f3db",
+      "uploaded_revision": "main",
+      "weights_bytes": 950254592,
+      "weights_sha256": "9213e4010394e104dacf8fe5ba9a5ef533f89b430f38816793eabb1f7c24f414"
+    },
+    {
+      "archive_commit": "94a1d6248f8a7d0a0c870d47593d2015dd9c233e",
+      "dataset": "cm_splits_codemixed",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "81dfa1fa554ad9c6bed9395c0fccbbb3cfd5f4e17b10a35887c49bcb7e61e4ab",
+        "config.json": "e6615c36316bf472c532a88caddc94fd3cc5329270f6ba51ce88c2a55fb3d414",
+        "eval_metrics.json": "9cfb98577b406098f77f230358d62214f2139ec705ca379b519712f894a33b5a",
+        "evaluation_summary.json": "69bca992ff86b1d8985ae10ed34a8d089b7bce212ee3017d4999af1cb31f791e",
+        "model.safetensors": "4fde7fa0618f92bc2d4fb67f57764ad22cf5796df1ebcdcd8037654cc76c7798",
+        "release_metadata.json": "83f976beb7a228b13158264eaa5a58dc84860f6e502fc3e4834db25783683098",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "995acaffd591381a5ca4870fa54d2489265202d524e8c0de3fa9942038e0353b",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.7686794400215149,
+            0.23132051527500153
+          ],
+          [
+            0.7688634991645813,
+            0.2311364859342575
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "3d730a452725d9debcdaa7d5ed6190cde75622f1",
+      "public_metadata_commit": "3f07e5836557d06c3d50ab72e860dc334ac9d4f8",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-cm",
+      "seed": 7,
+      "source": "Models/muril__train-cm_splits_codemixed__seed7__e2",
+      "stage": ".cache/hf-release/muril__train-cm_splits_codemixed__seed7__e2",
+      "uploaded_commit": "3d730a452725d9debcdaa7d5ed6190cde75622f1",
+      "uploaded_revision": "seed-7",
+      "weights_bytes": 950254592,
+      "weights_sha256": "4fde7fa0618f92bc2d4fb67f57764ad22cf5796df1ebcdcd8037654cc76c7798"
+    },
+    {
+      "archive_commit": "2ce2aa895b12ea461ad3c521926b0f4a036c5e01",
+      "dataset": "kaggle_hinglish_hate",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "55e80ea6c82503bd0a28a069dddcece5ddc9ccb7d5e32f7287298c0434545b52",
+        "config.json": "63f73f34d9d99b34f01ed08e0e8f288f529f8d35518298d19de18b7024732108",
+        "eval_metrics.json": "ca16c10c28fd13ec2b5b84c10eac5ddee7d419436664cbd7c1dd1d5cb5830b9d",
+        "evaluation_summary.json": "2d0298b866d8bede0c2a8d7e84fe7cc54f4afd37ceefa32e9dbff14d5ea2b209",
+        "model.safetensors": "d945ab8d087e144dd75db36f4c5b9e84cc99bcf05e5abbc3ee62f66067b15bb4",
+        "release_metadata.json": "509e00a0bb6795f5628d17779f2b7f6ae41e752da1aba925ce1da914774f82c0",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "095865790211269ae84b50a7556215eb9eaa5e2fef303b7ffbb993494c24f72b",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.6706326007843018,
+            0.32936742901802063
+          ],
+          [
+            0.6699125170707703,
+            0.33008748292922974
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "0ad1903eb013c5fe9b786b668b31b360a563b69f",
+      "public_metadata_commit": "568b0f86a77c9c3ef4f221228afc2e997136e42b",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-kaggle",
+      "seed": 13,
+      "source": "Models/muril__train-kaggle_hinglish_hate__seed13__e2",
+      "stage": ".cache/hf-release/muril__train-kaggle_hinglish_hate__seed13__e2",
+      "uploaded_commit": "0ad1903eb013c5fe9b786b668b31b360a563b69f",
+      "uploaded_revision": "seed-13",
+      "weights_bytes": 950254592,
+      "weights_sha256": "d945ab8d087e144dd75db36f4c5b9e84cc99bcf05e5abbc3ee62f66067b15bb4"
+    },
+    {
+      "archive_commit": "cd15c2269ffa9e1bd3c763deb569f5cdfc11d9ee",
+      "dataset": "kaggle_hinglish_hate",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "4e206e4c64d50844e2739f0430b505468f117c00aaa945eaa26ab96759bfe429",
+        "config.json": "63f73f34d9d99b34f01ed08e0e8f288f529f8d35518298d19de18b7024732108",
+        "eval_metrics.json": "a7808bb2090cc19cd83dc1505c718f9803e1f283d1053c49a2f8339bf9596ebd",
+        "evaluation_summary.json": "2d0298b866d8bede0c2a8d7e84fe7cc54f4afd37ceefa32e9dbff14d5ea2b209",
+        "model.safetensors": "49bfaace44a39721b3c974adf6d551f8d2a1ecb599b30d3c0b875fe751c11424",
+        "release_metadata.json": "0e1df9ae30761549685420072233dd142c4f0abbe3c9f032cfe31b379d25ee0c",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "3183a2b3e657b7ad5ce74059ae6e4d81e470754023b9af53da0e37a9a88a8303",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.6588879227638245,
+            0.3411121070384979
+          ],
+          [
+            0.6613234877586365,
+            0.33867648243904114
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "816653e68cb25aa0640f9f44b4ffda104a1c011c",
+      "public_metadata_commit": "b19b67ddeed37211f19f30510ae95d06ec041f90",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-kaggle",
+      "seed": 42,
+      "source": "Models/muril__train-kaggle_hinglish_hate__seed42__e2",
+      "stage": ".cache/hf-release/muril__train-kaggle_hinglish_hate__seed42__e2",
+      "uploaded_commit": "816653e68cb25aa0640f9f44b4ffda104a1c011c",
+      "uploaded_revision": "main",
+      "weights_bytes": 950254592,
+      "weights_sha256": "49bfaace44a39721b3c974adf6d551f8d2a1ecb599b30d3c0b875fe751c11424"
+    },
+    {
+      "archive_commit": "1b7c59649b88886f5496b7ab6f25c591f87bcf92",
+      "dataset": "kaggle_hinglish_hate",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "2ca358f61d4c7b018342d5d387abc2faa6b2d14e9312a8c3b43271bc6001d04f",
+        "config.json": "63f73f34d9d99b34f01ed08e0e8f288f529f8d35518298d19de18b7024732108",
+        "eval_metrics.json": "fcd1554361076bcd7ab5fc27c1f8600f8e52a36283b444e160027a588d76a359",
+        "evaluation_summary.json": "2d0298b866d8bede0c2a8d7e84fe7cc54f4afd37ceefa32e9dbff14d5ea2b209",
+        "model.safetensors": "ce5e646e4d3482bbd0bbb3293c6e7b47e5c0961bae9c70e60f551f1506a63fc2",
+        "release_metadata.json": "bb337f4c0061ac49d6673ccb82eae58c0e77fd8d991c35c5faee1094eb1ed879",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "8bf0c8abcc6e91d14225b165dfcbcce4f3156e6ccc2d1c122b211ad405591926",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.7220205664634705,
+            0.2779794931411743
+          ],
+          [
+            0.7219367027282715,
+            0.27806326746940613
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "c85710f06b72d31b411dfe722d469c6cfc9b0e60",
+      "public_metadata_commit": "dfc0ec2d53536b75cad429884f9250080cc23a1d",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-kaggle",
+      "seed": 7,
+      "source": "Models/muril__train-kaggle_hinglish_hate__seed7__e2",
+      "stage": ".cache/hf-release/muril__train-kaggle_hinglish_hate__seed7__e2",
+      "uploaded_commit": "c85710f06b72d31b411dfe722d469c6cfc9b0e60",
+      "uploaded_revision": "seed-7",
+      "weights_bytes": 950254592,
+      "weights_sha256": "ce5e646e4d3482bbd0bbb3293c6e7b47e5c0961bae9c70e60f551f1506a63fc2"
+    },
+    {
+      "archive_commit": "72c45a907390ae76b99d2617d58319e6820f4880",
+      "dataset": "mixed_all_three",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "bae32830bca0be86caf74c8f2ebabdfa95e2f7c0576c5ea6cd48b2118716b711",
+        "config.json": "4c9928e83a7ccb677f2d25871e3509b3c2e574dff565a6d8dfa46968f949796e",
+        "eval_metrics.json": "e3a559fea89f381afa82984a8c3d58b923443f308504618004bb7185fe8d9667",
+        "evaluation_summary.json": "6a7fdc47e3b5ca9ed5421e32f1b12c410ba06d89315863b954af6e9c76f6c2ff",
+        "model.safetensors": "e38609b401bd0d81baff1fed84318726f52db8b7981165d0e497a37c31937e05",
+        "release_metadata.json": "c84f556eacb3a8cf70a7b76ea92a06aa6fffe9597d3a76784f715a6d7a507eaf",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "8c734e6f519bdcd24e4de0edfd7335748320faa7cef8c6c2a2d2f68782aa9f43",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.8580910563468933,
+            0.1419089287519455
+          ],
+          [
+            0.858596920967102,
+            0.14140309393405914
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "e1a717bcd340457ff6dde2a7731e1e51511baf81",
+      "public_metadata_commit": "891179fef6320590cec160519e0a322d4cf84859",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-mixed-all-three",
+      "seed": 42,
+      "source": "Models/muril__train-mixed_all_three__seed42__e2",
+      "stage": ".cache/hf-release/muril__train-mixed_all_three__seed42__e2",
+      "uploaded_commit": "e1a717bcd340457ff6dde2a7731e1e51511baf81",
+      "uploaded_revision": "main",
+      "weights_bytes": 950254592,
+      "weights_sha256": "e38609b401bd0d81baff1fed84318726f52db8b7981165d0e497a37c31937e05"
+    },
+    {
+      "archive_commit": "2f51cc9d2c6da525fd8ac19e9c3d6f1ebfcba346",
+      "dataset": "mixed_cm_plus_thar",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "c22fe5a140745bdd1616ad7a3008cc906dc2f28a401ede488c977a5fb6908052",
+        "config.json": "4c9928e83a7ccb677f2d25871e3509b3c2e574dff565a6d8dfa46968f949796e",
+        "eval_metrics.json": "62b417e7109b6aa51c7125ae28bb82f67e4a22cc243e4c036550956bf778d94f",
+        "evaluation_summary.json": "8a85612ceafcfe1cdf62084a7122f611b6a401e6e3a8944fa495d44865a16696",
+        "model.safetensors": "51207f97b7b3eaaa985c6856479a6726d82faef9d2a527c7bb22dfff2f364a9d",
+        "release_metadata.json": "a944709501938a97e334a7fc0a291ce516a0d7c15450d688710aaec432de9a66",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "81ecb2aeb643ea761334411fb941b364c537b25601cc38964c85f41f9d9cdf37",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.554375946521759,
+            0.4456240236759186
+          ],
+          [
+            0.5543758273124695,
+            0.44562414288520813
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "7aae470fbf4c8cac658dbb9122642f1cac896b1a",
+      "public_metadata_commit": "0745b36e55c67c0af00e9cd59ffe134c7a4814ed",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-mixed-cm-thar",
+      "seed": 42,
+      "source": "Models/muril__train-mixed_cm_plus_thar__seed42__e2",
+      "stage": ".cache/hf-release/muril__train-mixed_cm_plus_thar__seed42__e2",
+      "uploaded_commit": "7aae470fbf4c8cac658dbb9122642f1cac896b1a",
+      "uploaded_revision": "main",
+      "weights_bytes": 950254592,
+      "weights_sha256": "51207f97b7b3eaaa985c6856479a6726d82faef9d2a527c7bb22dfff2f364a9d"
+    },
+    {
+      "archive_commit": "844f99be32c202b4f3c0431ee1c7ea0e1cee7d96",
+      "dataset": "mixed_kaggle_plus_cm",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "7f6f13a22a0952082a5a82d07adc841d256727bcf62e18901ed0808b6e18d63d",
+        "config.json": "4c9928e83a7ccb677f2d25871e3509b3c2e574dff565a6d8dfa46968f949796e",
+        "eval_metrics.json": "0382f9a02f593ba51c891bfd75c099f0ecd4fc2a1051eef32e6a265a805fb68f",
+        "evaluation_summary.json": "95fd376a83fe4fc7f4fd2ac550cff6d4217bc3922080669a7cb7a976d5ff8d66",
+        "model.safetensors": "20cc4d235608ad58e10a85da3a97c64fcb3ce67e151b5b3a231c52366699875c",
+        "release_metadata.json": "5121780e7b98ed72af3544864ff972387c739503f834e67bececf4b1250466a7",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "d9ab695c711ed2624f0d12ee04e90711d89089903f9cecf06f47b955fdfcaa4c",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.6464751958847046,
+            0.35352474451065063
+          ],
+          [
+            0.6459193229675293,
+            0.3540806472301483
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "7f225140867034862140f792d3d66a5949e08e4c",
+      "public_metadata_commit": "fe3884267129bf7cbc7245163be3c2392ee27830",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-mixed-kaggle-cm",
+      "seed": 42,
+      "source": "Models/muril__train-mixed_kaggle_plus_cm__seed42__e2",
+      "stage": ".cache/hf-release/muril__train-mixed_kaggle_plus_cm__seed42__e2",
+      "uploaded_commit": "7f225140867034862140f792d3d66a5949e08e4c",
+      "uploaded_revision": "main",
+      "weights_bytes": 950254592,
+      "weights_sha256": "20cc4d235608ad58e10a85da3a97c64fcb3ce67e151b5b3a231c52366699875c"
+    },
+    {
+      "archive_commit": "0d0529d7fb23c8259492e59c920a790414f1ddda",
+      "dataset": "mixed_kaggle_plus_thar",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "24cb6560a3d27361489dc7ac2e90192a3355045e5d4bb07f51f98dc9cc4fd5c1",
+        "config.json": "4c9928e83a7ccb677f2d25871e3509b3c2e574dff565a6d8dfa46968f949796e",
+        "eval_metrics.json": "d7dad14b4e6636d68a2e84d0655bda4ec7e6205f60402f1e96ffb0629d9b2b31",
+        "evaluation_summary.json": "b2c13bca41b81972a87b7e45edcb5bad09ac1c43d46d54b69ef5f50fbee7f2d7",
+        "model.safetensors": "9c61e99c94c2c37ec4959bff3432d96221c6608d0c54b811b582ba313fbc59ba",
+        "release_metadata.json": "f554fc68cf0f8da65122af0bd888f9d7c7fdb9eb732e9c8ecd0c4c792fb2df15",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "3e5501d38b8df5faeb223a066bc3eaeca0ecb5c58a2987096dc914c899b59e9c",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.8604326844215393,
+            0.13956734538078308
+          ],
+          [
+            0.8565070629119873,
+            0.14349287748336792
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "67b6d880f40a1d485f6c582781cff5438c11153f",
+      "public_metadata_commit": "423f8e57c5afbccd42ee4eb84ca947582030c048",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-mixed-kaggle-thar",
+      "seed": 42,
+      "source": "Models/muril__train-mixed_kaggle_plus_thar__seed42__e2",
+      "stage": ".cache/hf-release/muril__train-mixed_kaggle_plus_thar__seed42__e2",
+      "uploaded_commit": "67b6d880f40a1d485f6c582781cff5438c11153f",
+      "uploaded_revision": "main",
+      "weights_bytes": 950254592,
+      "weights_sha256": "9c61e99c94c2c37ec4959bff3432d96221c6608d0c54b811b582ba313fbc59ba"
+    },
+    {
+      "archive_commit": "007668755694b981440d950d399816ced6dc419f",
+      "dataset": "thar_religion",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "a67ffc7616223cf4770616cfe22fc33d497c1fda577b84d3977560e0f0e3e41b",
+        "config.json": "80e8a3cfb58a6704c8dda9983340f81d5753feed9c2f137f2c914f33c33a213b",
+        "eval_metrics.json": "3a2dd06159de66f663bd1686c236efe39debdb5c14da8314672aa761224d3103",
+        "evaluation_summary.json": "781e64c0f9285428bd57dedfd618ae79c8e481068ede7c9b9e5c3adf74f26d44",
+        "model.safetensors": "651d3fba50062265617cd0ec97979b0df5326e6140d81b0cdafb8668f45f1116",
+        "release_metadata.json": "a67bd56ed63d335c4690f0dfd9ccc9e335fb0f45a3c7100ef07e89d379fb95ed",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "2dbe3d356230fffa08cea3dc77ddf3dacb66f1c5c38639f8ca1ec12032758ffe",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.882034182548523,
+            0.11796579509973526
+          ],
+          [
+            0.8747627139091492,
+            0.12523727118968964
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "37dd0d3afc111b6b03c7edef467b5b111f853df8",
+      "public_metadata_commit": "c6419533f040efbcf7dd170fb480506ce0a6fe5a",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-thar",
+      "seed": 13,
+      "source": "Models/muril__train-thar_religion__seed13__e2",
+      "stage": ".cache/hf-release/muril__train-thar_religion__seed13__e2",
+      "uploaded_commit": "37dd0d3afc111b6b03c7edef467b5b111f853df8",
+      "uploaded_revision": "seed-13",
+      "weights_bytes": 950254592,
+      "weights_sha256": "651d3fba50062265617cd0ec97979b0df5326e6140d81b0cdafb8668f45f1116"
+    },
+    {
+      "archive_commit": "a12eeb8ebddb9a75c3564cdb32737bdb05ae845f",
+      "dataset": "thar_religion",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "79daf783cf5738b6837454f6c742db10a81500d884f677721b74f5bae59f95db",
+        "config.json": "80e8a3cfb58a6704c8dda9983340f81d5753feed9c2f137f2c914f33c33a213b",
+        "eval_metrics.json": "96f4a7309c301b8c3b41f181de3868a8355c3f92ab07f354c6e8d35e556fca3a",
+        "evaluation_summary.json": "781e64c0f9285428bd57dedfd618ae79c8e481068ede7c9b9e5c3adf74f26d44",
+        "model.safetensors": "5a5c3f83bcd07900e844b2d5034cc95f4da3987feb6ebd90d425e40fb7f4228d",
+        "release_metadata.json": "2bab8f33c640a3ee8f160e11e2aaaa64de18963c0cdfa58cf0dad2054572bb44",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "4405aa43da6c92c458e67bf502fca90f7026b4813f0301a1da2b6dcdb42e62ef",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.880310595035553,
+            0.11968937516212463
+          ],
+          [
+            0.8727460503578186,
+            0.127253919839859
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "f0846e1a9477f3f7757a529c2321f7c2a25db5e1",
+      "public_metadata_commit": "348b57719343c4d8b1ce292fe530508f5ed066a7",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-thar",
+      "seed": 42,
+      "source": "Models/muril__train-thar_religion__seed42__e2",
+      "stage": ".cache/hf-release/muril__train-thar_religion__seed42__e2",
+      "uploaded_commit": "f0846e1a9477f3f7757a529c2321f7c2a25db5e1",
+      "uploaded_revision": "main",
+      "weights_bytes": 950254592,
+      "weights_sha256": "5a5c3f83bcd07900e844b2d5034cc95f4da3987feb6ebd90d425e40fb7f4228d"
+    },
+    {
+      "archive_commit": "53519b51ba48f380da07ff4b54b8cd1f2e5c57af",
+      "dataset": "thar_religion",
+      "family": "muril",
+      "file_sha256": {
+        "BASE_MODEL_LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "BASE_MODEL_NOTICE.md": "63dbed190ebefb92425ad4184dfb5d2992de46645450f901cebb44e88d1b9e52",
+        "README.md": "c6443d88f1543a0e3f19ed014e8e34850174931c78a08ae1e3dc1302e476801a",
+        "config.json": "80e8a3cfb58a6704c8dda9983340f81d5753feed9c2f137f2c914f33c33a213b",
+        "eval_metrics.json": "d889c6b498f4ba050df804b47e0e20313a5dae55400567e8963e59c4aeb7bc69",
+        "evaluation_summary.json": "781e64c0f9285428bd57dedfd618ae79c8e481068ede7c9b9e5c3adf74f26d44",
+        "model.safetensors": "83bacfb47995045e6c47f78b7b892880562a6d8ae7963d4d267ad7cbddfd1c7f",
+        "release_metadata.json": "2dce9a338975de74b63b6ddeb2f32f6a8d58d540579be35be3e7c4acd6d4cb1d",
+        "requirements.txt": "f12935806664999f491471c2e07a9129bc6e192cd72737991e53e11ae18819a3",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "9513c0917e9c1673c3af00a3bd1f6e6f0239afdae7fbee68ba24b5d7786193ed",
+        "tokenizer_config.json": "60cdcfe669685583398df68f26113cc791e3fcf427a841f207ff2dd85ca067ee",
+        "training_metadata.json": "8ed0435712330f54ea177da30756e3b90509644a1d90f6e44d2e8f7d58927133",
+        "vocab.txt": "b96cc938b4009d063a605930cb82aef2c91ee52a94e94e6fcb78510d4ee5310b"
+      },
+      "local_validation": {
+        "probabilities": [
+          [
+            0.8793376684188843,
+            0.12066227942705154
+          ],
+          [
+            0.875366747379303,
+            0.12463323026895523
+          ]
+        ],
+        "status": "passed"
+      },
+      "presentation_commit": "d216d8610f7a090463342bc32abc195bf35603ef",
+      "public_metadata_commit": "8b2fb72ae940059074678a8ede6c3d4c4e184d0c",
+      "remote_verification": "passed: all file hashes and seed revision match; repository public (anonymous access verified)",
+      "repo_id": "OmTheLast/muril-hinglish-thar",
+      "seed": 7,
+      "source": "Models/muril__train-thar_religion__seed7__e2",
+      "stage": ".cache/hf-release/muril__train-thar_religion__seed7__e2",
+      "uploaded_commit": "d216d8610f7a090463342bc32abc195bf35603ef",
+      "uploaded_revision": "seed-7",
+      "weights_bytes": 950254592,
+      "weights_sha256": "83bacfb47995045e6c47f78b7b892880562a6d8ae7963d4d267ad7cbddfd1c7f"
+    }
+  ],
+  "collection_url": "https://huggingface.co/collections/OmTheLast/hinglish-research-mbert-vs-muril-6aa96a16ed03bba0e89e9408",
+  "excluded": [
+    "Models/mbert_model",
+    "Models/muril_model",
+    "Models/smoke_mbert_model"
+  ],
+  "owner": "OmTheLast",
+  "private": false,
+  "release_status": "verified_public_release",
+  "research_code_commit": "4650c6eb093d422785284656dd6765d36e438522",
+  "verified_at_utc": "2026-09-15T17:00:50.978132+00:00"
+}

@@ -1,0 +1,42 @@
+{
+  "verification_scope": "Full remote download and inference for one seed-42 CM checkpoint per model family; outputs match local validation at atol=1e-6. All 26 checkpoints passed local loading/inference; all-file remote verification is recorded separately in the release manifest.",
+  "runtime": {
+    "transformers": "4.57.6",
+    "torch": "2.12.1",
+    "safetensors": "0.8.0",
+    "huggingface-hub": "0.36.2",
+    "hf-xet": "1.5.1"
+  },
+  "remote_smoke_checks": [
+    {
+      "repo_id": "OmTheLast/mbert-hinglish-cm",
+      "revision": "d0bf0193e724a8a39cf8d5af702c035567d1a627",
+      "status": "passed",
+      "probabilities": [
+        [
+          0.9019818305969238,
+          0.0980181097984314
+        ],
+        [
+          0.3656909167766571,
+          0.6343090534210205
+        ]
+      ]
+    },
+    {
+      "repo_id": "OmTheLast/muril-hinglish-cm",
+      "revision": "9c4ca9ca81f36f335ff066a44f76f5d2194125e1",
+      "status": "passed",
+      "probabilities": [
+        [
+          0.7607315182685852,
+          0.239268496632576
+        ],
+        [
+          0.7611936330795288,
+          0.23880642652511597
+        ]
+      ]
+    }
+  ]
+}

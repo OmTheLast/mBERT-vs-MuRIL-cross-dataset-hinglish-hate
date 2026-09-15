@@ -1,0 +1,26 @@
+{
+  "checked_on": "2026-09-15",
+  "sources": [
+    {
+      "source": "https://github.com/aakash-dl/THAR",
+      "metadata_url": "https://api.github.com/repos/aakash-dl/THAR",
+      "detected_license": null,
+      "default_branch": "main"
+    },
+    {
+      "source": "https://github.com/shikharras/cm-hate-speech-detection",
+      "metadata_url": "https://api.github.com/repos/shikharras/cm-hate-speech-detection",
+      "detected_license": null,
+      "default_branch": "main"
+    },
+    {
+      "source": "https://www.kaggle.com/datasets/sharduldhekane/code-mixed-hinglish-hate-speech-detection-dataset",
+      "metadata_url": "https://www.kaggle.com/api/v1/datasets/view/sharduldhekane/code-mixed-hinglish-hate-speech-detection-dataset",
+      "license_fields": {
+        "licenseNameNullable": "MIT",
+        "licenseName": "MIT",
+        "hasLicenseName": true
+      }
+    }
+  ]
+}

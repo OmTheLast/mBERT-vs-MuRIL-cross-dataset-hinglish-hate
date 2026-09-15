@@ -1,0 +1,10 @@
+{
+  "checkpoint_count": 26,
+  "description": "26 research checkpoints comparing mBERT and MuRIL across Hinglish datasets, training mixtures, and random seeds.",
+  "model_count": 14,
+  "private": false,
+  "slug": "OmTheLast/hinglish-research-mbert-vs-muril-6aa96a16ed03bba0e89e9408",
+  "title": "Hinglish Hate Speech: mBERT vs MuRIL",
+  "url": "https://huggingface.co/collections/OmTheLast/hinglish-research-mbert-vs-muril-6aa96a16ed03bba0e89e9408",
+  "verified": true
+}

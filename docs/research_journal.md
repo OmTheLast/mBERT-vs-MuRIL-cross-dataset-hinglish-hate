@@ -1191,3 +1191,23 @@ Changes made:
 - Replaced the long AI-assistance section in `paper/application_research_draft.md` with a short `Tools Note`.
 - Reduced `docs/ai_assistance_and_student_responsibility.md` to the one-line tools note plus an oral-defense responsibility reminder.
 - Updated `paper/build_paper_pdf.py` so regenerated paper PDFs use the concise `Tools Note` wording.
+
+## Hugging Face Private Archive On 2026-09-15
+
+- Uploaded 26 named experiment checkpoints to 14 private repositories under `OmTheLast`, grouped in the private Hugging Face collection linked from `docs/huggingface_release.md`.
+- Preserved seeds 7, 13 and 42 where available; `main` defaults to seed 42. Initial/debug checkpoints were excluded.
+- Exported model cards, tokenizers, readable class labels, saved evaluation results, training metadata and SHA-256 provenance. Original checkpoint files were not edited.
+- Reconstructed missing metadata for the two seed-42 Kaggle exports, distinguishing recorded settings from historical defaults.
+- All 26 exports passed local loading/inference checks and remote file-hash/revision verification. One checkpoint from each model family also passed a full remote download/inference comparison.
+- Cards disclose split changes across Kaggle/THAR seeds, reuse of evaluation data for best-epoch selection, label mismatch, and the two MuRIL mixture failure cases. The 79-row diagnostic probe is excluded from primary results.
+- Public-release licensing remains under review. Kaggle metadata lists MIT; CM and THAR repositories have no detected license in the recorded source check.
+- Release script, completion manifest, collection record, runtime validation and source-license observations are saved locally under `scripts/` and `docs/`.
+
+## Public Release and Repository Presentation On 2026-09-15
+
+- Made the collection and all 14 model repositories public and ungated; preserved all 26 checkpoints and named seed revisions.
+- Added upstream base-model license text and attribution while retaining the documented uncertainty around fine-tuned-model and training-source licensing.
+- Shortened both GitHub research overviews and About descriptions, with links between the earlier baseline, expanded comparison and public model collection.
+- Moved setup and experiment commands into `docs/running_experiments.md`; retained results, evaluation caveats and reproducibility links in the main README.
+- Updated the collection title and summary; model cards now show a concise overview and score table, with expandable loading, evaluation and provenance sections.
+- Preserved original weights and tracked metadata-only release commits in the manifest. Final public revision and file-hash checks are recorded per checkpoint.
