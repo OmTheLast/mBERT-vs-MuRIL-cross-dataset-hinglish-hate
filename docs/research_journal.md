@@ -1218,6 +1218,28 @@ Changes made:
 - Updated `docs/dataset_registry.md` with current citation and permission status.
 - Updated `paper/references.bib` with the THAR author list available from public metadata.
 
+## Manuscript Claim-Strength Cleanup On 2026-10-04
+
+Purpose:
+
+- Incorporate review feedback before any public/arXiv-facing draft.
+- Make `paper/application_research_draft.md` the authoritative manuscript and bring stale LaTeX/PDF sources closer to it.
+- Remove public-facing drafting instructions and soften claims that sounded causal or statistically stronger than the evidence supports.
+
+Changes made:
+
+- Replaced broad `wins`, `outperforms`, and `performs better` wording in the main manuscript with `higher observed scores under this setup` style language.
+- Added the limitation that the experiments do not isolate whether script, platform, topic, label definition, or source balance caused each model difference.
+- Clarified internally and publicly that an untouched final test set is recommended for stronger evidence, not a universal arXiv submission requirement.
+- Converted the manual-error-example TODO into a limitation rather than leaving it as an instruction inside the manuscript.
+- Updated `paper/main.tex`, `paper/overleaf_self_contained.tex`, and PDF builders so the paper-facing outputs no longer describe mixed-dataset training as future work.
+
+Interpretation impact:
+
+- The result story did not change: mBERT has higher observed matched scores on Kaggle and a small observed advantage on CM; MuRIL has higher observed matched scores on THAR.
+- The claim strength changed: CM/THAR gaps should be treated as observed differences, not statistically established reliable superiority, until confidence intervals or significance tests are added.
+- Cross-dataset robustness remains the central finding, but causal explanations remain hypotheses rather than proven mechanisms.
+
 ## Hugging Face Private Archive On 2026-09-15
 
 - Uploaded 26 named experiment checkpoints to 14 private repositories under `OmTheLast`, grouped in the private Hugging Face collection linked from `docs/huggingface_release.md`.

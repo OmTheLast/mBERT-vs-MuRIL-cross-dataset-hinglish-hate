@@ -6,7 +6,7 @@ Working Paper Draft v0.4: 2026-10-04
 
 Does Indian-language-specific pretraining in MuRIL make it more effective than general multilingual mBERT for Hinglish and Hindi-English code-mixed harmful-speech detection?
 
-Current answer: not universally. Model ranking depends on dataset situation. mBERT performs better on matched Kaggle Hinglish hate and CM code-mixed/offensive settings, while MuRIL performs better on THAR targeted religious hate.
+Current answer: not universally. Model ranking depends on dataset situation. mBERT has higher observed scores on matched Kaggle Hinglish hate and a small observed advantage on CM code-mixed/offensive settings, while MuRIL has higher observed scores on THAR targeted religious hate.
 
 ## Datasets
 
@@ -29,15 +29,15 @@ The 79-row benchmark is excluded from primary conclusions because its provenance
 
 Matched multi-seed results use seeds `7`, `13`, and `42`.
 
-| Dataset | Better model | mBERT Macro F1 | MuRIL Macro F1 | Interpretation |
+| Dataset | Higher observed Macro F1 | mBERT Macro F1 | MuRIL Macro F1 | Interpretation |
 |---|---|---:|---:|---|
-| Kaggle Hinglish Hate | mBERT | 67.5 +/- 2.1 | 58.1 +/- 5.7 | mBERT clear win; MuRIL misses many positives |
+| Kaggle Hinglish Hate | mBERT | 67.5 +/- 2.1 | 58.1 +/- 5.7 | mBERT has a clear observed advantage; MuRIL misses many positives |
 | CM Code-mixed | mBERT, narrow | 77.7 +/- 1.9 | 76.1 +/- 2.3 | Both competitive; labels are offense-like |
-| THAR Religion | MuRIL | 74.7 +/- 0.1 | 76.5 +/- 1.3 | MuRIL wins targeted religious hate |
+| THAR Religion | MuRIL | 74.7 +/- 0.1 | 76.5 +/- 1.3 | MuRIL has the higher observed score on targeted religious hate |
 
 ## Main Claim
 
-The project's strongest claim is conditional: dataset label definition, platform, topic, script mix, and train/test match affect which model performs better. Cross-dataset robustness is weak, and this weakness is itself a core finding.
+The project's strongest claim is conditional: dataset label definition, platform, topic, script mix, and train/test match affect which model has higher observed scores. Cross-dataset robustness is weak, and this weakness is itself a core finding. The experiments do not isolate which factor causes each difference.
 
 ## Limitations
 
@@ -45,6 +45,7 @@ The project's strongest claim is conditional: dataset label definition, platform
 - Hate, offensive, and AntiReligion labels are related but not interchangeable.
 - Kaggle metadata lists MIT, while CM and THAR repositories have no GitHub-detected license; raw CM/THAR data should not be redistributed without further permission review.
 - Reported matched scores are selection-set scores because the same evaluation split was used for best-epoch selection.
+- Small CM/THAR model gaps are observed differences under this setup, not statistically established superiority.
 - Manual error analysis needs more polished, anonymized examples before final sharing.
 - Hyperparameters were controlled rather than extensively tuned.
 

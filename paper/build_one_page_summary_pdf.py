@@ -128,7 +128,7 @@ def build_pdf():
         paragraph(
             "Does Indian-language-specific pretraining in MuRIL improve hate/offensive speech detection for "
             "Hinglish and Hindi-English code-mixed text compared with general multilingual pretraining in mBERT? "
-            "Current evidence says the answer is conditional: the better model changes with dataset situation.",
+            "Current evidence says the answer is conditional: the model with the higher observed score changes with dataset situation.",
             body,
         )
     )
@@ -169,10 +169,10 @@ def build_pdf():
 
     story.append(paragraph("Main Matched Multi-Seed Result", heading))
     result_data = [
-        ["Dataset", "Better model", "mBERT Macro F1", "MuRIL Macro F1", "Meaning"],
-        ["Kaggle", "mBERT", "67.5 +/- 2.1", "58.1 +/- 5.7", "mBERT clear win; MuRIL misses more positives"],
+        ["Dataset", "Higher observed", "mBERT Macro F1", "MuRIL Macro F1", "Meaning"],
+        ["Kaggle", "mBERT", "67.5 +/- 2.1", "58.1 +/- 5.7", "mBERT has clear observed advantage"],
         ["CM", "mBERT narrow", "77.7 +/- 1.9", "76.1 +/- 2.3", "both competitive; labels are offense-like"],
-        ["THAR", "MuRIL", "74.7 +/- 0.1", "76.5 +/- 1.3", "MuRIL wins targeted religious hate"],
+        ["THAR", "MuRIL", "74.7 +/- 0.1", "76.5 +/- 1.3", "MuRIL has higher observed score"],
     ]
     result_table = Table(result_data, colWidths=[24 * mm, 29 * mm, 29 * mm, 29 * mm, 55 * mm], repeatRows=1)
     result_table.setStyle(
@@ -198,10 +198,10 @@ def build_pdf():
     story.append(paragraph("Current Interpretation", heading))
     story.append(
         paragraph(
-            "The central evidence is that model ranking changes by dataset: mBERT wins Kaggle, mBERT narrowly wins CM, "
-            "and MuRIL wins THAR. Cross-dataset robustness is weak, so hate, offensive, and AntiReligion labels must "
-            "not be treated as interchangeable. The 79-row benchmark remains excluded from primary claims because its "
-            "provenance is uncertain.",
+            "The central evidence is that model ranking changes by dataset: mBERT has higher observed scores on Kaggle "
+            "and a small observed advantage on CM, while MuRIL has higher observed scores on THAR. Cross-dataset "
+            "robustness is weak, so hate, offensive, and AntiReligion labels must not be treated as interchangeable. "
+            "The experiments do not isolate which dataset factor causes each difference.",
             body,
         )
     )
@@ -211,7 +211,7 @@ def build_pdf():
     story.append(paragraph("- Label definitions differ across datasets, which limits universal model-superiority claims.", bullet))
     story.append(paragraph("- Kaggle metadata lists MIT; CM and THAR have no GitHub-detected license, so raw CM/THAR text should not be redistributed without further permission review.", bullet))
     story.append(paragraph("- Reported matched scores are selection-set scores because best epoch was chosen using the same evaluation split.", bullet))
-    story.append(paragraph("- More manual error examples are needed to explain failure modes in the final draft.", bullet))
+    story.append(paragraph("- Small CM/THAR gaps are observed differences under this setup, not statistically established superiority.", bullet))
 
     story.append(paragraph("Feedback Requested", heading))
     story.append(

@@ -33,6 +33,10 @@ def pct(value):
     return f"{value:.1f}%"
 
 
+def pct_pm(mean_value, std_value):
+    return f"{pct(mean_value)} +/- {pct(std_value)}"
+
+
 def clean_label(value):
     aliases = {
         "kaggle_hinglish_hate": "Kaggle Hinglish",
@@ -202,18 +206,18 @@ def add_figure(story, rel_path, caption, max_width=6.3 * inch, max_height=3.6 * 
 
 
 def matched_rows():
-    df = pd.read_csv(ROOT / "results" / "result_analysis" / "primary_matched_transformer_results.csv")
+    df = pd.read_csv(ROOT / "results" / "multiseed" / "matched_multiseed_summary.csv")
     rows = []
     for _, r in df.iterrows():
         rows.append(
             [
-                clean_label(r["test_dataset"]),
+                clean_label(r["train_dataset"]),
                 str(r["model"]).upper() if r["model"] == "muril" else "mBERT",
-                pct(r["accuracy"]),
-                pct(r["recall_positive"]),
-                pct(r["f1_positive"]),
-                pct(r["f1_macro"]),
-                f'{int(r["tn"])}/{int(r["fp"])}/{int(r["fn"])}/{int(r["tp"])}',
+                pct_pm(r["accuracy_mean"], r["accuracy_std"]),
+                pct_pm(r["recall_hate_mean"], r["recall_hate_std"]),
+                pct_pm(r["f1_hate_mean"], r["f1_hate_std"]),
+                pct_pm(r["f1_macro_mean"], r["f1_macro_std"]),
+                str(r["seeds"]),
             ]
         )
     return rows
@@ -323,10 +327,12 @@ def build_story():
             "across platform, topic, and annotation policy. This project compares mBERT, a general multilingual "
             "BERT model, with MuRIL, an Indian-language-focused model, for binary hate/offensive speech detection "
             "across multiple Hindi-English code-mixed dataset situations. Current experiments show that neither "
-            "model is universally superior. mBERT performs better on matched Latin-script Hinglish and code-mixed "
-            "offensive datasets, while MuRIL performs better on targeted religious hate and several THAR-related "
-            "transfer settings. Cross-dataset evaluation reveals substantial generalization gaps and shows that "
-            "TF-IDF baselines remain competitive in some transfer conditions.",
+            "model is universally superior. mBERT has higher observed scores on matched Latin-script Hinglish and "
+            "a small observed advantage on code-mixed offensive data, while MuRIL has higher observed scores on "
+            "targeted religious hate and several THAR-related transfer settings. Cross-dataset evaluation reveals "
+            "substantial generalization gaps and shows that TF-IDF baselines remain competitive in some transfer "
+            "conditions. These experiments do not isolate whether script, platform, topic, or label policy causes "
+            "each difference.",
         )
     )
 
@@ -342,8 +348,8 @@ def build_story():
     story.append(
         bullets(
             [
-                "mBERT is stronger on matched Kaggle Hinglish hate and CM code-mixed offensive evaluation.",
-                "MuRIL is stronger on matched THAR targeted religious hate and on several THAR-related transfer settings.",
+                "mBERT has higher observed scores on matched Kaggle Hinglish hate and a small observed advantage on CM code-mixed offensive evaluation.",
+                "MuRIL has higher observed scores on matched THAR targeted religious hate and on several THAR-related transfer settings.",
                 "Every primary test dataset is best served by an in-domain model, showing that cross-dataset robustness is limited.",
                 "TF-IDF baselines are competitive in several settings, so transformer performance must be interpreted against lexical baselines.",
             ]
@@ -405,9 +411,10 @@ def build_story():
     story.append(
         P(
             "The transformer experiments compare bert-base-multilingual-cased for mBERT and google/muril-base-cased "
-            "for MuRIL. Each model is fine-tuned as a binary sequence classifier. The controlled checkpoints use seed "
-            "42, two training epochs, maximum sequence length 128, learning rate 2e-5, and minimal URL/user normalization. "
-            "For datasets without an official split, a stratified 80/20 split is used. For CM, source-provided splits are used."
+            "for MuRIL. Each model is fine-tuned as a binary sequence classifier. Matched results use seeds 7, 13, and 42; "
+            "most transfer and mixed-training results use seed 42 as exploratory evidence. The shared training configuration "
+            "uses two epochs, maximum sequence length 128, learning rate 2e-5, and minimal URL/user normalization. For datasets "
+            "without an official split, a stratified 80/20 split is used. For CM, source-provided splits are used."
         )
     )
     story.append(
@@ -425,13 +432,13 @@ def build_story():
                 ["Models", "bert-base-multilingual-cased; google/muril-base-cased"],
                 ["Primary datasets", "Kaggle Hinglish; CM code-mixed; THAR religion"],
                 ["Split policy", "Stratified 80/20 where needed; CM source split used"],
-                ["Seed", "42 for current controlled transformer runs"],
-                ["Epochs", "2"],
+                ["Seeds", "7, 13, and 42 for matched multi-seed results; 42 for most transfer and mixed-training runs"],
+                ["Epochs", "2; best epoch selected by Macro F1 on the reported evaluation split"],
                 ["Max sequence length", "128"],
                 ["Learning rate", "2e-5"],
                 ["Baselines", "TF-IDF + logistic regression; TF-IDF + linear SVM"],
                 ["Hardware/scripts", "Device-specific wrappers for Mac MPS, CPU/debug, and CUDA/Colab"],
-                ["Known rigor gap", "Multi-seed runs and confidence intervals are still pending"],
+                ["Known rigor gap", "Transfer/mixed results are mostly single-seed; confidence intervals or bootstrap intervals are still pending"],
             ],
             widths=[1.8 * inch, 4.6 * inch],
         )
@@ -439,8 +446,9 @@ def build_story():
     story.append(
         P(
             "Two epochs were chosen as a controlled first-pass setting so every model/dataset condition could be compared under "
-            "the same budget. This is not a claim that two epochs are optimal. Future versions should use multi-seed runs, validation "
-            "curves, and possibly early stopping."
+            "the same budget. This is not a claim that two epochs are optimal. The reported matched scores are selection-set scores "
+            "because the same evaluation split was used for best-epoch selection. An untouched final test set is not a universal "
+            "arXiv requirement, but it would be needed for stronger generalization claims."
         )
     )
 
@@ -448,20 +456,22 @@ def build_story():
     story.append(
         P(
             "Matched evaluation means that a model is trained and tested within the same dataset situation. This is the "
-            "cleanest setting for measuring how well each pretrained model adapts to a specific dataset."
+            "cleanest setting for measuring how well each pretrained model adapts to a specific dataset. The table reports "
+            "means and sample standard deviations across seeds 7, 13, and 42."
         )
     )
     story.append(
         table_from_rows(
-            ["Test dataset", "Model", "Acc.", "Pos. recall", "Pos. F1", "Macro F1", "TN/FP/FN/TP"],
+            ["Test dataset", "Model", "Acc.", "Pos. recall", "Pos. F1", "Macro F1", "Seeds"],
             matched_rows(),
             widths=[1.35 * inch, 0.5 * inch, 0.5 * inch, 0.65 * inch, 0.55 * inch, 0.6 * inch, 1.0 * inch],
         )
     )
     story.append(
         P(
-            "Interpretation: mBERT wins the matched Kaggle and CM conditions, while MuRIL wins the matched THAR condition. "
-            "This is the first major reason the paper should avoid claiming a universal winner."
+            "Interpretation: mBERT has higher observed scores on the matched Kaggle condition and a small observed advantage "
+            "on CM, while MuRIL has higher observed scores on matched THAR. CM and THAR gaps are small relative to the limited "
+            "seed count, so they should not be described as statistically established superiority."
         )
     )
     add_figure(story, "results/result_analysis/transformer_primary_macro_f1_matrix.png", "Figure 4. Primary transformer macro F1 matrix.")
@@ -483,7 +493,7 @@ def build_story():
     )
     story.append(
         P(
-            "MuRIL becomes stronger in THAR-related transfer, especially CM-to-THAR and THAR-to-CM. However, both models "
+            "MuRIL has higher observed scores in THAR-related transfer, especially CM-to-THAR and THAR-to-CM. However, both models "
             "transfer poorly between broad Hinglish hate and targeted religious hate. Kaggle-trained models are very "
             "conservative on THAR, while THAR-trained models do not become general Hinglish hate detectors."
         )
@@ -549,9 +559,10 @@ def build_story():
         bullets(
             [
                 "The project should claim conditional model behavior, not absolute model superiority.",
-                "mBERT's strengths appear in mostly Latin-script Hinglish and offensive/code-mixed settings.",
-                "MuRIL's strengths appear in targeted religious hate and some Indian-context transfer settings.",
+                "mBERT's higher observed scores appear in mostly Latin-script Hinglish and offensive/code-mixed settings.",
+                "MuRIL's higher observed scores appear in targeted religious hate and some Indian-context transfer settings.",
                 "Dataset label meaning is a major confound: hate, offense, and AntiReligion are related but not interchangeable.",
+                "The current experiments do not isolate script, platform, topic, label definition, or source balance as causal factors.",
                 "Cross-dataset failure is not noise; it is a core research result showing weak robustness across dataset situations.",
                 "TF-IDF competitiveness implies that lexical shortcuts and dataset-specific words are part of the story.",
             ]
@@ -573,12 +584,13 @@ def build_story():
         )
     )
 
-    story.append(P("11. Next Experimental Step", "Section"))
+    story.append(P("11. Remaining Work For Stronger Evidence", "Section"))
     story.append(
         P(
-            "The next stage is mixed-dataset training. The project should train mBERT and MuRIL on Kaggle+CM, Kaggle+THAR, "
-            "CM+THAR, and Kaggle+CM+THAR, then evaluate each checkpoint separately on every primary dataset. This will show "
-            "whether broader training improves robustness or simply mixes incompatible label definitions."
+            "Mixed-dataset training has been completed for Kaggle+CM, Kaggle+THAR, CM+THAR, and Kaggle+CM+THAR under the "
+            "current single-seed exploratory setup. The next strengthening step is not to claim those results as final, but "
+            "to repeat selected mixed and transfer conditions across seeds, add confidence intervals or bootstrap intervals, "
+            "and add a validation/test protocol that separates model selection from final evaluation."
         )
     )
     story.append(P("Tools Note", "Section"))

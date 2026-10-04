@@ -8,7 +8,7 @@ Author: Om Patnaik
 
 ## Abstract
 
-Hinglish and Hindi-English code-mixed harmful-speech detection is difficult because online text varies across language, script, platform, topic, and annotation policy. This project compares mBERT, a general multilingual BERT model, with MuRIL, an Indian-language-focused model, for binary harmful-speech classification across three dataset situations: a Kaggle Hinglish hate subset, a CM code-mixed offensive dataset, and THAR targeted religious hate. The strongest evidence comes from matched multi-seed experiments using seeds `7`, `13`, and `42`: mBERT outperforms MuRIL on Kaggle Hinglish hate, mBERT narrowly outperforms MuRIL on CM code-mixed/offensive data, and MuRIL outperforms mBERT on THAR targeted religious hate. Cross-dataset, TF-IDF baseline, and mixed-training results show that label definition, platform, topic, and script mix strongly affect model behavior. The central claim is therefore conditional rather than universal: neither mBERT nor MuRIL is globally better for Hinglish harmful-speech detection under the current evidence.
+Hinglish and Hindi-English code-mixed harmful-speech detection is difficult because online text varies across language, script, platform, topic, and annotation policy. This project compares mBERT, a general multilingual BERT model, with MuRIL, an Indian-language-focused model, for binary harmful-speech classification across three dataset situations: a Kaggle Hinglish hate subset, a CM code-mixed offensive dataset, and THAR targeted religious hate. The strongest evidence comes from matched multi-seed experiments using seeds `7`, `13`, and `42`: mBERT has higher observed Macro F1 than MuRIL on Kaggle Hinglish hate, mBERT has a small observed advantage on CM code-mixed/offensive data, and MuRIL has higher observed Macro F1 on THAR targeted religious hate. Cross-dataset, TF-IDF baseline, and mixed-training results show that label definition, platform, topic, and script mix affect model behavior under this setup. The experiments do not isolate whether script, platform, topic, or label policy causes each difference. The central claim is therefore conditional rather than universal: neither mBERT nor MuRIL is globally better for Hinglish harmful-speech detection under the current evidence.
 
 ## 1. Introduction
 
@@ -26,9 +26,9 @@ The main research question is:
 
 The current answer is conditional:
 
-- mBERT performs better on the matched Kaggle Hinglish hate condition.
-- mBERT narrowly performs better on the matched CM code-mixed/offensive condition.
-- MuRIL performs better on the matched THAR targeted religious-hate condition.
+- mBERT has higher observed scores on the matched Kaggle Hinglish hate condition.
+- mBERT has a small observed advantage on the matched CM code-mixed/offensive condition.
+- MuRIL has higher observed scores on the matched THAR targeted religious-hate condition.
 - Cross-dataset and mixed-training results show that label definition and dataset domain strongly affect model behavior.
 
 This framing is meant to support a cautious application research paper: the contribution is not a new model architecture, but a careful comparison showing that evaluation conditions can reverse model rankings.
@@ -64,7 +64,7 @@ The CM dataset contains Indian politics and social-media text from Twitter/X. It
 
 ### 4.3 THAR Targeted Religious Hate
 
-THAR is a targeted religious-hate dataset from YouTube comments. Its positive class is `AntiReligion`, not general hate or general offensive language. The processed file contains 11,549 rows, with 6,095 negatives and 5,454 positives. THAR is narrower than the other datasets, but that narrowness is methodologically useful because it tests whether MuRIL performs better in a targeted Indian-language harmful-speech situation.
+THAR is a targeted religious-hate dataset from YouTube comments. Its positive class is `AntiReligion`, not general hate or general offensive language. The processed file contains 11,549 rows, with 6,095 negatives and 5,454 positives. THAR is narrower than the other datasets, but that narrowness is methodologically useful because it tests whether MuRIL has higher observed scores in a targeted Indian-language harmful-speech situation.
 
 ### 4.4 Diagnostic 79-Row Probe
 
@@ -98,7 +98,7 @@ Transformer training used a controlled first-pass configuration:
 | Batch size on Mac MPS | 8 |
 | Matched multi-seed seeds | 7, 13, 42 |
 
-Two epochs were used as a controlled first-pass setting across model/dataset combinations. The project prioritized comparable coverage across matched, cross-dataset, and mixed-training conditions over extensive hyperparameter tuning. The training script evaluates and saves the best epoch using Macro F1 on the same matched evaluation split reported in the tables. Therefore, the matched numbers should be interpreted as selection-set performance, not as results on a separate untouched final test set. This matters most for arXiv/paper wording: the results support comparative trends and dataset-situation analysis, but should not be framed as final blind-test generalization estimates. Future work should add a separate held-out test set or nested validation protocol, validation-based early stopping, additional epoch counts, threshold tuning, and class weighting.
+Two epochs were used as a controlled first-pass setting across model/dataset combinations. The project prioritized comparable coverage across matched, cross-dataset, and mixed-training conditions over extensive hyperparameter tuning. The training script evaluates and saves the best epoch using Macro F1 on the same matched evaluation split reported in the tables. Therefore, the matched numbers should be interpreted as selection-set performance, not as results on a separate untouched final test set. This matters most for arXiv/paper wording: the results support comparative trends and dataset-situation analysis, but should not be framed as final blind-test generalization estimates. An untouched final test set is not a universal arXiv requirement, but it would be needed for stronger generalization claims. Future work should add a separate held-out test set or nested validation protocol, validation-based early stopping, additional epoch counts, threshold tuning, and class weighting.
 
 The primary metric is Macro F1 because it averages performance across both classes and is less misleading than accuracy under class imbalance. Positive recall is also tracked because false negatives are harmful examples that the model misses. In harmful-speech detection, a high false-negative rate means the system is too hesitant to flag harmful content.
 
@@ -108,13 +108,13 @@ The primary metric is Macro F1 because it averages performance across both class
 
 The matched multi-seed results are the strongest evidence in the repository because they repeat the primary matched comparison across seeds `7`, `13`, and `42`. They are still selection-set results because the reported evaluation split also guided best-epoch choice.
 
-| Dataset | Better model | mBERT Macro F1 | MuRIL Macro F1 | mBERT positive recall | MuRIL positive recall | Interpretation |
+| Dataset | Higher observed Macro F1 | mBERT Macro F1 | MuRIL Macro F1 | mBERT positive recall | MuRIL positive recall | Interpretation |
 |---|---|---:|---:|---:|---:|---|
 | `kaggle_hinglish_hate` | mBERT | 67.5 +/- 2.1 | 58.1 +/- 5.7 | 46.9 +/- 8.5 | 25.1 +/- 8.5 | mBERT has a clear matched advantage; MuRIL misses many positives |
-| `cm_splits_codemixed` | mBERT, narrowly | 77.7 +/- 1.9 | 76.1 +/- 2.3 | 70.7 +/- 1.3 | 64.4 +/- 8.3 | both are competitive; mBERT is slightly stronger and more stable |
-| `thar_religion` | MuRIL | 74.7 +/- 0.1 | 76.5 +/- 1.3 | 79.3 +/- 2.0 | 79.7 +/- 0.6 | MuRIL wins targeted religious hate across seeds |
+| `cm_splits_codemixed` | mBERT, narrowly | 77.7 +/- 1.9 | 76.1 +/- 2.3 | 70.7 +/- 1.3 | 64.4 +/- 8.3 | both are competitive; mBERT has a small observed advantage |
+| `thar_religion` | MuRIL | 74.7 +/- 0.1 | 76.5 +/- 1.3 | 79.3 +/- 2.0 | 79.7 +/- 0.6 | MuRIL has the higher observed score on targeted religious hate |
 
-These results do not support a universal winner. They show that mBERT is stronger on the Latin-script-heavy Kaggle condition and narrowly stronger on CM, while MuRIL is stronger on targeted religious hate. For Kaggle and THAR, different seeds also change the stratified split membership, so the standard deviations combine training randomness and split variation. CM uses the fixed source split.
+These results do not support a universal winner. They show that mBERT has higher observed scores on the Latin-script-heavy Kaggle condition and a small observed advantage on CM, while MuRIL has higher observed scores on targeted religious hate. For Kaggle and THAR, different seeds also change the stratified split membership, so the standard deviations combine training randomness and split variation. CM uses the fixed source split. The CM and THAR gaps are small relative to the limited seed count, and this draft does not report confidence intervals or statistical significance tests. They should therefore be treated as observed differences under this setup, not as established reliable superiority.
 
 ### 7.2 Cross-Dataset Results
 
@@ -154,7 +154,7 @@ Mixed-training results are currently single-seed evidence. They should be presen
 |---|---|---|---|
 | Kaggle + CM | mBERT improves Kaggle over Kaggle-only seed-42 and remains usable on CM, but weak on THAR | MuRIL collapses to all-negative predictions | related datasets can still produce model-specific instability |
 | CM + THAR | mBERT remains strong on CM and THAR, weak on Kaggle | MuRIL collapses to all-negative predictions | MuRIL collapse is serious under this mixture |
-| Kaggle + THAR | both models learn; mBERT slightly wins Kaggle, MuRIL wins THAR and CM | MuRIL does not collapse | collapse is condition-dependent, not universal |
+| Kaggle + THAR | both models learn; mBERT has a small observed advantage on Kaggle, MuRIL has higher observed scores on THAR and CM | MuRIL does not collapse | collapse is condition-dependent, not universal |
 | Kaggle + CM + THAR | both models learn; mBERT leads Kaggle/CM, MuRIL leads THAR | MuRIL stable and strong on THAR | broader mixing helps but does not solve robustness |
 
 The key result is not simply that mixed data helps. Mixed data can help, hurt, or destabilize training depending on source balance and label compatibility.
@@ -175,17 +175,17 @@ First-pass manual coding found that many sampled errors involve cross-dataset la
 
 The qualitative lesson is that hate, offensive, and AntiReligion labels are not interchangeable. A text may be offensive but not targeted hate, or religious in topic but not anti-religion hate. Models trained on one label policy often fail when evaluated under another.
 
-Before a final public version, the paper should add 8-12 anonymized or paraphrased error examples that Om has personally reviewed. Offensive examples should not be included verbatim unless necessary and safely masked.
+This draft reports error categories rather than verbatim examples. Manual example selection remains an internal follow-up, so the qualitative claims are limited to observed category patterns.
 
 ## 9. Discussion
 
-The central result is conditional model ranking. mBERT does better on the Kaggle and CM matched settings, while MuRIL does better on THAR. This is not a contradiction to hide. It is the research finding.
+The central result is conditional model ranking. mBERT has higher observed scores on the Kaggle and CM matched settings, while MuRIL has higher observed scores on THAR. This is not a contradiction to hide. It is the research finding.
 
-One likely explanation is script/domain alignment. The processed Kaggle dataset is entirely Latin script, and CM is mostly Latin-script political/social media text. mBERT may handle these Latin-script, English-adjacent subword patterns better. MuRIL's Indian-language-focused pretraining does not automatically help when the task is heavily Romanized and broad.
+One possible explanation is script/domain alignment. The processed Kaggle dataset is entirely Latin script, and CM is mostly Latin-script political/social media text. mBERT may handle these Latin-script, English-adjacent subword patterns better. MuRIL's Indian-language-focused pretraining does not automatically help when the task is heavily Romanized and broad. However, the current experiments do not isolate script from platform, topic, label definition, or source balance.
 
-THAR is different. It is targeted religious hate, includes a meaningful Devanagari portion, and focuses on Indian religious group references. MuRIL's stronger THAR performance may reflect better alignment with Indian-language cues and target-domain signals. However, this should remain a cautious interpretation, not a causal proof.
+THAR is different. It is targeted religious hate, includes a meaningful Devanagari portion, and focuses on Indian religious group references. MuRIL's higher observed THAR scores may reflect better alignment with Indian-language cues and target-domain signals. However, this should remain a cautious interpretation, not a causal proof.
 
-The mixed-training results deepen the story. MuRIL collapses under some mixtures but not others, especially recovering when THAR is included with Kaggle or all three datasets. This suggests that model behavior depends on label compatibility, source balance, threshold/decision boundary behavior, and the training mixture, not only on model architecture.
+The mixed-training results deepen the story. MuRIL collapses under some mixtures but not others, especially recovering when THAR is included with Kaggle or all three datasets. This suggests that model behavior may depend on label compatibility, source balance, threshold/decision boundary behavior, and the training mixture, not only on model architecture.
 
 The TF-IDF results show that lexical cues remain powerful. A transformer that beats another transformer by a few points should still be compared against lexical baselines, especially when cross-dataset transfer rewards simple keyword overlap.
 
@@ -205,7 +205,7 @@ Other limitations:
 - The Kaggle dataset's exact source metadata and Indian-context status need additional review.
 - The CM dataset includes duplicates and some duplicate-label conflicts.
 - The 79-row probe is excluded from primary conclusions because its provenance is uncertain.
-- Manual error examples need more human review and careful anonymization.
+- This draft reports error categories. If specific examples are added later, they should be anonymized and safely masked where needed.
 
 These limitations do not invalidate the project. They define the correct strength of the claim: this is an application research draft with meaningful evidence, not a final peer-reviewed conclusion.
 
@@ -215,7 +215,7 @@ AI tools were used for coding, debugging, and documentation assistance; the rese
 
 ## 12. Conclusion
 
-This project shows that the mBERT-vs-MuRIL comparison cannot be answered with a single score. In matched multi-seed evaluation, mBERT is stronger on Kaggle Hinglish hate and narrowly stronger on CM code-mixed/offensive data, while MuRIL is stronger on THAR targeted religious hate. Cross-dataset and mixed-training experiments show that harmful-speech detection is strongly shaped by dataset situation: label definition, platform, topic, script composition, and source balance.
+This project shows that the mBERT-vs-MuRIL comparison cannot be answered with a single score. In matched multi-seed evaluation, mBERT has higher observed scores on Kaggle Hinglish hate and a small observed advantage on CM code-mixed/offensive data, while MuRIL has higher observed scores on THAR targeted religious hate. Cross-dataset and mixed-training experiments show that harmful-speech detection is shaped by dataset situation: label definition, platform, topic, script composition, and source balance.
 
 The most defensible conclusion is that model choice and dataset definition must be studied together. For Hinglish and Hindi-English harmful-speech detection, cross-dataset robustness is weak, and that weakness is a core finding rather than a failure to hide.
 

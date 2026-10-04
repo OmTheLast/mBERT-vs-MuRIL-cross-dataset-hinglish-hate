@@ -10,7 +10,13 @@ The current results can form the core of an application research paper if they a
 
 Safe central claim:
 
-> In Hinglish and Hindi-English code-mixed harmful-speech detection, mBERT and MuRIL rankings depend on dataset situation. mBERT performs better on the matched Kaggle Hinglish hate and CM code-mixed/offensive settings, while MuRIL performs better on the THAR targeted religious-hate setting. Cross-dataset and mixed-training results show that label definition, platform, topic, and script mix strongly affect model behavior.
+> In Hinglish and Hindi-English code-mixed harmful-speech detection, mBERT and MuRIL rankings depend on dataset situation. mBERT has higher observed scores on the matched Kaggle Hinglish hate setting and a small observed advantage on CM code-mixed/offensive data, while MuRIL has higher observed scores on the THAR targeted religious-hate setting. Cross-dataset and mixed-training results show that label definition, platform, topic, and script mix affect model behavior under this setup.
+
+Important caution:
+
+- The current experiments do not isolate whether script, platform, topic, label definition, or source balance causes each observed difference.
+- Small CM/THAR gaps should be described as observed differences, not statistically established superiority, unless confidence intervals or significance tests are added.
+- An untouched final test set is a recommendation for stronger evidence, not a universal arXiv submission requirement. The selection-set limitation still needs prominent disclosure.
 
 Do not claim:
 
@@ -40,7 +46,7 @@ Implication:
 
 Paper wording to keep:
 
-> The reported matched scores are selection-set scores because the same evaluation split was used for best-epoch selection. They support comparative trends, but future work should add a separate held-out test set or nested validation protocol.
+> The reported matched scores are selection-set scores because the same evaluation split was used for best-epoch selection. They support comparative trends, but future work should add a separate held-out test set or nested validation protocol before making stronger final-test generalization claims.
 
 ## Dataset Citation And Permission Status
 
@@ -128,6 +134,6 @@ Current permission stance:
 ## Remaining Before arXiv
 
 - Decide whether to submit the Markdown draft as-is after converting to PDF/LaTeX, or first convert `paper/application_research_draft.md` into the main PDF builder.
-- Add 8-12 anonymized/paraphrased manual error examples if space allows.
+- Add 8-12 anonymized/paraphrased manual error examples if space allows; do not leave this as a public drafting instruction inside the manuscript.
 - Consider rerunning at least one clean nested-validation or held-out test experiment if the paper needs stronger final-test claims.
 - Avoid publishing raw CM/THAR text in the arXiv source bundle or GitHub release unless permissions are clarified.
