@@ -29,7 +29,7 @@ This is necessary because our early results already showed that changing the eva
 - Indian-context status: unclear/mixed. Local preview includes non-Indian South Asian context, so do not describe it as purely Indian.
 - Label meaning in project: `0 = non-hate`, `1 = hate`.
 - Task category: hate speech.
-- Caveat: source-level collection and annotation details need more review before the final paper citation is frozen.
+- Citation/permission status checked 2026-10-04: Kaggle API metadata lists license `MIT`. Source-level collection and annotation details still require cautious description because the local processed subset uses only Hinglish rows from the larger source file.
 - Current audit:
   - rows: 4,780
   - label `0`: 2,914
@@ -61,7 +61,7 @@ This is necessary because our early results already showed that changing the eva
 - Indian-context status: strong Indian-context candidate.
 - Label meaning in project: mapped from source `offense`; `0 = not offensive`, `1 = offensive`.
 - Task category: offensive/hate-adjacent, not automatically strict hate speech.
-- Caveat: no obvious license file found during local inspection; citation/license review needed.
+- Citation/permission status checked 2026-10-04: GitHub API reports no detected license for `shikharras/cm-hate-speech-detection`, and no license file was found during local inspection. Use for citation and derived metrics; do not redistribute raw data from this repository without additional permission review.
 - Current audit:
   - rows: 3,900
   - label `0`: 2,455
@@ -81,7 +81,7 @@ This is necessary because our early results already showed that changing the eva
 - Indian-context status: strong Indian-context candidate.
 - Label meaning in project: `0 = Non-AntiReligion`, `1 = AntiReligion`.
 - Task category: targeted religious hate, narrow domain.
-- Caveat: not general Hinglish hate speech; domain is religion-focused and YouTube-specific.
+- Citation/permission status checked 2026-10-04: THAR paper metadata lists authors Deepawali Sharma, Aakash Singh, and Vivek Kumar Singh, DOI `10.1145/3653017`. GitHub API reports no detected license for `aakash-dl/THAR`. Use for citation and derived metrics; do not redistribute raw data from this repository without additional permission review. Not general Hinglish hate speech; domain is religion-focused and YouTube-specific.
 - Current audit before conversion:
   - rows: 11,549
   - `Non-AntiReligion`: 6,095

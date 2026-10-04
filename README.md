@@ -44,6 +44,7 @@ The label definitions differ across datasets. Matched evaluation data was reused
 - [Training runner](experiments/train_transformer.py) · [Evaluation harness](experiments/run_model_harness.py)
 - [Per-seed results](results/multiseed/matched_multiseed_per_seed.csv) · [Aggregate results](results/multiseed/matched_multiseed_summary.csv)
 - [Research roadmap](docs/research_rigor_roadmap.md) · [Research journal](docs/research_journal.md)
+- [Internal arXiv readiness checks](docs/internal_arxiv_checks.md)
 - [Earlier single-dataset study](https://github.com/OmTheLast/mBERT-vs-MuRIL-in-detecting-hatespeech)
 
 Code and analysis by **Om Patnaik**. This is an ongoing research study; the linked manuscript is a working draft.

@@ -313,7 +313,7 @@ def manual_reason_rows():
 def build_story():
     story = []
     story.append(P("Cross-Dataset Evaluation of mBERT and MuRIL for Hinglish Hate and Offensive Speech Detection", "TitleCenter"))
-    story.append(P("Om Patnaik | Working Paper Draft v0.2 - August 25, 2026", "AuthorCenter"))
+    story.append(P("Om Patnaik | Working Paper Draft v0.4 - October 4, 2026", "AuthorCenter"))
 
     story.append(P("Abstract", "Section"))
     story.append(
@@ -565,9 +565,10 @@ def build_story():
                 "The three primary datasets differ in platform, label policy, target domain, and script mix.",
                 "CM should be described as offensive/hate-adjacent unless its label definition is verified further.",
                 "The 79-row benchmark is excluded from primary conclusions because its provenance is uncertain.",
-                "The THAR citation and CM licensing/citation details need final verification before formal submission.",
+                "Kaggle metadata lists MIT; CM and THAR have no GitHub-detected license, so raw CM/THAR text should not be redistributed without further permission review.",
+                "Reported matched scores are selection-set scores because the evaluation split was also used for best-epoch selection.",
                 "Indo-HateSpeech was reviewed but not added to primary experiments because of short texts, duplicates, source concentration, and label ambiguity.",
-                "Mixed-dataset training has not yet been completed in this draft.",
+                "Mixed-training and cross-dataset transformer results are mostly single-seed evidence.",
             ]
         )
     )

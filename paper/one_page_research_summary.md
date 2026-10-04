@@ -1,6 +1,6 @@
 # One-Page Research Summary
 
-Working Paper Draft v0.3: 2026-08-27
+Working Paper Draft v0.4: 2026-10-04
 
 ## Project Question
 
@@ -43,11 +43,11 @@ The project's strongest claim is conditional: dataset label definition, platform
 
 - Mixed-dataset and cross-dataset transformer results are mostly single-seed evidence.
 - Hate, offensive, and AntiReligion labels are related but not interchangeable.
-- Dataset citation and license metadata still need final verification.
+- Kaggle metadata lists MIT, while CM and THAR repositories have no GitHub-detected license; raw CM/THAR data should not be redistributed without further permission review.
+- Reported matched scores are selection-set scores because the same evaluation split was used for best-epoch selection.
 - Manual error analysis needs more polished, anonymized examples before final sharing.
 - Hyperparameters were controlled rather than extensively tuned.
 
 ## Feedback Requested
 
-[OM VERIFY] Before sending to professors, ask for feedback on whether the conditional claim is clear, whether the dataset caveats are acceptable, and which experiment should receive the next multi-seed repeat: mixed all-three training, Kaggle+THAR, CM+THAR, or a selected cross-dataset transfer pair.
-
+Before sending to professors, ask for feedback on whether the conditional claim is clear, whether the dataset caveats are acceptable, whether the selection-set limitation is stated strongly enough, and which experiment should receive the next multi-seed repeat: mixed all-three training, Kaggle+THAR, CM+THAR, or a selected cross-dataset transfer pair.

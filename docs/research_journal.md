@@ -1177,7 +1177,7 @@ Draft framing:
 
 Review markers:
 
-- Added `[OM VERIFY]` markers for places where Om should personally verify wording, citation/license details, cross-dataset result status, and final manual error examples before sharing the draft externally.
+- Added internal review markers for places where Om should personally verify wording, citation/license details, cross-dataset result status, and final manual error examples before sharing the draft externally. These were later moved out of the public draft during arXiv-readiness cleanup.
 
 ## Tools Note Simplified On 2026-08-28
 
@@ -1191,6 +1191,32 @@ Changes made:
 - Replaced the long AI-assistance section in `paper/application_research_draft.md` with a short `Tools Note`.
 - Reduced `docs/ai_assistance_and_student_responsibility.md` to the one-line tools note plus an oral-defense responsibility reminder.
 - Updated `paper/build_paper_pdf.py` so regenerated paper PDFs use the concise `Tools Note` wording.
+
+## arXiv Readiness Checks On 2026-10-04
+
+Purpose:
+
+- Prepare the application research draft for possible arXiv submission.
+- Remove public draft review markers while preserving the checks internally.
+- Make the evaluation-split/best-epoch limitation explicit.
+- Verify dataset citation and permission status as far as public metadata allows.
+
+Findings:
+
+- `experiments/train_transformer.py` uses `load_best_model_at_end=True` and `metric_for_best_model="f1_macro"`, so the matched evaluation split also guided best-epoch selection.
+- The matched results should therefore be described as selection-set scores, not untouched final-test scores.
+- Kaggle API metadata lists the Kaggle source license as `MIT`.
+- GitHub API reports no detected license for `shikharras/cm-hate-speech-detection`.
+- GitHub API reports no detected license for `aakash-dl/THAR`.
+- THAR paper metadata lists authors Deepawali Sharma, Aakash Singh, and Vivek Kumar Singh, DOI `10.1145/3653017`.
+
+Changes made:
+
+- Updated `paper/application_research_draft.md` to remove public review markers and add the selection-set caveat.
+- Updated `paper/one_page_research_summary.md` to remove the public review marker and add the selection-set/license caveats.
+- Added `docs/internal_arxiv_checks.md` to keep detailed checks available internally.
+- Updated `docs/dataset_registry.md` with current citation and permission status.
+- Updated `paper/references.bib` with the THAR author list available from public metadata.
 
 ## Hugging Face Private Archive On 2026-09-15
 

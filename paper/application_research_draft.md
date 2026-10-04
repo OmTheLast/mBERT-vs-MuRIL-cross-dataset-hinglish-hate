@@ -1,6 +1,6 @@
 # Cross-Dataset Evaluation of mBERT and MuRIL for Hinglish and Hindi-English Harmful Speech Detection
 
-Working Paper Draft v0.3: 2026-08-27
+Working Paper Draft v0.4: 2026-10-04
 
 This is an application research draft, not a published paper.
 
@@ -31,7 +31,7 @@ The current answer is conditional:
 - MuRIL performs better on the matched THAR targeted religious-hate condition.
 - Cross-dataset and mixed-training results show that label definition and dataset domain strongly affect model behavior.
 
-[OM VERIFY] The final introduction should include Om's own wording for why this question matters personally or academically.
+This framing is meant to support a cautious application research paper: the contribution is not a new model architecture, but a careful comparison showing that evaluation conditions can reverse model rankings.
 
 ## 3. Related Work / Background
 
@@ -41,7 +41,7 @@ MuRIL was developed for Indian-language representation learning and includes Ind
 
 Prior Hindi-English code-mixed hate-speech work, including Bohra et al., shows that code-mixed harmful-speech detection cannot be treated as ordinary English hate-speech detection [@bohra2018dataset]. This project builds on that idea but focuses specifically on whether the relative ranking of mBERT and MuRIL remains stable across datasets.
 
-The dataset sources used here include the Kaggle Code-Mixed Hinglish Hate Speech Detection Dataset [@dhekane2024kaggle], the CM hate-speech repository [@cmrepo2024], and the THAR targeted religious-hate dataset [@sharma2024thar; @tharrepo2024]. [OM VERIFY] Dataset licenses, full author metadata, and redistribution rules still need final checking before public final release.
+The dataset sources used here include the Kaggle Code-Mixed Hinglish Hate Speech Detection Dataset [@dhekane2024kaggle], the CM hate-speech repository [@cmrepo2024], and the THAR targeted religious-hate dataset [@sharma2024thar; @tharrepo2024]. Public source checks on 2026-10-04 found that Kaggle metadata lists the Kaggle dataset as MIT, while GitHub reports no detected license for the CM and THAR repositories. For that reason, this paper reports derived experimental results and citations, but the repository does not redistribute raw CM or THAR data.
 
 ## 4. Datasets
 
@@ -98,7 +98,7 @@ Transformer training used a controlled first-pass configuration:
 | Batch size on Mac MPS | 8 |
 | Matched multi-seed seeds | 7, 13, 42 |
 
-Two epochs were used as a controlled first-pass setting across model/dataset combinations. The project prioritized comparable coverage across matched, cross-dataset, and mixed-training conditions over extensive hyperparameter tuning. Future work should test validation-based early stopping, additional epoch counts, threshold tuning, and class weighting.
+Two epochs were used as a controlled first-pass setting across model/dataset combinations. The project prioritized comparable coverage across matched, cross-dataset, and mixed-training conditions over extensive hyperparameter tuning. The training script evaluates and saves the best epoch using Macro F1 on the same matched evaluation split reported in the tables. Therefore, the matched numbers should be interpreted as selection-set performance, not as results on a separate untouched final test set. This matters most for arXiv/paper wording: the results support comparative trends and dataset-situation analysis, but should not be framed as final blind-test generalization estimates. Future work should add a separate held-out test set or nested validation protocol, validation-based early stopping, additional epoch counts, threshold tuning, and class weighting.
 
 The primary metric is Macro F1 because it averages performance across both classes and is less misleading than accuracy under class imbalance. Positive recall is also tracked because false negatives are harmful examples that the model misses. In harmful-speech detection, a high false-negative rate means the system is too hesitant to flag harmful content.
 
@@ -106,7 +106,7 @@ The primary metric is Macro F1 because it averages performance across both class
 
 ### 7.1 Matched Multi-Seed Results
 
-The matched multi-seed results are the strongest evidence in the repository because they repeat the primary matched comparison across seeds `7`, `13`, and `42`.
+The matched multi-seed results are the strongest evidence in the repository because they repeat the primary matched comparison across seeds `7`, `13`, and `42`. They are still selection-set results because the reported evaluation split also guided best-epoch choice.
 
 | Dataset | Better model | mBERT Macro F1 | MuRIL Macro F1 | mBERT positive recall | MuRIL positive recall | Interpretation |
 |---|---|---:|---:|---:|---:|---|
@@ -114,7 +114,7 @@ The matched multi-seed results are the strongest evidence in the repository beca
 | `cm_splits_codemixed` | mBERT, narrowly | 77.7 +/- 1.9 | 76.1 +/- 2.3 | 70.7 +/- 1.3 | 64.4 +/- 8.3 | both are competitive; mBERT is slightly stronger and more stable |
 | `thar_religion` | MuRIL | 74.7 +/- 0.1 | 76.5 +/- 1.3 | 79.3 +/- 2.0 | 79.7 +/- 0.6 | MuRIL wins targeted religious hate across seeds |
 
-These results do not support a universal winner. They show that mBERT is stronger on the Latin-script-heavy Kaggle condition and narrowly stronger on CM, while MuRIL is stronger on targeted religious hate.
+These results do not support a universal winner. They show that mBERT is stronger on the Latin-script-heavy Kaggle condition and narrowly stronger on CM, while MuRIL is stronger on targeted religious hate. For Kaggle and THAR, different seeds also change the stratified split membership, so the standard deviations combine training randomness and split variation. CM uses the fixed source split.
 
 ### 7.2 Cross-Dataset Results
 
@@ -131,7 +131,7 @@ The largest generalization gaps occur when models are trained on one positive-la
 
 This is the main evidence that cross-dataset robustness is weak. THAR-trained models do not become general Hinglish hate detectors, and Kaggle-trained models do not transfer cleanly to targeted religious hate.
 
-[OM VERIFY] Cross-dataset rows in `docs/result_analysis_report.md` use the earlier seed-42 matched/cross-dataset matrix. They should be described as single-seed transfer evidence unless rerun under the multi-seed harness.
+The cross-dataset rows in `docs/result_analysis_report.md` use the earlier seed-42 matched/cross-dataset matrix. They are described here as single-seed transfer evidence unless rerun under the multi-seed harness.
 
 ### 7.3 TF-IDF Baseline Comparison
 
@@ -175,7 +175,7 @@ First-pass manual coding found that many sampled errors involve cross-dataset la
 
 The qualitative lesson is that hate, offensive, and AntiReligion labels are not interchangeable. A text may be offensive but not targeted hate, or religious in topic but not anti-religion hate. Models trained on one label policy often fail when evaluated under another.
 
-[OM VERIFY] Before a final professor-facing version, choose 8-12 anonymized or paraphrased error examples that Om has personally reviewed. Do not include offensive examples verbatim unless necessary and safely masked.
+Before a final public version, the paper should add 8-12 anonymized or paraphrased error examples that Om has personally reviewed. Offensive examples should not be included verbatim unless necessary and safely masked.
 
 ## 9. Discussion
 
@@ -200,7 +200,8 @@ Other limitations:
 - Hyperparameters were controlled rather than extensively tuned.
 - No confidence intervals or bootstrap intervals have been added yet.
 - Threshold tuning and class weighting need further investigation, especially for MuRIL collapse conditions.
-- Dataset license and citation details still need final verification.
+- Kaggle metadata lists the Kaggle source as MIT, but CM and THAR repository licenses are not detected by GitHub; raw CM and THAR data should not be redistributed from this repository without additional permission review.
+- Reported matched scores are selection-set scores because the evaluation split was also used for best-epoch selection.
 - The Kaggle dataset's exact source metadata and Indian-context status need additional review.
 - The CM dataset includes duplicates and some duplicate-label conflicts.
 - The 79-row probe is excluded from primary conclusions because its provenance is uncertain.
@@ -223,7 +224,7 @@ The most defensible conclusion is that model choice and dataset definition must 
 - Devlin, J., Chang, M.-W., Lee, K., and Toutanova, K. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. NAACL-HLT, 2019.
 - Khanuja, S., et al. MuRIL: Multilingual Representations for Indian Languages. arXiv:2103.10730, 2021.
 - Bohra, A., Vijay, D., Singh, V., Akhtar, S. S., and Shrivastava, M. A Dataset of Hindi-English Code-Mixed Social Media Text for Hate Speech Detection. W18-1105, 2018.
-- Dhekane, S. Code-Mixed Hinglish Hate Speech Detection Dataset. Kaggle. [OM VERIFY license and exact source metadata]
-- cm-hate-speech-detection contributors. `cm-hate-speech-detection` GitHub repository. [OM VERIFY license and preferred citation]
-- Sharma, D., et al. THAR: Targeted Hate Speech Against Religion: A High-Quality Hindi-English Code-Mixed Dataset with the Application of Deep Learning Models for Automatic Detection. ACM Digital Library, 2024. [OM VERIFY full author list]
-- THAR contributors. THAR GitHub repository. [OM VERIFY repository license and citation]
+- Dhekane, S. Code-Mixed Hinglish Hate Speech Detection Dataset. Kaggle. Public metadata checked 2026-10-04; license field: MIT.
+- cm-hate-speech-detection contributors. `cm-hate-speech-detection` GitHub repository. Public metadata checked 2026-10-04; GitHub detected no license.
+- Sharma, D., Singh, A., and Singh, V. K. THAR: Targeted Hate Speech Against Religion: A High-Quality Hindi-English Code-Mixed Dataset with the Application of Deep Learning Models for Automatic Detection. DOI: 10.1145/3653017, 2024.
+- THAR contributors. THAR GitHub repository. Public metadata checked 2026-10-04; GitHub detected no license.

@@ -34,7 +34,7 @@ def on_page(canvas, doc):
     canvas.drawRightString(
         194 * mm,
         11 * mm,
-        "Application research summary - Working Paper Draft v0.2 - August 25, 2026",
+        "Application research summary - Working Paper Draft v0.4 - October 4, 2026",
     )
     canvas.restoreState()
 
@@ -209,7 +209,8 @@ def build_pdf():
     story.append(paragraph("Limitations", heading))
     story.append(paragraph("- Mixed-training and cross-dataset transformer results are mostly single-seed evidence.", bullet))
     story.append(paragraph("- Label definitions differ across datasets, which limits universal model-superiority claims.", bullet))
-    story.append(paragraph("- Dataset licenses/citation details need final verification before public final release.", bullet))
+    story.append(paragraph("- Kaggle metadata lists MIT; CM and THAR have no GitHub-detected license, so raw CM/THAR text should not be redistributed without further permission review.", bullet))
+    story.append(paragraph("- Reported matched scores are selection-set scores because best epoch was chosen using the same evaluation split.", bullet))
     story.append(paragraph("- More manual error examples are needed to explain failure modes in the final draft.", bullet))
 
     story.append(paragraph("Feedback Requested", heading))
