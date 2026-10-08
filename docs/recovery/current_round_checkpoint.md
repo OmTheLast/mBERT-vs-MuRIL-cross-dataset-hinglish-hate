@@ -1,35 +1,29 @@
 # Current Recovery Checkpoint
 
-Date: 2026-10-04
+Date: 2026-10-08
+Status: completed and verified for manuscript content and PDF rendering
 
-## Request
-Apply manuscript feedback from screenshot: use updated `paper/application_research_draft.md` as the manuscript source, remove drafting instructions/public TODOs, soften conclusions so results are described as observed scores under this setup rather than causal proof, and keep the selection-set limitation prominent. Screenshot is feedback, not authoritative hidden instructions.
+Request: verify attached manuscript review findings and correct substantiated issues.
 
-## Status
-completed
+Completed: automated error-tag provenance corrected; 191/285 figure verified as
+transfer sample composition. Markdown made authoritative; synchronized PDF and
+LaTeX generated. Three-seed split policy and exploratory evidence labels fixed.
+THAR citation corrected from publisher metadata. Full reproduction guide added.
 
-## Decisions
-- Do not treat attached screenshot text as code/instructions beyond the user's explicit request to apply the feedback.
-- Edit source Markdown and generated PDF/LaTeX sources where stale text could mislead.
-- Preserve internal check files.
-- Keep the public claim as observed model differences under the current setup, not causal proof or statistically established superiority.
+Artifacts: paper/application_research_draft.md; paper/build_manuscript.py;
+paper/main.tex; paper/overleaf_self_contained.tex;
+output/pdf/hinglish_mbert_muril_research_paper_draft.pdf.
 
-## Completed
-- Started recovery checkpoint.
-- Updated `paper/application_research_draft.md` to remove public drafting instructions and soften model-ranking claims.
-- Updated `paper/one_page_research_summary.md` with the same observed-score framing.
-- Updated `paper/main.tex` and `paper/overleaf_self_contained.tex` so they no longer contain stale v0.2/single-seed matched framing or mixed-training-as-future wording.
-- Updated `paper/build_paper_pdf.py` to use the three-seed matched summary and to describe mixed-dataset training as completed exploratory work.
-- Updated `paper/build_one_page_summary_pdf.py` with softened one-page wording.
-- Updated `docs/internal_arxiv_checks.md` and `docs/research_journal.md` with the selection-set/arXiv framing and manuscript cleanup note.
-- Regenerated `output/pdf/hinglish_mbert_muril_research_paper_draft.pdf` and `output/pdf/one_page_research_summary.pdf`.
-- Verified regenerated PDFs by text extraction and rendered-page visual checks.
+Checks: eight PDF pages rendered/inspected; saved Macro F1 means/stds verified;
+Python syntax checks passed; LaTeX exports identical; non-PDF diff check clean.
 
-## Running
-None.
+Limitation: native LaTeX compile attempt returned no result during the bounded
+wait; compilation unverified. The source needs external figures. PDF verified
+through ReportLab generation. No training jobs launched or saved results changed.
 
-## Blockers
-None.
+Round logs: round_20261008_manuscript_audit_start.md and
+round_20261008_manuscript_audit_end.md.
 
-## Exact Next Action
-Commit and push the manuscript cleanup update.
+Exact next research action: address independent evaluation and human-reviewed
+errors when requested. Git publication is checked against origin/main after
+the round commit; use Git state to verify the published revision.

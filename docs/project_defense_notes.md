@@ -1,5 +1,13 @@
 # Project Defense Notes
 
+Correction, 2026-10-08: the historical first-pass error categories were automated
+heuristic tags. We have not established human-reviewed causes of errors.
+`cross_dataset_label_mismatch` was assigned to every transfer row, so its 67.0%
+share describes sample composition, not an estimated cause of failure. For oral
+defense, distinguish measured prediction errors from hypotheses about why they
+occurred. Matched results are selection-set scores, and Kaggle/THAR variability
+includes split variation as well as training randomness.
+
 Date: 2026-06-26
 
 This document is written for project understanding, viva-style questions, and later paper writing. It is not the final paper. It explains what the project is doing, why each experiment matters, and how to answer common questions without getting lost in implementation details.

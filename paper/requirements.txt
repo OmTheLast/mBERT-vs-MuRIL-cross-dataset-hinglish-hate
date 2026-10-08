@@ -1,0 +1,4 @@
+markdown-it-py==4.2.0
+pypandoc_binary==1.17
+reportlab
+Pillow

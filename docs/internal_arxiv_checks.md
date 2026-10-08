@@ -137,3 +137,21 @@ Current permission stance:
 - Add 8-12 anonymized/paraphrased manual error examples if space allows; do not leave this as a public drafting instruction inside the manuscript.
 - Consider rerunning at least one clean nested-validation or held-out test experiment if the paper needs stronger final-test claims.
 - Avoid publishing raw CM/THAR text in the arXiv source bundle or GitHub release unless permissions are clarified.
+# Manuscript Audit Follow-Up: 2026-10-08
+
+- Verified automated tagging: 285 sampled rows, 191 transfer rows; the
+  cross_dataset_label_mismatch tag exactly equals the transfer indicator.
+  The 67.0% figure cannot be presented as an independently coded cause.
+- Corrected the current manuscript to automated heuristic tagging; human
+  annotation remains pending. Historical artifacts/identifiers are preserved.
+- Made application_research_draft.md authoritative and generated PDF/main.tex/
+  overleaf_self_contained.tex from it with build_manuscript.py.
+- Removed arXiv submission advice from the public manuscript. Preserve the
+  selection-set limitation; no untouched-test requirement is asserted here.
+- Verified THAR publication type/venue against publisher-deposited Crossref
+  metadata: https://api.crossref.org/works/10.1145/3653017 ; journal-article,
+  ACM Transactions on Asian and Low-Resource Language Information Processing.
+  This citation correction does not resolve dataset redistribution permission.
+- Added data placement and full three-dataset/three-seed reproduction commands
+  to running_experiments.md, including CM train+val/test source flags.
+- No model training was launched and saved numerical results were preserved.

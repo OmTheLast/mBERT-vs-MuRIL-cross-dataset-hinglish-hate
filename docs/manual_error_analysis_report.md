@@ -1,4 +1,12 @@
-# Manual Error Analysis Report
+# Automated Heuristic Error Tagging Report
+
+Correction, 2026-10-08: the tags below were assigned automatically by
+`scripts/first_pass_manual_error_coding.py`, not validated by independent human
+review. Historical column/file names are retained for traceability. The
+`cross_dataset_label_mismatch` tag is applied to every transfer row. Its 191/285
+share (67.0%) measures sample composition and cannot establish an error cause.
+Interpret the original first-pass discussion below as hypotheses for review,
+not verified causal findings.
 
 Date: 2026-06-27
 

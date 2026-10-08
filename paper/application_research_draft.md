@@ -1,6 +1,6 @@
 # Cross-Dataset Evaluation of mBERT and MuRIL for Hinglish and Hindi-English Harmful Speech Detection
 
-Working Paper Draft v0.4: 2026-10-04
+Working Paper Draft v0.5: 2026-10-08
 
 This is an application research draft, not a published paper.
 
@@ -98,7 +98,7 @@ Transformer training used a controlled first-pass configuration:
 | Batch size on Mac MPS | 8 |
 | Matched multi-seed seeds | 7, 13, 42 |
 
-Two epochs were used as a controlled first-pass setting across model/dataset combinations. The project prioritized comparable coverage across matched, cross-dataset, and mixed-training conditions over extensive hyperparameter tuning. The training script evaluates and saves the best epoch using Macro F1 on the same matched evaluation split reported in the tables. Therefore, the matched numbers should be interpreted as selection-set performance, not as results on a separate untouched final test set. This matters most for arXiv/paper wording: the results support comparative trends and dataset-situation analysis, but should not be framed as final blind-test generalization estimates. An untouched final test set is not a universal arXiv requirement, but it would be needed for stronger generalization claims. Future work should add a separate held-out test set or nested validation protocol, validation-based early stopping, additional epoch counts, threshold tuning, and class weighting.
+Two epochs were used as a controlled first-pass setting across model/dataset combinations. The project prioritized comparable coverage across matched, cross-dataset, and mixed-training conditions over extensive hyperparameter tuning. The training script evaluates and saves the best epoch using Macro F1 on the same matched evaluation split reported in the tables. Therefore, the matched numbers are selection-set performance rather than untouched final-test estimates. For Kaggle and THAR, each seed controls both training randomness and the stratified 80/20 split; mBERT and MuRIL use the same split within each seed. CM combines the source train and val splits for training (3,476 rows), and uses the source test split (424 rows) for epoch selection and reported evaluation. The CM split stays fixed across seeds. A separate final test set or nested validation protocol would strengthen generalization estimates.
 
 The primary metric is Macro F1 because it averages performance across both classes and is less misleading than accuracy under class imbalance. Positive recall is also tracked because false negatives are harmful examples that the model misses. In harmful-speech detection, a high false-negative rate means the system is too hesitant to flag harmful content.
 
@@ -113,6 +113,8 @@ The matched multi-seed results are the strongest evidence in the repository beca
 | `kaggle_hinglish_hate` | mBERT | 67.5 +/- 2.1 | 58.1 +/- 5.7 | 46.9 +/- 8.5 | 25.1 +/- 8.5 | mBERT has a clear matched advantage; MuRIL misses many positives |
 | `cm_splits_codemixed` | mBERT, narrowly | 77.7 +/- 1.9 | 76.1 +/- 2.3 | 70.7 +/- 1.3 | 64.4 +/- 8.3 | both are competitive; mBERT has a small observed advantage |
 | `thar_religion` | MuRIL | 74.7 +/- 0.1 | 76.5 +/- 1.3 | 79.3 +/- 2.0 | 79.7 +/- 0.6 | MuRIL has the higher observed score on targeted religious hate |
+
+![Figure 1. Matched selection-set Macro F1: mean and sample standard deviation across seeds 7, 13, and 42.](../results/result_analysis/matched_multiseed_macro_f1.png)
 
 These results do not support a universal winner. They show that mBERT has higher observed scores on the Latin-script-heavy Kaggle condition and a small observed advantage on CM, while MuRIL has higher observed scores on targeted religious hate. For Kaggle and THAR, different seeds also change the stratified split membership, so the standard deviations combine training randomness and split variation. CM uses the fixed source split. The CM and THAR gaps are small relative to the limited seed count, and this draft does not report confidence intervals or statistical significance tests. They should therefore be treated as observed differences under this setup, not as established reliable superiority.
 
@@ -129,13 +131,17 @@ The largest generalization gaps occur when models are trained on one positive-la
 | mBERT | `cm_splits_codemixed` | `kaggle_hinglish_hate` | 78.3 | 51.6 | 26.6 |
 | mBERT | `kaggle_hinglish_hate` | `thar_religion` | 65.6 | 44.8 | 20.8 |
 
+![Figure 2. Exploratory single-seed (42) transformer Macro F1 across primary training and evaluation conditions.](../results/result_analysis/transformer_primary_macro_f1_matrix.png)
+
+![Figure 3. Exploratory single-seed (42) generalization gaps relative to the corresponding matched score.](../results/result_analysis/transformer_generalization_gaps.png)
+
 This is the main evidence that cross-dataset robustness is weak. THAR-trained models do not become general Hinglish hate detectors, and Kaggle-trained models do not transfer cleanly to targeted religious hate.
 
 The cross-dataset rows in `docs/result_analysis_report.md` use the earlier seed-42 matched/cross-dataset matrix. They are described here as single-seed transfer evidence unless rerun under the multi-seed harness.
 
 ### 7.3 TF-IDF Baseline Comparison
 
-TF-IDF baselines are competitive in several settings. For example:
+TF-IDF baselines are competitive in several settings. The following comparison uses the earlier exploratory single-seed (42) transformer matrix, rather than the three-seed means:
 
 | Train dataset | Test dataset | Best transformer Macro F1 | Best TF-IDF Macro F1 | Transformer minus baseline |
 |---|---|---:|---:|---:|
@@ -161,7 +167,7 @@ The key result is not simply that mixed data helps. Mixed data can help, hurt, o
 
 ## 8. Error Analysis
 
-The error analysis shows that many failures are not random. They are linked to label mismatch, script, topic, and missing context.
+The quantitative error analysis measures prediction outcomes and feature associations in the earlier exploratory single-seed (42) matrix. Automated heuristic tagging provides candidate cues for later human review; it does not establish causes of errors.
 
 Quantitative error analysis shows that:
 
@@ -171,11 +177,11 @@ Quantitative error analysis shows that:
 - MuRIL tends to have lower false-negative rates on matched THAR and THAR-to-CM transfer.
 - Devanagari-only rows show high false-negative rates, which supports further script-specific analysis.
 
-First-pass manual coding found that many sampled errors involve cross-dataset label mismatch. The largest manual category was `cross_dataset_label_mismatch`, appearing in 191 coded rows, or 67.0% of the coded sample. Other recurring categories included generic profanity or abuse, target-group/religion cues, political context or slogans, short/contextless text, and script complexity.
+The script `scripts/first_pass_manual_error_coding.py` assigns tags automatically using train/test identities, keyword lists, script flags, and text length. Historical filenames and the `manual_reason` column retain their original names for traceability, but these outputs are automated heuristic tags, not independently reviewed manual annotations. The tag `cross_dataset_label_mismatch` is assigned to every row whose training and evaluation datasets differ. Its 191 rows (67.0% of the 285-row sample) therefore describe the sample's transfer composition and cannot establish that label mismatch caused 67.0% of errors. Other keyword and script tags identify possible cues rather than verified explanations.
 
 The qualitative lesson is that hate, offensive, and AntiReligion labels are not interchangeable. A text may be offensive but not targeted hate, or religious in topic but not anti-religion hate. Models trained on one label policy often fail when evaluated under another.
 
-This draft reports error categories rather than verbatim examples. Manual example selection remains an internal follow-up, so the qualitative claims are limited to observed category patterns.
+No independently human-reviewed error examples are reported here. The automated tags support example selection for future review, while conclusions about failure rates rely on the quantitative predictions.
 
 ## 9. Discussion
 
@@ -205,7 +211,7 @@ Other limitations:
 - The Kaggle dataset's exact source metadata and Indian-context status need additional review.
 - The CM dataset includes duplicates and some duplicate-label conflicts.
 - The 79-row probe is excluded from primary conclusions because its provenance is uncertain.
-- This draft reports error categories. If specific examples are added later, they should be anonymized and safely masked where needed.
+- Automated error tags are rule-based screening aids; they have not been validated by independent human annotation and do not establish error causes.
 
 These limitations do not invalidate the project. They define the correct strength of the claim: this is an application research draft with meaningful evidence, not a final peer-reviewed conclusion.
 
@@ -226,5 +232,5 @@ The most defensible conclusion is that model choice and dataset definition must 
 - Bohra, A., Vijay, D., Singh, V., Akhtar, S. S., and Shrivastava, M. A Dataset of Hindi-English Code-Mixed Social Media Text for Hate Speech Detection. W18-1105, 2018.
 - Dhekane, S. Code-Mixed Hinglish Hate Speech Detection Dataset. Kaggle. Public metadata checked 2026-10-04; license field: MIT.
 - cm-hate-speech-detection contributors. `cm-hate-speech-detection` GitHub repository. Public metadata checked 2026-10-04; GitHub detected no license.
-- Sharma, D., Singh, A., and Singh, V. K. THAR: Targeted Hate Speech Against Religion: A High-Quality Hindi-English Code-Mixed Dataset with the Application of Deep Learning Models for Automatic Detection. DOI: 10.1145/3653017, 2024.
+- Sharma, D., Singh, A., and Singh, V. K. THAR: Targeted Hate Speech Against Religion: A High-Quality Hindi-English Code-Mixed Dataset with the Application of Deep Learning Models for Automatic Detection. ACM Transactions on Asian and Low-Resource Language Information Processing, journal article, 2024. DOI: 10.1145/3653017.
 - THAR contributors. THAR GitHub repository. Public metadata checked 2026-10-04; GitHub detected no license.
