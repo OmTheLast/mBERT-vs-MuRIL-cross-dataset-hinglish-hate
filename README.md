@@ -1,5 +1,7 @@
 <h1 align="center">mBERT vs MuRIL: Cross-Dataset Hinglish Hate Speech</h1>
 
+[Portfolio case study](https://ompatnaik.com/hinglish/)
+
 **Compare multilingual and Indian-language pretraining across three Hinglish datasets and inspect where model rankings change.**
 
 [Demo or published artifacts](https://huggingface.co/collections/OmTheLast/hinglish-research-mbert-vs-muril-6aa96a16ed03bba0e89e9408)
