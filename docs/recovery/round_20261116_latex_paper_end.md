@@ -24,3 +24,10 @@ Checks:
 No running jobs or blockers. Exact next action: commit and push the verified
 paper update and check remote HEAD. Future experimental work requires an
 independent final-evaluation protocol and repeated exploratory conditions.
+
+Publication integration: initial push found newer origin/main work through
+992a8c1 (README house style and portfolio links). Fetched and merged those
+changes, preserving the upstream README, plot script, chart, portfolio link
+and work logs. Resolved the README opening conflict by retaining the new
+opening and placing the LaTeX paper link with its final pointers. Updated the
+upstream README-DETAILS.md paper link as well. No remote commits were discarded.

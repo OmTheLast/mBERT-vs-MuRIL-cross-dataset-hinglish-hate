@@ -14,6 +14,10 @@ Verified: desktop editor compiler returned success; paper/build_manuscript.py
 matched 31 result rows to saved CSVs, resolved citations/cross-references and
 found all figure assets. Old build commands no longer overwrite paper sources.
 
+Git integration: fetched newer origin/main changes through 992a8c1 and merged
+them, retaining upstream README styling, portfolio links, chart/script and logs.
+Updated paper links in both README files; no remote work was discarded.
+
 Research boundaries: matched evaluation data still selects epochs; transfer,
 mixed and threshold results are exploratory single-seed evidence. No new
 training, annotations or result metrics were created. No separate PDF export.

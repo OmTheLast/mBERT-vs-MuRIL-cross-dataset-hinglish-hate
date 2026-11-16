@@ -1,54 +1,72 @@
-# mBERT vs MuRIL: Cross-Dataset Hinglish Hate Speech
+<h1 align="center">mBERT vs MuRIL: Cross-Dataset Hinglish Hate Speech</h1>
 
-A comparative study of multilingual and Indian-language pretraining for Hinglish hate and offensive-language detection.
+[Portfolio case study](https://ompatnaik.com/hinglish/)
 
-[Models on Hugging Face](https://huggingface.co/collections/OmTheLast/hinglish-research-mbert-vs-muril-6aa96a16ed03bba0e89e9408) · [Research paper (LaTeX)](paper/main.tex) · [One-page summary](output/pdf/one_page_research_summary.pdf) · [Detailed results](docs/matched_multiseed_results.md)
+**Compare multilingual and Indian-language pretraining across three Hinglish datasets and inspect where model rankings change.**
 
-## Research question
+[Demo or published artifacts](https://huggingface.co/collections/OmTheLast/hinglish-research-mbert-vs-muril-6aa96a16ed03bba0e89e9408)
 
-Does MuRIL outperform mBERT consistently when the dataset, label definition, and evaluation domain change?
+Python research code. Dataset terms apply separately. Saved public results; full training needs separately prepared data and compute.
 
-## Main finding
+By Om Patnaik · repository created July 2026.
 
-Model ranking depends on the dataset. mBERT scores higher on Kaggle and narrowly on CM; MuRIL scores higher on THAR. Cross-dataset results show limited generalization, with hate, offense, and targeted religious hate representing different classification tasks.
+[![License: MIT](https://img.shields.io/badge/license-MIT-176b75?style=flat-square)](LICENSE)
 
-| Dataset | Positive label | mBERT Macro F1 | MuRIL Macro F1 |
-|---|---|---:|---:|
-| Kaggle Hinglish | Hate | 67.5% ± 2.1% | 58.1% ± 5.7% |
-| CM code-mixed | Offensive | 77.7% ± 1.9% | 76.1% ± 2.3% |
-| THAR | AntiReligion | 74.7% ± 0.1% | 76.5% ± 1.3% |
+## Install
 
-Values are matched evaluation means ± sample standard deviations across seeds **7, 13, and 42**. Macro F1 gives each class equal weight. These evaluation splits also guided best-epoch selection, so the figures are **not results on an untouched final test set**. Kaggle and THAR seeds change split membership as well as training randomness.
+| Platform / path | Start here |
+| --- | --- |
+| Inspect results | [Read the multi-seed report](docs/matched_multiseed_results.md) |
+| Python | `pip install -r requirements.txt` in a virtual environment |
 
-## Method
+Start with the committed per-seed CSV and report; no model download is needed to inspect them. For training and evaluation setup, follow [the experiment guide](docs/running_experiments.md).
 
-- Fine-tune **mBERT** and **MuRIL** on three datasets with distinct label definitions.
-- Compare matched multi-seed runs, cross-dataset transfer, four training mixtures, and TF-IDF baselines.
-- Analyze positive-class recall, errors, duplicate text, and collapsed prediction behavior.
+```bash
+python scripts/plot_readme_results.py
+```
 
-Dataset sources and mappings are documented in the [dataset registry](docs/dataset_registry.md). The [results analysis](docs/result_analysis_report.md) covers transfer and mixed training; the table above uses the newer multi-seed summary.
+## Why
 
-## Released models
+You need to know whether a model’s apparent advantage survives a change in dataset and label definition. This study compares mBERT and MuRIL on hate, offense, and targeted religious hate. Selection reused the evaluation splits, so the reported values are not untouched final-test results.
 
-**26 checkpoints across 14 public Hugging Face repositories.** Seeds 7, 13, and 42 are preserved where available; `main` defaults to seed 42. Each model card includes training details, per-seed scores, label definitions, loading code, and limitations.
+## Results
 
-[Browse the collection](https://huggingface.co/collections/OmTheLast/hinglish-research-mbert-vs-muril-6aa96a16ed03bba0e89e9408) · [Model index and verification](docs/huggingface_release.md)
+![Matched multi-seed Macro F1 means with sample-standard-deviation ranges across Kaggle, CM, and THAR](results/result_analysis/readme-matched-results.svg)
 
-## Limitations
+Macro F1 is 67.5% vs 58.1% on Kaggle, 77.7% vs 76.1% on CM, and 74.7% vs 76.5% on THAR (mBERT vs MuRIL). Seeds: 7, 13, 42; split membership also varies for Kaggle and THAR.
 
-The label definitions differ across datasets. Matched evaluation data was reused for epoch selection; mixed-training and transfer evidence is mostly single-seed. Two MuRIL mixtures produced all-negative external predictions. The 79-row diagnostic probe is excluded from primary conclusions. Fine-tuned-model licensing and training-source terms are documented in the model cards.
+Rebuild the chart with `python scripts/plot_readme_results.py` from the committed summary, without model downloads. [Per-seed data](results/multiseed/matched_multiseed_per_seed.csv) · [Aggregate data](results/multiseed/matched_multiseed_summary.csv).
 
-## Reproduce and inspect
+## Choose the right evidence
 
-- [Setup and experiment commands](docs/running_experiments.md)
-- [Training runner](experiments/train_transformer.py) · [Evaluation harness](experiments/run_model_harness.py)
-- [Per-seed results](results/multiseed/matched_multiseed_per_seed.csv) · [Aggregate results](results/multiseed/matched_multiseed_summary.csv)
-- [Research roadmap](docs/research_rigor_roadmap.md) · [Research journal](docs/research_journal.md)
-- [Internal arXiv readiness checks](docs/internal_arxiv_checks.md)
-- [Earlier single-dataset study](https://github.com/OmTheLast/mBERT-vs-MuRIL-in-detecting-hatespeech)
+Matched multi-seed results, transfer, mixtures, and TF-IDF baselines answer different questions. Mixed/transfer evidence is mostly single-seed; two MuRIL mixtures collapsed to all-negative external predictions. The 79-row diagnostic probe is excluded from primary conclusions.
 
-Code and analysis by **Om Patnaik**. This is an ongoing research study; the linked manuscript is a working draft.
+## Load a released checkpoint
 
-### Tools Note
+The linked collection preserves 26 checkpoints across 14 model repositories. Model cards give labels, loading instructions, seeds, and licensing notes; `main` defaults to seed 42 where available.
 
-AI tools were used for coding, debugging, and documentation assistance; the research direction, result interpretation, and final claims were reviewed and owned by Om Patnaik.
+## Notes from building it
+
+I tracked label definitions and split policy because changing either changes the comparison. Multi-seed reporting exposed variation hidden by a single run, while error analysis caught collapsed predictions. I would next use independent evaluation and human-reviewed errors before strengthening the conclusions.
+
+## Commands
+
+```bash
+python scripts/analyze_results.py                 # analyze saved experiment results
+python scripts/plot_readme_results.py             # plot the committed multi-seed summary
+python -m compileall -q experiments scripts        # check Python syntax
+```
+
+## Verify it yourself
+
+```bash
+python -m compileall -q experiments scripts
+```
+
+Syntax checks do not reproduce training or establish model quality. Audit the saved means and standard deviations against the per-seed CSV; full reruns require the datasets, model assets, and recorded setup in the experiment guide.
+
+## Credits, license and pointers
+
+Research and analysis by Om Patnaik, with AI coding/documentation assistance. Builds on Google mBERT/MuRIL, Hugging Face, PyTorch, and datasets cited in [the registry](docs/dataset_registry.md). [License](LICENSE); model and dataset terms are separate.
+
+[Research paper (LaTeX)](paper/main.tex) · [One-page summary](output/pdf/one_page_research_summary.pdf) · [Full setup, original notes, and project history](README-DETAILS.md).
