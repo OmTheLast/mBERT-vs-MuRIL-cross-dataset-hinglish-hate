@@ -1,5 +1,11 @@
 # Current Recovery Checkpoint
 
+Latest round, 2026-11-16: paper-folder compilation repaired and verified.
+See round_20261116_editor_compile.md. No running jobs or remaining compile
+blockers. Next user action if the preview is stale: click Compile PDF.
+
+## Previous paper preparation round
+
 Date: 2026-11-16
 Status: completed and verified locally
 

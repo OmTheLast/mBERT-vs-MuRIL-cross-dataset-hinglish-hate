@@ -8,7 +8,6 @@
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xurl}
-\graphicspath{{../results/result_analysis/}{results/result_analysis/}}
 \setlength{\emergencystretch}{3em}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 
@@ -219,7 +218,7 @@ change split membership. Evaluation data selects the best epoch.}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.86\linewidth]{matched_multiseed_macro_f1.png}
+\includegraphics[width=.86\linewidth]{figures/matched_multiseed_macro_f1.png}
 \caption{Three-seed matched selection-set macro F1. Error bars show
 sample standard deviation, not confidence intervals.}
 \label{fig:matched}
@@ -265,7 +264,7 @@ scores, not the means in Table~\ref{tab:matched}.}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.94\linewidth]{transformer_primary_macro_f1_matrix.png}
+\includegraphics[width=.94\linewidth]{figures/transformer_primary_macro_f1_matrix.png}
 \caption{Exploratory seed-42 macro F1 across source pairs. Each panel
 uses the same conditions as Table~\ref{tab:transfer}.}
 \label{fig:transfer}
@@ -334,7 +333,7 @@ and 2,310 for Kaggle, CM, and THAR, respectively.}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.94\linewidth]{mixed_training_macro_f1.png}
+\includegraphics[width=.94\linewidth]{figures/mixed_training_macro_f1.png}
 \caption{Exploratory seed-42 mixed-training macro F1. These values have
 not been repeated across seeds and have no estimated uncertainty bars.}
 \label{fig:mixed}

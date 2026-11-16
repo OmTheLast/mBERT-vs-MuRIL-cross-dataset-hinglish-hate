@@ -12,8 +12,8 @@ Prepared by Om Patnaik; LaTeX source updated November 16, 2026.
 
 Keep `main.tex` as the authoritative source. The desktop LaTeX editor compiles
 it with the project's supporting figure files. For another LaTeX environment,
-preserve the repository layout so the four PNG figures in
-`results/result_analysis/` remain available. Citations are included directly in
+keep the `figures/` folder beside `main.tex`; it contains all three plots.
+Citations are included directly in
 the source; a separate BibTeX run is not required.
 
 ## Verify The Results

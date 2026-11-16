@@ -116,11 +116,13 @@ def main():
         raise ValueError("Unresolved table/figure references")
     figures = re.findall(r"\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}", text)
     for filename in figures:
-        if not (ROOT / "results/result_analysis" / filename).is_file():
-            raise FileNotFoundError(filename)
+        plot = SOURCE.parent / filename
+        original = ROOT / "results/result_analysis" / plot.name
+        if plot.read_bytes() != original.read_bytes():
+            raise ValueError(f"Paper figure differs from saved result: {filename}")
 
     print(f"Checked {SOURCE}")
-    print("31 result rows match saved CSVs; citations, references and four figure assets exist.")
+    print(f"31 result rows match saved CSVs; references resolve and {len(figures)} figures match the originals.")
     print("No paper files were generated or overwritten.")
     print("Compile paper/main.tex in the existing LaTeX editor to check typesetting.")
 
