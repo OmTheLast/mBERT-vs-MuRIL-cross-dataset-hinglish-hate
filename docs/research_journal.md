@@ -1278,3 +1278,32 @@ metadata in Crossref. Added exact data placement and 18-job reproduction
 instructions, including CM source-split flags. Remaining research gaps include
 untouched final evaluation, independent human error review, confidence intervals,
 and repeated-seed transfer/mixed experiments.
+
+## 2026-11-16: Research Paper Moved To Authoritative LaTeX
+
+Request: prepare the research paper in LaTeX and remove the v0.5 manuscript.
+
+Updated the existing open `paper/main.tex` in place with a proper title,
+abstract, numbered sections, dataset citations, methods, six numerical tables,
+four existing figures, discussion, limitations, reproducibility pointers and
+the exact one-line Tools Note. Added the complete seed-42 transfer matrix,
+all four mixed-source result tables and selected validation-threshold results
+from saved outputs. No training, inference or numerical result files changed.
+
+The paper distinguishes three-seed selection-set scores from exploratory
+single-seed evidence. It explains the 424-row matched versus 415-row
+deduplicated CM evaluation, source-dependent label meanings, differing mixed
+pool sizes, automated error tags, and the lack of a controlled script effect.
+Threshold recovery is reported with reconstruction and split-overlap caveats.
+
+Removed `paper/application_research_draft.md` and its obsolete generated PDF;
+their previous contents remain in Git history. `main.tex` is now authoritative.
+The historical Overleaf entry point includes it rather than maintaining a
+second paper. The old build command now checks tables and never overwrites
+paper sources or generates another PDF. Updated active README/project pointers.
+
+Verification: the built-in desktop LaTeX compiler returned success for
+`paper/main.tex` with repository-root supporting assets. The read-only checker
+matched 31 result rows to saved CSVs and checked all citation keys, cross
+references and four PNG figure paths. No separate PDF was compiled/exported.
+The current editor remained open. Remaining research gaps are unchanged.

@@ -2,7 +2,7 @@
 
 A comparative study of multilingual and Indian-language pretraining for Hinglish hate and offensive-language detection.
 
-[Models on Hugging Face](https://huggingface.co/collections/OmTheLast/hinglish-research-mbert-vs-muril-6aa96a16ed03bba0e89e9408) · [Working paper](paper/application_research_draft.md) · [One-page summary](output/pdf/one_page_research_summary.pdf) · [Detailed results](docs/matched_multiseed_results.md)
+[Models on Hugging Face](https://huggingface.co/collections/OmTheLast/hinglish-research-mbert-vs-muril-6aa96a16ed03bba0e89e9408) · [Research paper (LaTeX)](paper/main.tex) · [One-page summary](output/pdf/one_page_research_summary.pdf) · [Detailed results](docs/matched_multiseed_results.md)
 
 ## Research question
 

@@ -1,105 +1,128 @@
-"""Generate the paper PDF and both LaTeX exports from one Markdown source."""
+"""Check the authoritative LaTeX paper against saved results; never overwrite it."""
 
 from pathlib import Path
+import csv
 import re
-from xml.sax.saxutils import escape
-
-from markdown_it import MarkdownIt
-import pypandoc
-from PIL import Image as PILImage
-from reportlab.lib import colors
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "paper/application_research_draft.md"
-PDF = ROOT / "output/pdf/hinglish_mbert_muril_research_paper_draft.pdf"
-REFERENCE_KEYS = ["devlin2019bert", "khanuja2021muril", "bohra2018dataset", "dhekane2024kaggle", "cmrepo2024", "sharma2024thar", "tharrepo2024"]
+SOURCE = ROOT / "paper/main.tex"
+DATASETS = {
+    "Kaggle": "kaggle_hinglish_hate",
+    "CM": "cm_splits_codemixed",
+    "THAR": "thar_religion",
+}
+MIXES = {
+    "Kaggle+CM": "mixed_kaggle_plus_cm",
+    "CM+THAR": "mixed_cm_plus_thar",
+    "Kaggle+THAR": "mixed_kaggle_plus_thar",
+    "All three": "mixed_all_three",
+}
 
 
-def manuscript_text():
-    text = SOURCE.read_text(encoding="utf-8")
-    for number, key in enumerate(REFERENCE_KEYS, 1):
-        text = text.replace("@" + key, str(number))
-    return text
+def read_csv(relative):
+    with (ROOT / relative).open(newline="", encoding="utf-8") as stream:
+        return list(csv.DictReader(stream))
 
 
-def build_pdf(text):
-    parser = MarkdownIt("commonmark").enable("table")
-    tokens = parser.parse(text)
-    styles = getSampleStyleSheet()
-    styles.add(ParagraphStyle("Cell", fontSize=7, leading=9, wordWrap="CJK"))
-    styles["BodyText"].fontSize = 9
-    styles["BodyText"].leading = 12
-    story = []
+def table_rows(text, label):
+    for table in re.findall(r"\\begin\{table\}.*?\\end\{table\}", text, re.S):
+        if "\\label{" + label + "}" in table:
+            body = table.split("\\midrule", 1)[1].split("\\bottomrule", 1)[0]
+            return [
+                [cell.strip() for cell in row.strip().split("&")]
+                for row in body.split("\\\\") if row.strip()
+            ]
+    raise ValueError(f"Missing table {label}")
 
-    def inline(token, style="BodyText"):
-        # ReportLab supports the small inline subset used by this manuscript.
-        html = parser.renderer.renderInline(token.children or [], parser.options, {})
-        html = re.sub(r"<code>(.*?)</code>", r'<font name="Courier">\1</font>', html)
-        html = html.replace("<strong>", "<b>").replace("</strong>", "</b>")
-        html = html.replace("<em>", "<i>").replace("</em>", "</i>")
-        return Paragraph(html, styles[style])
 
-    i = 0
-    while i < len(tokens):
-        token = tokens[i]
-        if token.type == "heading_open":
-            level = int(token.tag[1])
-            story.append(inline(tokens[i + 1], "Title" if level == 1 else "Heading" + str(min(level - 1, 3))))
-            i += 3
-            continue
-        if token.type == "table_open":
-            rows, row = [], []
-            i += 1
-            while tokens[i].type != "table_close":
-                if tokens[i].type == "tr_open":
-                    row = []
-                elif tokens[i].type == "inline":
-                    row.append(inline(tokens[i], "Cell"))
-                elif tokens[i].type == "tr_close":
-                    rows.append(row)
-                i += 1
-            table = Table(rows, colWidths=[480 / len(rows[0])] * len(rows[0]), repeatRows=1, hAlign="LEFT")
-            table.setStyle(TableStyle([
-                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#e8edf1")),
-                ("GRID", (0, 0), (-1, -1), .3, colors.lightgrey),
-                ("VALIGN", (0, 0), (-1, -1), "TOP"),
-                ("TOPPADDING", (0, 0), (-1, -1), 5),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
-            ]))
-            story.extend([table, Spacer(1, 10)])
-        elif token.type == "inline":
-            images = [child for child in token.children or [] if child.type == "image"]
-            if images:
-                for child in images:
-                    path = SOURCE.parent / child.attrGet("src")
-                    with PILImage.open(path) as image:
-                        width, height = image.size
-                    scale = min(480 / width, 285 / height)
-                    story.extend([Image(str(path), width=width * scale, height=height * scale), Paragraph(escape(child.content), styles["BodyText"]), Spacer(1, 10)])
-            else:
-                story.append(inline(token))
-        i += 1
-
-    def footer(canvas, doc):
-        canvas.setFont("Helvetica", 8)
-        canvas.drawRightString(540, 30, str(doc.page))
-
-    PDF.parent.mkdir(parents=True, exist_ok=True)
-    SimpleDocTemplate(str(PDF), rightMargin=57, leftMargin=57, topMargin=45, bottomMargin=45).build(story, onFirstPage=footer, onLaterPages=footer)
+def check_values(cells, expected):
+    actual = [float(value) for value in re.findall(r"-?\d+(?:\.\d+)?", " ".join(cells))]
+    rounded = [float(f"{float(value) * 100:.1f}") for value in expected]
+    if actual != rounded:
+        raise ValueError(f"Paper values {actual} differ from saved results {rounded}")
 
 
 def main():
-    text = manuscript_text()
-    latex = pypandoc.convert_text(text, "latex", format="markdown", extra_args=["--standalone", "-V", "geometry:margin=1in", "-V", "fontsize=10pt"])
-    latex = "% Generated by build_manuscript.py; edit application_research_draft.md.\n" + latex
-    for filename in ("main.tex", "overleaf_self_contained.tex"):
-        (SOURCE.parent / filename).write_text(latex, encoding="utf-8")
-    build_pdf(text)
-    print(f"Source: {SOURCE}")
-    print(f"PDF: {PDF}")
-    print("LaTeX exports generated from the same source; figures remain external assets.")
+    text = SOURCE.read_text(encoding="utf-8")
+    if "v0.5" in text or "Generated by build_manuscript" in text:
+        raise ValueError("Paper still contains superseded source/version wording")
+
+    summary = read_csv("results/multiseed/matched_multiseed_summary.csv")
+    source = None
+    matched_rows = table_rows(text, "tab:matched")
+    if len(matched_rows) != 6:
+        raise ValueError("Expected six matched rows")
+    for row in matched_rows:
+        source = row[0] or source
+        model = row[1].lower()
+        saved = next(r for r in summary if r["train_dataset"] == DATASETS[source] and r["model"] == model)
+        check_values(row[2:], [saved[k] for k in (
+            "f1_macro_mean", "f1_macro_std", "recall_hate_mean", "recall_hate_std"
+        )])
+
+    transfer = read_csv("results/result_analysis/transformer_generalization_gaps.csv")
+    transfer_rows = table_rows(text, "tab:transfer")
+    if len(transfer_rows) != 9:
+        raise ValueError("Expected nine transfer rows")
+    for row in transfer_rows:
+        selected = {r["model"]: r for r in transfer if
+                    r["train_dataset"] == DATASETS[row[0]] and r["test_dataset"] == DATASETS[row[1]]}
+        check_values(row[2:], [selected[m]["test_f1_macro"] for m in ("mbert", "muril")])
+
+    mixed = read_csv("results/result_analysis/mixed_training_macro_f1_summary.csv")
+    source = None
+    mixed_rows = table_rows(text, "tab:mixed")
+    if len(mixed_rows) != 8:
+        raise ValueError("Expected eight mixed-training rows")
+    for row in mixed_rows:
+        source = row[0] or source
+        selected = {r["test_dataset"]: r for r in mixed if
+                    r["train_dataset"] == MIXES[source] and r["model"] == row[1].lower()}
+        check_values(row[2:], [selected[d]["f1_macro"] for d in DATASETS.values()])
+
+    baselines = read_csv("results/result_analysis/best_transformer_vs_best_tfidf.csv")
+    baseline_rows = table_rows(text, "tab:baseline")
+    if len(baseline_rows) != 5:
+        raise ValueError("Expected five baseline comparisons")
+    for row in baseline_rows:
+        saved = next(r for r in baselines if r["train_dataset"] == DATASETS[row[0]]
+                     and r["test_dataset"] == DATASETS[row[1]])
+        check_values(row[2:], [saved[k] for k in (
+            "transformer_f1_macro", "baseline_f1_macro", "transformer_minus_baseline"
+        )])
+
+    threshold = read_csv("results/collapse_diagnostics/threshold_transfer_summary.csv")
+    threshold_rows = table_rows(text, "tab:threshold")
+    if len(threshold_rows) != 3:
+        raise ValueError("Expected three threshold comparisons")
+    for row in threshold_rows:
+        saved = next(r for r in threshold if r["training_condition"] == "mixed_kaggle_plus_cm"
+                     and r["model"] == "muril" and r["test_dataset"] == DATASETS[row[0]])
+        check_values(row[1:], [saved[k] for k in (
+            "default_f1_macro", "threshold_f1_macro",
+            "default_recall_positive", "threshold_recall_positive"
+        )])
+
+    cites = set()
+    for group in re.findall(r"\\cite\{([^}]+)\}", text):
+        cites.update(group.split(","))
+    references = set(re.findall(r"\\bibitem\{([^}]+)\}", text))
+    if cites - references:
+        raise ValueError(f"Missing references: {cites - references}")
+    labels = re.findall(r"\\label\{([^}]+)\}", text)
+    if len(labels) != len(set(labels)):
+        raise ValueError("Duplicate reference labels")
+    if set(re.findall(r"\\ref\{([^}]+)\}", text)) - set(labels):
+        raise ValueError("Unresolved table/figure references")
+    figures = re.findall(r"\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}", text)
+    for filename in figures:
+        if not (ROOT / "results/result_analysis" / filename).is_file():
+            raise FileNotFoundError(filename)
+
+    print(f"Checked {SOURCE}")
+    print("31 result rows match saved CSVs; citations, references and four figure assets exist.")
+    print("No paper files were generated or overwritten.")
+    print("Compile paper/main.tex in the existing LaTeX editor to check typesetting.")
 
 
 if __name__ == "__main__":

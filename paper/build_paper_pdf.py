@@ -1,4 +1,4 @@
-"""Compatibility entry point for the authoritative manuscript builder."""
+"""Legacy command: validate the LaTeX source, then compile it in the editor."""
 
 from build_manuscript import main
 

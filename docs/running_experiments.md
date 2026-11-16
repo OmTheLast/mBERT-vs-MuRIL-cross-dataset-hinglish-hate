@@ -66,12 +66,15 @@ hardware/package versions may differ numerically. The aggregator reads saved
 checkpoint metrics and produces the per-seed CSV, summary CSV, report and graph;
 it does not retrain or perform an independent final test.
 
-To rebuild only the paper exports from the saved results and authoritative text:
+To check the LaTeX paper's tables against the saved results:
 
 ```bash
-.venv/bin/python -m pip install -r paper/requirements.txt
 .venv/bin/python paper/build_manuscript.py
 ```
+
+This is a read-only check. Edit and compile `paper/main.tex` in the LaTeX
+editor for the current paper. The earlier Markdown-to-PDF export was retired
+on 2026-11-16; the command no longer generates files.
 
 Audit datasets:
 
